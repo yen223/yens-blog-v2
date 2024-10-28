@@ -1,138 +1,339 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
+import clsx from "clsx";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
+import { Button, ButtonLink } from "~/components/Button";
+import { Card } from "~/components/Card";
+import { Container } from "~/components/Container";
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XIcon,
+} from "~/components/SocialIcons";
+import logoAirbnb from "~/images/logos/airbnb.svg";
+import logoFacebook from "~/images/logos/facebook.svg";
+import logoPlanetaria from "~/images/logos/planetaria.svg";
+import logoStarbucks from "~/images/logos/starbucks.svg";
+import image1 from "~/images/photos/image-1.jpg";
+import image2 from "~/images/photos/image-2.jpg";
+import image3 from "~/images/photos/image-3.jpg";
+import image4 from "~/images/photos/image-4.jpg";
+import image5 from "~/images/photos/image-5.jpg";
+import {
+  getAllArticles,
+} from "~/lib/articles.server";
+import { formatDate } from "~/lib/formatDate";
+import { Link } from "@remix-run/react";
+import { ComponentPropsWithoutRef, ComponentType } from "react";
+import { useLoaderData } from "react-router";
+import { z } from "zod";
+import {Article, ArticleZ} from "~/lib/types";
 
-export default function Index() {
+const LoaderDataZ = z.object({ articles: ArticleZ.array() });
+type LoaderData = z.infer<typeof LoaderDataZ>;
+
+export async function loader(): Promise<LoaderData> {
+  const articles = (await getAllArticles()).slice(0, 4);
+  return { articles };
+}
+
+function MailIcon(props: ComponentPropsWithoutRef<"svg">) {
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-16">
-        <header className="flex flex-col items-center gap-9">
-          <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
-            Welcome to <span className="sr-only">Remix</span>
-          </h1>
-          <div className="h-[144px] w-[434px]">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+      <path
+        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
+        className="stroke-zinc-400 dark:stroke-zinc-500"
+      />
+    </svg>
+  );
+}
+
+function BriefcaseIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+      <path
+        d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
+        className="stroke-zinc-400 dark:stroke-zinc-500"
+      />
+    </svg>
+  );
+}
+
+function ArrowDownIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function Article({ article }: { article: Article }) {
+  return (
+    <Card as="article">
+      <Card.Title href={`./${article.slug}`}>
+        {article.title}
+      </Card.Title>
+      <Card.Eyebrow as="time" dateTime={article.date} decorate>
+        {formatDate(article.date)}
+      </Card.Eyebrow>
+      {/*<Card.Description>{article.description}</Card.Description>*/}
+      <Card.Cta>Read article</Card.Cta>
+    </Card>
+  );
+}
+
+function SocialLink({
+  icon: Icon,
+  ...props
+}: ComponentPropsWithoutRef<typeof Link> & {
+  icon: ComponentType<{ className?: string }>;
+}) {
+  return (
+    <Link className="group -m-1 p-1" {...props}>
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+    </Link>
+  );
+}
+
+function Newsletter() {
+  return (
+    <form
+      action="/thank-you"
+      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+    >
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <MailIcon className="h-6 w-6 flex-none" />
+        <span className="ml-3">Stay up to date</span>
+      </h2>
+      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        Get notified when I publish something new, and unsubscribe at any time.
+      </p>
+      <div className="mt-6 flex">
+        <input
+          type="email"
+          placeholder="Email address"
+          aria-label="Email address"
+          required
+          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
+        />
+        <Button type="submit" className="ml-4 flex-none">
+          Join
+        </Button>
+      </div>
+    </form>
+  );
+}
+
+interface Role {
+  company: string;
+  title: string;
+  logo: string;
+  start: string | { label: string; dateTime: string };
+  end: string | { label: string; dateTime: string };
+}
+
+function Role({ role }: { role: Role }) {
+  const startLabel =
+    typeof role.start === "string" ? role.start : role.start.label;
+  const startDate =
+    typeof role.start === "string" ? role.start : role.start.dateTime;
+
+  const endLabel = typeof role.end === "string" ? role.end : role.end.label;
+  const endDate = typeof role.end === "string" ? role.end : role.end.dateTime;
+
+  return (
+    <li className="flex gap-4">
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+        <img src={role.logo} alt="" className="h-7 w-7" />
+      </div>
+      <dl className="flex flex-auto flex-wrap gap-x-2">
+        <dt className="sr-only">Company</dt>
+        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          {role.company}
+        </dd>
+        <dt className="sr-only">Role</dt>
+        <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+          {role.title}
+        </dd>
+        <dt className="sr-only">Date</dt>
+        <dd
+          className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+          aria-label={`${startLabel} until ${endLabel}`}
+        >
+          <time dateTime={startDate}>{startLabel}</time>{" "}
+          <span aria-hidden="true">—</span>{" "}
+          <time dateTime={endDate}>{endLabel}</time>
+        </dd>
+      </dl>
+    </li>
+  );
+}
+
+function Resume() {
+  const resume: Array<Role> = [
+    {
+      company: "Planetaria",
+      title: "CEO",
+      logo: logoPlanetaria,
+      start: "2019",
+      end: {
+        label: "Present",
+        dateTime: new Date().getFullYear().toString(),
+      },
+    },
+    {
+      company: "Airbnb",
+      title: "Product Designer",
+      logo: logoAirbnb,
+      start: "2014",
+      end: "2019",
+    },
+    {
+      company: "Facebook",
+      title: "iOS Software Engineer",
+      logo: logoFacebook,
+      start: "2011",
+      end: "2014",
+    },
+    {
+      company: "Starbucks",
+      title: "Shift Supervisor",
+      logo: logoStarbucks,
+      start: "2008",
+      end: "2011",
+    },
+  ];
+
+  return (
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <BriefcaseIcon className="h-6 w-6 flex-none" />
+        <span className="ml-3">Work</span>
+      </h2>
+      <ol className="mt-6 space-y-4">
+        {resume.map((role, roleIndex) => (
+          <Role key={roleIndex} role={role} />
+        ))}
+      </ol>
+      <ButtonLink to="#" variant="secondary" className="group mt-6 w-full">
+        Download CV
+        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+      </ButtonLink>
+    </div>
+  );
+}
+
+function Photos() {
+  const rotations = [
+    "rotate-2",
+    "-rotate-2",
+    "rotate-2",
+    "rotate-2",
+    "-rotate-2",
+  ];
+
+  return (
+    <div className="mt-16 sm:mt-20">
+      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+          <div
+            key={image}
+            className={clsx(
+              "relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800",
+              rotations[imageIndex % rotations.length]
+            )}
+          >
             <img
-              src="/logo-light.png"
-              alt="Remix"
-              className="block w-full dark:hidden"
-            />
-            <img
-              src="/logo-dark.png"
-              alt="Remix"
-              className="hidden w-full dark:block"
+              src={image}
+              alt=""
+              sizes="(min-width: 640px) 18rem, 11rem"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
-        </header>
-        <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
-          <p className="leading-6 text-gray-700 dark:text-gray-200">
-            What&apos;s next?
-          </p>
-          <ul>
-            {resources.map(({ href, text, icon }) => (
-              <li key={href}>
-                <a
-                  className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {icon}
-                  {text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        ))}
       </div>
     </div>
   );
 }
 
-const resources = [
-  {
-    href: "https://remix.run/start/quickstart",
-    text: "Quick Start (5 min)",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M8.51851 12.0741L7.92592 18L15.6296 9.7037L11.4815 7.33333L12.0741 2L4.37036 10.2963L8.51851 12.0741Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://remix.run/start/tutorial",
-    text: "Tutorial (30 min)",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M4.561 12.749L3.15503 14.1549M3.00811 8.99944H1.01978M3.15503 3.84489L4.561 5.2508M8.3107 1.70923L8.3107 3.69749M13.4655 3.84489L12.0595 5.2508M18.1868 17.0974L16.635 18.6491C16.4636 18.8205 16.1858 18.8205 16.0144 18.6491L13.568 16.2028C13.383 16.0178 13.0784 16.0347 12.915 16.239L11.2697 18.2956C11.047 18.5739 10.6029 18.4847 10.505 18.142L7.85215 8.85711C7.75756 8.52603 8.06365 8.21994 8.39472 8.31453L17.6796 10.9673C18.0223 11.0653 18.1115 11.5094 17.8332 11.7321L15.7766 13.3773C15.5723 13.5408 15.5554 13.8454 15.7404 14.0304L18.1868 16.4767C18.3582 16.6481 18.3582 16.926 18.1868 17.0974Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://remix.run/docs",
-    text: "Remix Docs",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M9.99981 10.0751V9.99992M17.4688 17.4688C15.889 19.0485 11.2645 16.9853 7.13958 12.8604C3.01467 8.73546 0.951405 4.11091 2.53116 2.53116C4.11091 0.951405 8.73546 3.01467 12.8604 7.13958C16.9853 11.2645 19.0485 15.889 17.4688 17.4688ZM2.53132 17.4688C0.951566 15.8891 3.01483 11.2645 7.13974 7.13963C11.2647 3.01471 15.8892 0.951453 17.469 2.53121C19.0487 4.11096 16.9854 8.73551 12.8605 12.8604C8.73562 16.9853 4.11107 19.0486 2.53132 17.4688Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://rmx.as/discord",
-    text: "Join Discord",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 24 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M15.0686 1.25995L14.5477 1.17423L14.2913 1.63578C14.1754 1.84439 14.0545 2.08275 13.9422 2.31963C12.6461 2.16488 11.3406 2.16505 10.0445 2.32014C9.92822 2.08178 9.80478 1.84975 9.67412 1.62413L9.41449 1.17584L8.90333 1.25995C7.33547 1.51794 5.80717 1.99419 4.37748 2.66939L4.19 2.75793L4.07461 2.93019C1.23864 7.16437 0.46302 11.3053 0.838165 15.3924L0.868838 15.7266L1.13844 15.9264C2.81818 17.1714 4.68053 18.1233 6.68582 18.719L7.18892 18.8684L7.50166 18.4469C7.96179 17.8268 8.36504 17.1824 8.709 16.4944L8.71099 16.4904C10.8645 17.0471 13.128 17.0485 15.2821 16.4947C15.6261 17.1826 16.0293 17.8269 16.4892 18.4469L16.805 18.8725L17.3116 18.717C19.3056 18.105 21.1876 17.1751 22.8559 15.9238L23.1224 15.724L23.1528 15.3923C23.5873 10.6524 22.3579 6.53306 19.8947 2.90714L19.7759 2.73227L19.5833 2.64518C18.1437 1.99439 16.6386 1.51826 15.0686 1.25995ZM16.6074 10.7755L16.6074 10.7756C16.5934 11.6409 16.0212 12.1444 15.4783 12.1444C14.9297 12.1444 14.3493 11.6173 14.3493 10.7877C14.3493 9.94885 14.9378 9.41192 15.4783 9.41192C16.0471 9.41192 16.6209 9.93851 16.6074 10.7755ZM8.49373 12.1444C7.94513 12.1444 7.36471 11.6173 7.36471 10.7877C7.36471 9.94885 7.95323 9.41192 8.49373 9.41192C9.06038 9.41192 9.63892 9.93712 9.6417 10.7815C9.62517 11.6239 9.05462 12.1444 8.49373 12.1444Z"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-];
+export default function Home() {
+  const data = useLoaderData();
+  const { articles } = LoaderDataZ.parse(data);
+  return (
+    <>
+      {/*<Container className="mt-9">*/}
+      {/*  <div className="max-w-2xl">*/}
+      {/*    <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">*/}
+      {/*      Software designer, founder, and amateur astronaut.*/}
+      {/*    </h1>*/}
+      {/*    <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">*/}
+      {/*      I’m Spencer, a software designer and entrepreneur based in New York*/}
+      {/*      City. I’m the founder and CEO of Planetaria, where we develop*/}
+      {/*      technologies that empower regular people to explore space on their*/}
+      {/*      own terms.*/}
+      {/*    </p>*/}
+      {/*    <div className="mt-6 flex gap-6">*/}
+      {/*      <SocialLink to="#" aria-label="Follow on X" icon={XIcon} />*/}
+      {/*      <SocialLink*/}
+      {/*        to="#"*/}
+      {/*        aria-label="Follow on Instagram"*/}
+      {/*        icon={InstagramIcon}*/}
+      {/*      />*/}
+      {/*      <SocialLink*/}
+      {/*        to="#"*/}
+      {/*        aria-label="Follow on GitHub"*/}
+      {/*        icon={GitHubIcon}*/}
+      {/*      />*/}
+      {/*      <SocialLink*/}
+      {/*        to="#"*/}
+      {/*        aria-label="Follow on LinkedIn"*/}
+      {/*        icon={LinkedInIcon}*/}
+      {/*      />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</Container>*/}
+      {/*<Photos />*/}
+      <Container className="mt-24 md:mt-28">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+          <div className="flex flex-col gap-16">
+            {articles.map((article) => (
+              <Article key={article.slug} article={article} />
+            ))}
+          </div>
+          <div className="space-y-10 lg:pl-16 xl:pl-24">
+            <Newsletter />
+            <Resume />
+          </div>
+        </div>
+      </Container>
+    </>
+  );
+}

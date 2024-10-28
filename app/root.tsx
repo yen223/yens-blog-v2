@@ -8,6 +8,7 @@ import {
 } from "@remix-run/react";
 
 import "./tailwind.css";
+import { RootLayout } from "~/components/RootLayout";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -31,8 +32,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="flex h-full bg-zinc-50 dark:bg-black">
+        <RootLayout>{children}</RootLayout>
         <ScrollRestoration />
         <Scripts />
       </body>
