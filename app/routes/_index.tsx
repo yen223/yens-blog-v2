@@ -251,75 +251,42 @@ function Resume() {
   );
 }
 
-function Photos() {
-  const rotations = [
-    "rotate-2",
-    "-rotate-2",
-    "rotate-2",
-    "rotate-2",
-    "-rotate-2",
-  ];
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image}
-            className={clsx(
-              "relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800",
-              rotations[imageIndex % rotations.length]
-            )}
-          >
-            <img
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Home() {
   const data = useLoaderData();
   const { articles } = LoaderDataZ.parse(data);
   return (
     <>
-      {/*<Container className="mt-9">*/}
-      {/*  <div className="max-w-2xl">*/}
-      {/*    <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">*/}
-      {/*      Software designer, founder, and amateur astronaut.*/}
-      {/*    </h1>*/}
-      {/*    <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">*/}
-      {/*      I’m Spencer, a software designer and entrepreneur based in New York*/}
-      {/*      City. I’m the founder and CEO of Planetaria, where we develop*/}
-      {/*      technologies that empower regular people to explore space on their*/}
-      {/*      own terms.*/}
-      {/*    </p>*/}
-      {/*    <div className="mt-6 flex gap-6">*/}
-      {/*      <SocialLink to="#" aria-label="Follow on X" icon={XIcon} />*/}
-      {/*      <SocialLink*/}
-      {/*        to="#"*/}
-      {/*        aria-label="Follow on Instagram"*/}
-      {/*        icon={InstagramIcon}*/}
-      {/*      />*/}
-      {/*      <SocialLink*/}
-      {/*        to="#"*/}
-      {/*        aria-label="Follow on GitHub"*/}
-      {/*        icon={GitHubIcon}*/}
-      {/*      />*/}
-      {/*      <SocialLink*/}
-      {/*        to="#"*/}
-      {/*        aria-label="Follow on LinkedIn"*/}
-      {/*        icon={LinkedInIcon}*/}
-      {/*      />*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</Container>*/}
+      <Container className="mt-9">
+        <div className="max-w-2xl">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+            Software designer, founder, and amateur astronaut.
+          </h1>
+          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            I’m Spencer, a software designer and entrepreneur based in New York
+            City. I’m the founder and CEO of Planetaria, where we develop
+            technologies that empower regular people to explore space on their
+            own terms.
+          </p>
+          <div className="mt-6 flex gap-6">
+            <SocialLink to="#" aria-label="Follow on X" icon={XIcon} />
+            <SocialLink
+              to="#"
+              aria-label="Follow on Instagram"
+              icon={InstagramIcon}
+            />
+            <SocialLink
+              to="#"
+              aria-label="Follow on GitHub"
+              icon={GitHubIcon}
+            />
+            <SocialLink
+              to="#"
+              aria-label="Follow on LinkedIn"
+              icon={LinkedInIcon}
+            />
+          </div>
+        </div>
+      </Container>
       {/*<Photos />*/}
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">

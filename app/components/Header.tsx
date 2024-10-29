@@ -9,7 +9,7 @@ import clsx from "clsx";
 
 import { Container } from "~/components/Container";
 import avatarImage from "~/images/avatar.jpg";
-import { Link } from "@remix-run/react";
+import {Link, NavLink, useLocation} from "@remix-run/react";
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -133,25 +133,28 @@ function NavItem({
   href: string;
   children: React.ReactNode;
 }) {
-  // const isActive = usePathname() === href;
-  const isActive = false
-
   return (
     <li>
-      <Link
+      <NavLink
         to={href}
-        className={clsx(
-          "relative block px-3 py-2 transition",
-          isActive
-            ? "text-teal-500 dark:text-teal-400"
-            : "hover:text-teal-500 dark:hover:text-teal-400"
-        )}
+        className={({ isActive }) =>
+          clsx(
+            "relative block px-3 py-2 transition",
+            isActive
+              ? "text-teal-500 dark:text-teal-400"
+              : "hover:text-teal-500 dark:hover:text-teal-400"
+          )
+        }
       >
-        {children}
-        {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
+        {({ isActive }) => (
+          <>
+            {children}
+            {isActive && (
+              <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
+            )}
+          </>
         )}
-      </Link>
+      </NavLink>
     </li>
   );
 }
@@ -170,7 +173,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
 
 function ThemeToggle() {
   // const { resolvedTheme, setTheme } = useTheme();
-  const resolvedTheme = "dark"
+  const resolvedTheme = "dark";
   const otherTheme = resolvedTheme === "dark" ? "light" : "dark";
   const [mounted, setMounted] = useState(false);
 
@@ -198,7 +201,7 @@ function clamp(number: number, a: number, b: number) {
 }
 
 function AvatarContainer({
-                           // eslint-disable-next-line react/prop-types
+  // eslint-disable-next-line react/prop-types
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -242,8 +245,8 @@ function Avatar({
 }
 
 export function Header() {
-  // const isHomePage = usePathname() === '/'
-  const isHomePage = true;
+  const isHomePage = useLocation().pathname === '/'
+
   const headerRef = useRef<React.ElementRef<"div">>(null);
   const avatarRef = useRef<React.ElementRef<"div">>(null);
   const isInitial = useRef(true);
@@ -388,7 +391,7 @@ export function Header() {
                   <Avatar
                     large
                     className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
+                    style={{ transform: "var(--avatar-image-transform)" }}
                   />
                 </div>
               </div>
@@ -412,9 +415,7 @@ export function Header() {
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1">
-                {!isHomePage && (
-                  <AvatarContainer>{/*<Avatar />*/}</AvatarContainer>
-                )}
+                {!isHomePage && <AvatarContainer>{<Avatar />}</AvatarContainer>}
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
