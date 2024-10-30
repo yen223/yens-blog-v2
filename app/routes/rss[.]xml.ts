@@ -1,9 +1,8 @@
 import type { LoaderFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
-import { getAllArticles } from "~/lib/articles.server";
+import { getCachedArticles } from "~/lib/articles.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const articles = await getAllArticles();
+  const articles = await getCachedArticles();
   const SITE_URL = "https://weiyen.net";
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
