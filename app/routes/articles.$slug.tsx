@@ -1,6 +1,6 @@
 import { Container } from "~/components/Container";
 import { Prose } from "~/components/Prose";
-import { loadArticle } from "~/lib/articles.server";
+import { getCachedArticle, loadArticle } from "~/lib/articles.server";
 import { z } from "zod";
 import { LoaderFunctionArgs } from "@remix-run/router";
 import { useLoaderData } from "react-router";
@@ -34,9 +34,8 @@ export async function loader({
   params,
 }: LoaderFunctionArgs): Promise<LoaderData> {
   const slug = ParamZ.parse(params).slug;
-  const article = await loadArticle(slug);
-  // const articles = await getAllArticles();
-  // const article = articles.find((x) => x.slug == slug);
+  const article = await getCachedArticle(slug);
+
   if (!article) {
     throw new Response(null, {
       status: 404,

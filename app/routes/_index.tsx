@@ -6,7 +6,7 @@ import { Button, ButtonLink } from "~/components/Button";
 import { Card } from "~/components/Card";
 import { Container } from "~/components/Container";
 import { GitHubIcon, LinkedInIcon } from "~/components/SocialIcons";
-import { getAllArticles } from "~/lib/articles.server";
+import { getCachedArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import type { Article } from "~/lib/types";
 import { ArticleZ } from "~/lib/types";
@@ -15,7 +15,7 @@ const LoaderDataZ = z.object({ articles: ArticleZ.array() });
 type LoaderData = z.infer<typeof LoaderDataZ>;
 
 export async function loader(): Promise<LoaderData> {
-  const articles = (await getAllArticles()).slice(0, 10);
+  const articles = (await getCachedArticles()).slice(0, 10);
   return { articles };
 }
 
@@ -103,7 +103,7 @@ function ArrowDownIcon(props: ComponentPropsWithoutRef<"svg">) {
 function Article({ article }: { article: Article }) {
   return (
     <Card as="article">
-      <Card.Title href={`./${article.slug}`}>{article.title}</Card.Title>
+      <Card.Title href={`./articles/${article.slug}`}>{article.title}</Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
       </Card.Eyebrow>

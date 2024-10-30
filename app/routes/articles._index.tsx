@@ -1,6 +1,6 @@
 import { Card } from "~/components/Card";
 import { SimpleLayout } from "~/components/SimpleLayout";
-import { getAllArticles } from "~/lib/articles.server";
+import { getCachedArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import { z } from "zod";
 import { useLoaderData } from "react-router";
@@ -46,7 +46,7 @@ const LoaderDataZ = z.object({ articles: ArticleZ.array() });
 type LoaderData = z.infer<typeof LoaderDataZ>;
 
 export async function loader(): Promise<LoaderData> {
-  const articles = await getAllArticles();
+  const articles = await getCachedArticles();
   return { articles };
 }
 
