@@ -4,6 +4,7 @@ export const FrontmatterZ = z.object({
   title: z.string(),
   date: z.string(),
   tags: z.string().array(),
+  description: z.string().default(""),
 });
 export type Frontmatter = z.infer<typeof FrontmatterZ>;
 export const ArticleZ = FrontmatterZ.extend({
