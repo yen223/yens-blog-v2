@@ -9,6 +9,7 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-python";
 import "prismjs/components/prism-sql";
+import "prismjs/components/prism-bash";
 
 type FenceProps = {
   children: string;
@@ -16,6 +17,10 @@ type FenceProps = {
 };
 
 export function Fence({ children, language }: FenceProps) {
+  let grammar = Prism.languages[language];
+  if (!grammar) {
+    return <pre className={`language-${language}`}>{children}</pre>;
+  }
   let content = Prism.highlight(children, Prism.languages[language], language);
 
   return (

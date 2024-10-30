@@ -17,7 +17,7 @@ list_of_strings = ["Adam", "Bobby", "Caroline"]
 
 If we have a `length` function that converts strings into integers:
 
-``` python
+```python
 def length(some_string):
     return len(some_string)
 
@@ -28,7 +28,7 @@ length("Caroline") == 8  # str -> int
 
 Then we can trivially get from a *list* of strings to a *list* of integers, just by using the same `length` function and the `map` operation:
 
-``` python
+```python
 >>> map(length, ["Adam", "Bobby", "Caroline"])
 [4, 5, 8]
 ```
