@@ -2,7 +2,7 @@
 title: "A gentle introduction to functors"
 slug: "a-gentle-introduction-to-functors"
 date: "2017-08-22"
-draft: false
+published: true
 tags:
   - functional programming
   - functors

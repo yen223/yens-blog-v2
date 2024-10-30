@@ -2,7 +2,7 @@
 title: On professional communications
 slug: "on-professional-communications"
 date: "2015-05-20"
-draft: false
+published: true
 tags:
   - communications
   - opinion

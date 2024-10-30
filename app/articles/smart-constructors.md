@@ -2,7 +2,7 @@
 title: "Smart constructors"
 slug: "smart-constructors"
 date: "2017-08-23"
-draft: false
+published: true
 tags:
   - python
   - design pattern

@@ -2,7 +2,7 @@
 title: "Set up SSH access for an Ubuntu server"
 slug: "set-up-ubuntu-server"
 date: "2015-05-24"
-draft: false
+published: true
 tags:
   - guide
   - ssh

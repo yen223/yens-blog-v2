@@ -2,7 +2,7 @@
 title: "A reflection on my master's course"
 slug: "a-reflection-on-my-masters-course"
 date: "2015-05-17"
-draft: false
+published: true
 tags:
   - masters
   - mathematics
