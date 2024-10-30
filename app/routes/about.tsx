@@ -79,6 +79,7 @@ export default function About() {
             </section>
             <section>
               <h2>About this site</h2>
+              <p>This site is open-source. The code is hosted on <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>.</p>
               <p>
                 This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://developers.cloudflare.com/pages">Cloudflare Pages</a>.
               </p>
