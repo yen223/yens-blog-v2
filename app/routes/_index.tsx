@@ -1,25 +1,19 @@
-import clsx from "clsx";
+import { ComponentPropsWithoutRef, ComponentType } from "react";
+import { Link, useLoaderData } from "@remix-run/react";
+import { z } from "zod";
 
 import { Button, ButtonLink } from "~/components/Button";
 import { Card } from "~/components/Card";
 import { Container } from "~/components/Container";
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  XIcon,
-} from "~/components/SocialIcons";
+import { GitHubIcon, LinkedInIcon } from "~/components/SocialIcons";
+import { getAllArticles } from "~/lib/articles.server";
+import { formatDate } from "~/lib/formatDate";
+import type { Article } from "~/lib/types";
+import { ArticleZ } from "~/lib/types";
 import logoAirbnb from "~/images/logos/airbnb.svg";
 import logoFacebook from "~/images/logos/facebook.svg";
 import logoPlanetaria from "~/images/logos/planetaria.svg";
 import logoStarbucks from "~/images/logos/starbucks.svg";
-import { getAllArticles } from "~/lib/articles.server";
-import { formatDate } from "~/lib/formatDate";
-import { Link } from "@remix-run/react";
-import { ComponentPropsWithoutRef, ComponentType } from "react";
-import { useLoaderData } from "react-router";
-import { z } from "zod";
-import { Article, ArticleZ } from "~/lib/types";
 
 const LoaderDataZ = z.object({ articles: ArticleZ.array() });
 type LoaderData = z.infer<typeof LoaderDataZ>;
@@ -301,18 +295,18 @@ export default function Home() {
   const data = useLoaderData();
   const { articles } = LoaderDataZ.parse(data);
   return (
-      <Container className={"mt-16"}>
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16 py-6">
-            {articles.map((article) => (
-                <Article key={article.slug} article={article} />
-            ))}
-          </div>
-          <div className="flex flex-col gap-10 lg:pl-16 xl:pl-24">
-            <Profile />
-            <Newsletter />
-          </div>
+    <Container className={"mt-16"}>
+      <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+        <div className="flex flex-col gap-16 py-6">
+          {articles.map((article) => (
+            <Article key={article.slug} article={article} />
+          ))}
         </div>
-      </Container>
+        <div className="flex flex-col gap-10 lg:pl-16 xl:pl-24">
+          <Profile />
+          <Newsletter />
+        </div>
+      </div>
+    </Container>
   );
 }
