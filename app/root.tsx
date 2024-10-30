@@ -22,6 +22,11 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap",
   },
+  {
+    rel: "icon",
+    type: "image/svg+xml", 
+    href: "/favicon.svg"
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
