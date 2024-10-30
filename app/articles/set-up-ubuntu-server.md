@@ -8,6 +8,7 @@ tags:
   - ssh
   - ubuntu
   - server
+description: "This guide explains how to set up ssh access for an Ubuntu server."
 ---
 
 You've signed up for a VPS, and now you have received `root` access into the server. Before you do anything else, it's always a good idea to properly set up ssh access, because it's more secure **and** more convenient.

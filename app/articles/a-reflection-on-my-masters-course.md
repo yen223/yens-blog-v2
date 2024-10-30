@@ -7,6 +7,7 @@ tags:
   - masters
   - mathematics
   - mooc
+description: "This article reflects on the my experience of pursuing a Master's degree at ANU."
 ---
 
 

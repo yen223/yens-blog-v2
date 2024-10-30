@@ -6,6 +6,7 @@ draft: false
 tags:
   - communications
   - opinion
+description: "This article discusses the concept of professional communications, emphasizing the importance of empathy and self-awareness in effective communication."
 ---
 
 What does "Professional Communications" mean?

@@ -6,6 +6,7 @@ draft: false
 tags:
   - functional programming
   - functors
+description: "This article introduces the concept of functors, a fundamental concept in functional programming that allows for mapping over wrapped types."
 ---
 
 We can think of a list of some type as a wrapper around that type. For example, a list of strings contains strings [citation needed].
