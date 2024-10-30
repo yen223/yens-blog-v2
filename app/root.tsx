@@ -8,6 +8,7 @@ import {
 } from "@remix-run/react";
 
 import "./tailwind.css";
+import "./prism.css";
 import { RootLayout } from "~/components/RootLayout";
 
 export const links: LinksFunction = () => [

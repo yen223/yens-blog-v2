@@ -9,6 +9,7 @@ import React from "react";
 import {ArticleZ} from "~/lib/types";
 import {formatDate} from "~/lib/formatDate";
 import {ButtonLink} from "~/components/Button";
+import { Fence, fence } from "~/lib/syntaxHighlight";
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -49,7 +50,8 @@ export default function Article() {
   const data = useLoaderData();
   const { article } = LoaderDataZ.parse(data);
   const ast = markdoc.parse(article.content);
-  const node = markdoc.transform(ast);
+  const node = markdoc.transform(ast, { nodes: { fence } });
+
   return (
     <Container className="mt-16 lg:mt-32">
       <div className="xl:relative">
@@ -76,7 +78,7 @@ export default function Article() {
               </time>
             </header>
             <Prose className="mt-8" data-mdx-content>
-              {markdoc.renderers.react(node, React)}
+              {markdoc.renderers.react(node, React, {components: { Fence }})}
             </Prose>
           </article>
         </div>
