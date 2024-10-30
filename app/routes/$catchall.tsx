@@ -33,9 +33,9 @@ export function ErrorBoundary() {
     return (
         <Container>
             <div className="flex flex-col prose dark:prose-invert" >
-                <h2>{title} </h2>
-                <p> {message} </p>
-                <Link to="/"> Go back to the home page </Link>
+                <h2>{title}</h2>
+                <p>{message}</p>
+                <Link to="/">Go back to the home page</Link>
             </div>
         </Container>
     )
