@@ -61,23 +61,31 @@ export default function About() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
             I’m Wei Yen.
           </h1>
-          <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <p>
-              I'm currently working full-time on building{" "}
-              <a
-                href={"https://getselectable.com"}
-                className="text-teal-500 underline"
-              >
-                Selectable
-              </a>
-              .
-            </p>
-            <p>
-              I love maths, coffee, and all things programming.
-            </p>
-            <p>
-              I was previously a software engineer at Rokt, Mathspace, Western Digital and Accenture.
-            </p>
+          <div className="mt-6 space-y-12 prose prose-zinc dark:prose-invert">
+            <section>
+              <p>
+                I'm currently working full-time on building{" "}
+                <a href={"https://getselectable.com"}>
+                  Selectable
+                </a>
+                .
+              </p>
+              <p>
+                I love maths, coffee, and all things programming.
+              </p>
+              <p>
+                I was previously a software engineer at Rokt, Mathspace, Western Digital and Accenture.
+              </p>
+            </section>
+            <section>
+              <h2>About this site</h2>
+              <p>
+                This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://developers.cloudflare.com/pages">Cloudflare Pages</a>.
+              </p>
+              <p>
+                The design is based on <a href="https://tailwindui.com/templates/spotlight">Tailwind Spotlight</a>
+              </p>
+            </section>
           </div>
         </div>
         <div className="lg:pl-20">

@@ -16,11 +16,15 @@ function parseToArticle(slug: string, content: string): Article {
 }
 
 export async function loadArticle(slug: string): Promise<Article | null> {
-  const file = (await import(`../articles/${slug}.md?raw`)) as {
-    default: string;
-  };
-  const content = file.default;
-  return parseToArticle(slug, content);
+  try {
+    const file = (await import(`../articles/${slug}.md?raw`)) as {
+      default: string;
+    };
+    const content = file.default;
+    return parseToArticle(slug, content);
+  } catch (e) {
+    return null;
+  }
 }
 
 export const getAllArticles = async (): Promise<Article[]> => {

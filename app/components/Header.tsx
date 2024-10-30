@@ -137,6 +137,7 @@ function NavItem({
     <li>
       <NavLink
         to={href}
+        prefetch="intent"
         className={({ isActive }) =>
           clsx(
             "relative block px-3 py-2 transition",

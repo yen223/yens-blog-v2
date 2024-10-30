@@ -15,9 +15,20 @@ import {
   isRouteErrorResponse,
   useRouteError,
 } from "@remix-run/react";
-import { Container } from "./components/Container";
 import { SimpleLayout } from "./components/SimpleLayout";
 
+export const meta = () => {
+  return [
+    { title: "Wei Yen's Personal Site" },
+    { name: "description", content: "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology." },
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:title", content: "Wei Yen's Personal Site" },
+    { name: "twitter:description", content: "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology." },
+    { property: "og:title", content: "Wei Yen's Personal Site" },
+    { property: "og:description", content: "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology." },
+    { property: "og:type", content: "website" },
+  ];
+};
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -32,7 +43,7 @@ export const links: LinksFunction = () => [
   {
     rel: "icon",
     type: "image/svg+xml",
-    href: "/favicon.svg"
+    href: './favicon.svg'
   },
 ];
 
