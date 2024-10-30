@@ -6,7 +6,7 @@ draft: false
 tags:
   - python
   - design pattern
-description: "This article explains smart constructors, a design pattern that ensures data validity by validating values during object construction rather than through repeated checks. 
+description: "This article explains smart constructors, a design pattern that ensures data validity by validating values during object construction rather than through repeated checks."
 ---
 
 Static types are a powerful concept in programming. They provide a layer of safety whenever the programmer calls into outside functions or objects.
