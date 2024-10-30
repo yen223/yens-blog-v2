@@ -1,15 +1,7 @@
-import Prism from "prismjs";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-// Load the grammars you want to support
-import "prismjs/components/prism-cshtml";
-import "prismjs/components/prism-css";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-jsx";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-python";
-import "prismjs/components/prism-sql";
-import "prismjs/components/prism-bash";
+
 
 type FenceProps = {
   children: string;
@@ -17,17 +9,10 @@ type FenceProps = {
 };
 
 export function Fence({ children, language }: FenceProps) {
-  let grammar = Prism.languages[language];
-  if (!grammar) {
-    return <pre className={`language-${language}`}>{children}</pre>;
-  }
-  let content = Prism.highlight(children, Prism.languages[language], language);
-
   return (
-    <pre
-      className={`language-${language}`}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
+    <SyntaxHighlighter language={language} style={tomorrow}>
+      {children}
+    </SyntaxHighlighter>
   );
 }
 
