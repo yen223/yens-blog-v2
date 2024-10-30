@@ -37,5 +37,7 @@ export const getAllArticles = async (): Promise<Article[]> => {
     const slug = file.replace("../routes/articles/", "").replace(/\.md$/, "");
     return parseToArticle(slug, content);
   });
-  return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date));
+  return articles
+    .filter((article) => article.published)
+    .sort((a, z) => +new Date(z.date) - +new Date(a.date));
 };

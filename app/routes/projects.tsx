@@ -5,43 +5,23 @@ import logoCosmos from "~/images/logos/cosmos.svg";
 import logoHelioStream from "~/images/logos/helio-stream.svg";
 import logoOpenShuttle from "~/images/logos/open-shuttle.svg";
 import logoPlanetaria from "~/images/logos/planetaria.svg";
-
+import logoSelectable from "~/images/logos/selectable-app.png";
+import logoCrossword from "~/images/logos/crossword.svg";
 const projects = [
   {
-    name: "Planetaria",
+    name: "Selectable",
     description:
-      "Creating technology to empower civilians to explore space on their own terms.",
-    link: { href: "http://planetaria.tech", label: "planetaria.tech" },
-    logo: logoPlanetaria,
+      "A mobile-friendly Postgres database management app",
+    link: { href: "https://getselectable.com", label: "getselectable.com" },
+    logo: logoSelectable,
   },
   {
-    name: "Animaginary",
+    name: "The unofficial Guardian crossword archives",
     description:
-      "High performance web animation library, hand-written in optimized WASM.",
-    link: { href: "#", label: "github.com" },
-    logo: logoAnimaginary,
-  },
-  {
-    name: "HelioStream",
-    description:
-      "Real-time video streaming library, optimized for interstellar transmission.",
-    link: { href: "#", label: "github.com" },
-    logo: logoHelioStream,
-  },
-  {
-    name: "cosmOS",
-    description:
-      "The operating system that powers our Planetaria space shuttles.",
-    link: { href: "#", label: "github.com" },
-    logo: logoCosmos,
-  },
-  {
-    name: "OpenShuttle",
-    description:
-      "The schematics for the first rocket I designed that successfully made it to orbit.",
-    link: { href: "#", label: "github.com" },
-    logo: logoOpenShuttle,
-  },
+      "The Guardian cryptic crosswords, but with a more mobile-friendly interface.",
+    link: { href: "https://unofficial-guardian-crossword-app.pages.dev/", label: "unofficial-guardian-crossword-app.pages.dev" },
+    logo: logoCrossword,
+  }
 ];
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
@@ -58,14 +38,14 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      title="My Projects"
+      intro="A selection of projects I've worked on that I'm proud to show to the world."
     >
       <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <img src={project.logo} alt="" className="h-8 w-8" />
+            <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              <img src={project.logo} alt="" className="h-14 w-14 rounded-full object-cover" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link to={project.link.href}>{project.name}</Card.Link>
