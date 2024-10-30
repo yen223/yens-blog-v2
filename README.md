@@ -1,7 +1,18 @@
-# Welcome to Remix + Cloudflare!
+# Yen's Blog
+
+This codebase hosts my personal blog.
+
+The blog is built with [Remix](https://remix.run/) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/).
 
 - 📖 [Remix docs](https://remix.run/docs)
 - 📖 [Remix Cloudflare docs](https://remix.run/guides/vite#cloudflare)
+
+Articles are written in Markdown and stored in the `app/articles` directory.
+
+## Publishing new articles
+
+1. Add the new article to the `app/articles` directory.
+2. Push to the `main` branch. There's a GitHub Actions workflow that will automatically build and deploy the blog to Cloudflare Pages.
 
 ## Development
 
@@ -42,6 +53,3 @@ Then, deploy your app to Cloudflare Pages:
 npm run deploy
 ```
 
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
