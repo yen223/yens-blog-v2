@@ -13,20 +13,13 @@ import logoAirbnb from "~/images/logos/airbnb.svg";
 import logoFacebook from "~/images/logos/facebook.svg";
 import logoPlanetaria from "~/images/logos/planetaria.svg";
 import logoStarbucks from "~/images/logos/starbucks.svg";
-import image1 from "~/images/photos/image-1.jpg";
-import image2 from "~/images/photos/image-2.jpg";
-import image3 from "~/images/photos/image-3.jpg";
-import image4 from "~/images/photos/image-4.jpg";
-import image5 from "~/images/photos/image-5.jpg";
-import {
-  getAllArticles,
-} from "~/lib/articles.server";
+import { getAllArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import { Link } from "@remix-run/react";
 import { ComponentPropsWithoutRef, ComponentType } from "react";
 import { useLoaderData } from "react-router";
 import { z } from "zod";
-import {Article, ArticleZ} from "~/lib/types";
+import { Article, ArticleZ } from "~/lib/types";
 
 const LoaderDataZ = z.object({ articles: ArticleZ.array() });
 type LoaderData = z.infer<typeof LoaderDataZ>;
@@ -34,6 +27,28 @@ type LoaderData = z.infer<typeof LoaderDataZ>;
 export async function loader(): Promise<LoaderData> {
   const articles = (await getAllArticles()).slice(0, 4);
   return { articles };
+}
+
+function ProfileIcon(props: ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
+      />
+    </svg>
+  );
 }
 
 function MailIcon(props: ComponentPropsWithoutRef<"svg">) {
@@ -98,13 +113,11 @@ function ArrowDownIcon(props: ComponentPropsWithoutRef<"svg">) {
 function Article({ article }: { article: Article }) {
   return (
     <Card as="article">
-      <Card.Title href={`./${article.slug}`}>
-        {article.title}
-      </Card.Title>
+      <Card.Title href={`./${article.slug}`}>{article.title}</Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
       </Card.Eyebrow>
-      {/*<Card.Description>{article.description}</Card.Description>*/}
+      <Card.Description>{article.description}</Card.Description>
       <Card.Cta>Read article</Card.Cta>
     </Card>
   );
@@ -120,6 +133,39 @@ function SocialLink({
     <Link className="group -m-1 p-1" {...props}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
+  );
+}
+
+function Profile() {
+  return (
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <ProfileIcon className="h-6 w-6 flex-none" />
+        <span className="ml-3">About me</span>
+      </h2>
+      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        I&apos;m Wei Yen. Ex-software engineer, currently working full-time on
+        building{" "}
+        <a
+          href={"https://getselectable.com"}
+          className="text-teal-500 underline"
+        >
+          Selectable
+        </a>
+        .
+      </p>
+      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        I love maths, coffee, and all things programming.
+      </p>
+      <div className="mt-6 flex gap-6">
+        <SocialLink to="https://github.com/yen223" aria-label="Follow on GitHub" icon={GitHubIcon} />
+        <SocialLink
+          to="https://www.linkedin.com/in/weiyen/"
+          aria-label="Follow on LinkedIn"
+          icon={LinkedInIcon}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -255,52 +301,18 @@ export default function Home() {
   const data = useLoaderData();
   const { articles } = LoaderDataZ.parse(data);
   return (
-    <>
-      <Container className="mt-9">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software designer, founder, and amateur astronaut.
-          </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
-          </p>
-          <div className="mt-6 flex gap-6">
-            <SocialLink to="#" aria-label="Follow on X" icon={XIcon} />
-            <SocialLink
-              to="#"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              to="#"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              to="#"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            />
-          </div>
-        </div>
-      </Container>
-      {/*<Photos />*/}
-      <Container className="mt-24 md:mt-28">
+      <Container className={"mt-16"}>
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-16 py-6">
             {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+                <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
+          <div className="flex flex-col gap-10 lg:pl-16 xl:pl-24">
+            <Profile />
             <Newsletter />
-            <Resume />
           </div>
         </div>
       </Container>
-    </>
   );
 }

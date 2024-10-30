@@ -9,7 +9,7 @@ import clsx from "clsx";
 
 import { Container } from "~/components/Container";
 import avatarImage from "~/images/avatar.jpg";
-import {Link, NavLink, useLocation} from "@remix-run/react";
+import { Link, NavLink, useLocation } from "@remix-run/react";
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -245,7 +245,7 @@ function Avatar({
 }
 
 export function Header() {
-  const isHomePage = useLocation().pathname === '/'
+  const isHomePage = useLocation().pathname === "/";
 
   const headerRef = useRef<React.ElementRef<"div">>(null);
   const avatarRef = useRef<React.ElementRef<"div">>(null);
@@ -360,44 +360,6 @@ export function Header() {
           marginBottom: "var(--header-mb)",
         }}
       >
-        {isHomePage && (
-          <>
-            <div
-              ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
-            />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{
-                position:
-                  "var(--header-position)" as React.CSSProperties["position"],
-              }}
-            >
-              <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{
-                  position:
-                    "var(--header-inner-position)" as React.CSSProperties["position"],
-                }}
-              >
-                <div className="relative">
-                  <AvatarContainer
-                    className="absolute left-0 top-3 origin-left transition-opacity"
-                    style={{
-                      opacity: "var(--avatar-border-opacity, 0)",
-                      transform: "var(--avatar-border-transform)",
-                    }}
-                  />
-                  <Avatar
-                    large
-                    className="block h-16 w-16 origin-left"
-                    style={{ transform: "var(--avatar-image-transform)" }}
-                  />
-                </div>
-              </div>
-            </Container>
-          </>
-        )}
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
@@ -407,15 +369,17 @@ export function Header() {
           }}
         >
           <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
+            className="top-[var(--header-top,theme(spacing.6))] w-full items-center"
             style={{
               position:
                 "var(--header-inner-position)" as React.CSSProperties["position"],
             }}
           >
-            <div className="relative flex gap-4">
-              <div className="flex flex-1">
-                {!isHomePage && <AvatarContainer>{<Avatar />}</AvatarContainer>}
+            <div className="relative flex gap-4 ">
+              <div className="flex flex-1 ">
+                <Link className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-100 pointer-events-auto" to="/">
+                  Wei Yen
+                </Link>
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
