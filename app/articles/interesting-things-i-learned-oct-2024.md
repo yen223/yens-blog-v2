@@ -2,7 +2,7 @@
 title: "Interesting things I've learned: Oct 2024"
 slug: "interesting-things-i-learned-oct-2024"
 date: "2024-10-30"
-published: false
+published: true
 tags:
   - TIL
   - Postgres
@@ -11,6 +11,7 @@ tags:
 description: "This article contains a collection of interesting things I've learned while working on my projects."
 ---
 
+This is a random assortment of interesting things I've learned while working on my projects, in October 2024.
 ## PostgresQL JDBC driver in Android
 If for [some baffling reason](https://getselectable.com) you need to connect to a Postgres database directly from an Android app, there's good news and bad news:
 
@@ -34,7 +35,7 @@ Broadly speaking, there are two formats:
 
 I learned this while attempting to port [Selectable](https://getselectable.com) to iOS. The binary format is more efficient if you know, ahead of time, what kind of data you're going to be dealing with. However, that is not the case for a general-purpose database-management app like Selectable. 
 
-iOS libraries for database connections are scarce. However, I was able to get Vapor's [PostgresNIO](https://github.com/vapor/postgres-nio) to work in iOS. Unfortunately, PostgresNIO defaults to using the binary format. I had to [fork the library](https://github.com/selectable-app/postgres-nio) and replace the default format with text.
+iOS libraries for database connections are scarce, fortunately Vapor's [PostgresNIO](https://github.com/vapor/postgres-nio) works well in iOS. Unfortunately, PostgresNIO defaults to using the binary format. I had to [fork the library](https://github.com/selectable-app/postgres-nio) and replace the default format with text.
 
 ## Postgres schema introspection
 To find out what tables are available, you can query either
@@ -53,8 +54,11 @@ This is very useful for when trying to understand how the `pg_catalog` views wor
 
 `SELECT;` is also a valid SQL statement. This returns one empty row.
 
-## LLMs
+## LLMs for automation
 Claude Sonnet 3.5 is great at writing shell scripts and Github actions, which is great because I am not good at either. 
 
 I've managed to get it to write a Github action that will let me a) bump the version of my Android app and b) commit and push the changes to the repo.
 
+
+## LLMs for generating icons
+LLM icon generation are extremely hit-or-miss. I found that I got better results by getting the LLM to generate an SVG of the icon, which tends to result in a more structured and therefore more polished-looking icon.
