@@ -23,7 +23,7 @@ PostgresQL version 42.2.10 and above are broken on Android, as they have a depen
 
 The solution: use [PostgresQL 42.2.9](https://mvnrepository.com/artifact/org.postgresql/postgresql/42.2.9), which does work on Android.
 
-## Text vs binary formats
+## Postgres text vs binary formats
 When establishing a connection to Postgres, you can specify the format of the data sent from the server to the client using the `Format` code.
 
 Broadly speaking, there are two formats:
