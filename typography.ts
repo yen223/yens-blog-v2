@@ -108,7 +108,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         // Inline elements
         a: {
           color: 'var(--tw-prose-links)',
-          fontWeight: theme('fontWeight.semibold'),
+          fontWeight: theme('fontWeight.regular'),
           textDecoration: 'underline',
           textDecorationColor: 'var(--tw-prose-underline)',
           transitionProperty: 'color, text-decoration-color',

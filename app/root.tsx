@@ -1,5 +1,6 @@
 import type { LinksFunction } from "@remix-run/cloudflare";
 import {
+  Link,
   Links,
   Meta,
   Outlet,
@@ -10,6 +11,12 @@ import {
 import "./tailwind.css";
 import "./prism.css";
 import { RootLayout } from "~/components/RootLayout";
+import {
+  isRouteErrorResponse,
+  useRouteError,
+} from "@remix-run/react";
+import { Container } from "./components/Container";
+import { SimpleLayout } from "./components/SimpleLayout";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,7 +31,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "icon",
-    type: "image/svg+xml", 
+    type: "image/svg+xml",
     href: "/favicon.svg"
   },
 ];
@@ -38,7 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex h-full bg-zinc-50 dark:bg-black">
+      <body className="flex h-full bg-zinc-50 dark:bg-black overflow-y-scroll">
         <RootLayout>{children}</RootLayout>
         <ScrollRestoration />
         <Scripts />
@@ -49,4 +56,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <SimpleLayout
+        title={`${error.status} ${error.statusText}`}
+        intro={error.data}
+      >
+        <Link to="/">Go back to the home page</Link>
+      </SimpleLayout>
+    );
+  } else {
+    return (
+      <SimpleLayout
+        title="Something went wrong"
+        intro="Sorry, an unexpected error occurred."
+      />
+    );
+  }
 }

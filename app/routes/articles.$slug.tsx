@@ -53,9 +53,9 @@ export default function Article() {
   const node = markdoc.transform(ast, { nodes: { fence } });
 
   return (
-    <Container className="mt-16 lg:mt-32">
+    <Container className="mt-16">
       <div className="xl:relative">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-3xl">
           <ButtonLink
               type="button"
               to={"/articles"}

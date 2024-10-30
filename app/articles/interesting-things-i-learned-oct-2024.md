@@ -11,13 +11,13 @@ tags:
 description: "This article contains a collection of interesting things I've learned while working on my projects."
 ---
 
-This is a random assortment of interesting things I've learned while working on my projects, in October 2024.
+This is a random collection of interesting things I've learned while working on my projects, in October 2024.
 ## PostgresQL JDBC driver in Android
-If for [some baffling reason](https://getselectable.com) you need to connect to a Postgres database directly from an Android app, there's good news and bad news:
+If for [some reason](https://getselectable.com) you need to connect to a Postgres database directly from an Android app, there's good news and bad news:
 
 The good news: JDBC actually works in Android. 
 
-The bad news: the latest PostgresQL JDBC driver does not work. 
+The bad news: the latest PostgresQL JDBC driver does not compile on Android. 
 
 PostgresQL version 42.2.10 and above are broken on Android, as they have a dependency on `java.lang.management.ManagementFactory`, which doesn't exist in Android's Dalvik VM.
 
