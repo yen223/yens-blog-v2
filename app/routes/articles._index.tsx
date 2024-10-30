@@ -4,7 +4,8 @@ import { getAllArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import { z } from "zod";
 import { useLoaderData } from "react-router";
-import { Article, ArticleZ } from "~/lib/types";
+import type { Article } from "~/lib/types";
+import { ArticleZ } from "~/lib/types";
 
 function Article({ article }: { article: Article }) {
   return (
@@ -21,7 +22,7 @@ function Article({ article }: { article: Article }) {
         >
           {formatDate(article.date)}
         </Card.Eyebrow>
-        {/*<Card.Description>{article.description}</Card.Description>*/}
+        <Card.Description>{article.description}</Card.Description>
         <Card.Cta>Read article</Card.Cta>
       </Card>
       <Card.Eyebrow
@@ -55,8 +56,8 @@ export default function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Writing on software design, company building, and the aerospace industry."
-      intro="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+      title="Articles"
+      intro="I write about maths, programming, and other things I find interesting."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
