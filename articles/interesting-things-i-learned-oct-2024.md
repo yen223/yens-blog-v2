@@ -19,7 +19,7 @@ The good news: JDBC actually works in Android.
 
 The bad news: the latest PostgresQL JDBC driver does not compile on Android. 
 
-PostgresQL version 42.2.10 and above are broken on Android, as they have a dependency on `java.lang.management.ManagementFactory`, which doesn't exist in Android's Dalvik VM.
+PostgresQL version 42.2.10 and above are broken on Android, as they have a dependency on `java.lang.management.ManagementFactory`, which doesn't exist in Android's ART runtime.
 
 The solution: use [PostgresQL 42.2.9](https://mvnrepository.com/artifact/org.postgresql/postgresql/42.2.9), which does work on Android.
 
