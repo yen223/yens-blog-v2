@@ -11,6 +11,8 @@ description: "This article contains my initial thoughts on using Cursor, an AI-p
 
 I do not know how to write Vite plugins. Thanks to Cursor, I've made [one](https://github.com/yen223/yens-blog-v2/blob/5d150c2fd63a542de14c0f9b85602773609e4b14/app/lib/vite-plugin-articles.ts) in about 5 minutes.
 
+[Cursor](https://www.cursor.com/) is an "AI-powered code editor". There was some initial hype about it, but I decided to give it a go yesterday.
+
 Articles in this blog are written in Markdown, and are stored in the `articles` directory.
 As part of rebuilding this blog, I wanted to experiment with pre-loading all the articles in the Remix server on startup, in order to speed 
 up page load time. 
