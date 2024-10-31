@@ -1,6 +1,6 @@
 import { Container } from "~/components/Container";
 import { Prose } from "~/components/Prose";
-import { getCachedArticle, loadArticle } from "~/lib/articles.server";
+import { getCachedArticle } from "~/lib/articles.server";
 import { z } from "zod";
 import { LoaderFunctionArgs } from "@remix-run/router";
 import { useLoaderData } from "react-router";

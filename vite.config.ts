@@ -4,6 +4,7 @@ import {
 } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { articlesPlugin } from './app/lib/vite-plugin-articles'
 
 declare module "@remix-run/cloudflare" {
   interface Future {
@@ -24,6 +25,7 @@ export default defineConfig({
       },
     }),
     tsconfigPaths(),
+    articlesPlugin(),
   ],
   assetsInclude: ['**/*.md']
 });

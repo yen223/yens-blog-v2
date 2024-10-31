@@ -1,62 +1,28 @@
-import { Article, FrontmatterZ } from "~/lib/types";
-import markdoc from "@markdoc/markdoc";
-import yaml from "js-yaml";
+// articles.json is generated at build time by the vite-plugin-articles plugin
+// It contains all published articles from app/articles/*.md, sorted by date
+// See app/lib/vite-plugin-articles.ts for the generation logic
 
-let articlesCache: Article[] | null = null;
-let articlesBySlugCache: Map<string, Article> | null = null;
+import type { Article } from '~/lib/types'
+import articlesJson from '../articles.json'
 
-const getAllArticles = async (): Promise<Article[]> => {
-  const modules = import.meta.glob("../articles/*.md", {
-    query: "?raw",
-    eager: true,
-  });
-  const articles = Object.entries(modules).map(([file, fileContent]) => {
-    const content = (
-      fileContent as {
-        default: string;
-      }
-    ).default;
-    const slug = file.replace("../articles/", "").replace(/\.md$/, "");
-    return parseToArticle(slug, content);
-  });
-  return articles
-    .filter((article) => article.published)
-    .sort((a, z) => +new Date(z.date) - +new Date(a.date));
-};
+let articlesCache: Article[] | null = null
+let articlesBySlugCache: Map<string, Article> | null = null
 
 async function initializeArticlesCache() {
   if (articlesCache === null) {
-    articlesCache = await getAllArticles();
+    articlesCache = articlesJson as Article[]
     articlesBySlugCache = new Map(
       articlesCache.map(article => [article.slug, article])
-    );
+    )
   }
 }
 
-// Initialize cache on server startup
-initializeArticlesCache().catch(error => {
-  console.error('Failed to initialize articles cache:', error);
-});
-
 export async function getCachedArticle(slug: string): Promise<Article | null> {
-  await initializeArticlesCache();
-  return articlesBySlugCache?.get(slug) ?? null;
+  await initializeArticlesCache()
+  return articlesBySlugCache?.get(slug) ?? null
 }
 
 export async function getCachedArticles(): Promise<Article[]> {
-  await initializeArticlesCache();
-  return articlesCache ?? [];
-}
-
-function parseToArticle(slug: string, content: string): Article {
-  const ast = markdoc.parse(content);
-  const frontmatterRaw = ast.attributes.frontmatter
-    ? yaml.load(ast.attributes.frontmatter)
-    : {};
-  const frontmatter = FrontmatterZ.parse(frontmatterRaw);
-  return {
-    ...frontmatter,
-    content,
-    slug,
-  };
+  await initializeArticlesCache()
+  return articlesCache ?? []
 }
