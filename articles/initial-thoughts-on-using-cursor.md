@@ -25,7 +25,7 @@ I have no experience writing Vite plugins. I know how to use Vite plugins, and I
 reason to write one, and so I've never taken the time to learn how. But that didn't matter. I just asked Cursor to write a Vite plugin for me, 
 and it did. 
 
-![Cursor writing a Vite plugin](/articles/cursor-writing-vite-plugin.png)
+![Cursor writing a Vite plugin](/images/cursor-writing-vite-plugin.png)
 
 Worked on the first attempt too, which was a pleasant surprise.
 
