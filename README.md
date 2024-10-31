@@ -7,11 +7,11 @@ The blog is built with [Remix](https://remix.run/) and deployed to [Cloudflare P
 - 📖 [Remix docs](https://remix.run/docs)
 - 📖 [Remix Cloudflare docs](https://remix.run/guides/vite#cloudflare)
 
-Articles are written in Markdown and stored in the `app/articles` directory.
+Articles are written in Markdown and stored in the `articles` directory.
 
 ## Publishing new articles
 
-1. Add the new article to the `app/articles` directory.
+1. Add the new article to the `articles` directory.
 2. Push to the `main` branch. There's a GitHub Actions workflow that will automatically build and deploy the blog to Cloudflare Pages.
 
 ## Development

@@ -27,6 +27,6 @@ export default defineConfig({
     tsconfigPaths(),
     articlesPlugin(),
   ],
-  assetsInclude: ['**/*.md']
+  assetsInclude: ['**/*.md', 'articles/**/*.md']
 });
 

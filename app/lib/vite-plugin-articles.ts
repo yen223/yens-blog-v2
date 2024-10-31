@@ -22,8 +22,7 @@ export function articlesPlugin(): Plugin {
     name: 'vite-plugin-articles',
     async buildStart() {
       // Find all .md files in the articles directory
-      const files = await glob('app/articles/*.md')
-      
+      const files = await glob('articles/*.md')
       const articles = await Promise.all(
         files.map(async (file) => {
           const content = await fs.readFile(file, 'utf-8')
