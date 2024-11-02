@@ -59,7 +59,7 @@ export default function About() {
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Wei Yen.
+            👋 Hello, I’m Wei Yen.
           </h1>
           <div className="mt-6 space-y-12 prose prose-zinc dark:prose-invert">
             <section>
