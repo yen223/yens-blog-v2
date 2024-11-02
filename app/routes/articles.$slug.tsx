@@ -65,7 +65,7 @@ export default function Article() {
           </ButtonLink>
           <article>
             <header className="flex flex-col">
-              <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+              <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
                 {article.title}
               </h1>
               <time
@@ -76,7 +76,7 @@ export default function Article() {
                 <span className="ml-3">{formatDate(article.date)}</span>
               </time>
             </header>
-            <Prose className="mt-8" data-mdx-content>
+            <Prose className="mt-8 word-break text-pretty" data-mdx-content>
               {markdoc.renderers.react(node, React, {components: { Fence }})}
             </Prose>
           </article>

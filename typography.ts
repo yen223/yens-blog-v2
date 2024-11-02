@@ -77,8 +77,8 @@ export default function typographyStyles({ theme }: PluginUtils) {
         p: {
           marginTop: theme('spacing.7'),
           marginBottom: theme('spacing.7'),
-          lineHeight: theme('lineHeight.8'),
-          fontSize: theme('fontSize.lg')[0],
+          lineHeight: theme('lineHeight.7'),
+          fontSize: theme('fontSize.base')[0],
           color: 'var(--tw-prose-body)',
         },
 

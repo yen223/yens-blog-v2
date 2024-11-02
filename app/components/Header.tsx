@@ -270,7 +270,7 @@ export function Header() {
                 "var(--header-inner-position)" as React.CSSProperties["position"],
             }}
           >
-            <div className="relative flex gap-4  bg-white dark:bg-zinc-900">
+            <div className="relative flex gap-4">
               <div className="flex flex-1 ">
                 <Link className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-100 pointer-events-auto" to="/">
                   Wei Yen
