@@ -61,7 +61,7 @@ Card.Title = function CardTitle<T extends React.ElementType = "h2">({
 
   return (
     <Component className="text-base font-semibold tracking-normal text-zinc-800 dark:text-zinc-100">
-      {href ? <Card.Link to={href}>{children}</Card.Link> : children}
+      {href ? <Card.Link to={href} prefetch="intent">{children}</Card.Link> : children}
     </Component>
   );
 };
