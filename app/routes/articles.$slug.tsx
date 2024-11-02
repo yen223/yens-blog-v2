@@ -64,7 +64,7 @@ export default function Article() {
             <ArrowLeftIcon className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
           </ButtonLink>
           <article>
-            <header className="flex flex-col">
+            <header className="flex flex-col mb-16">
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
                 {article.title}
               </h1>
@@ -72,8 +72,8 @@ export default function Article() {
                 dateTime={article.date}
                 className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
               >
-                <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                <span className="ml-3">{formatDate(article.date)}</span>
+                {/* <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" /> */}
+                <span>Published <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{formatDate(article.date)}</span></span>
               </time>
             </header>
             <Prose className="mt-8 word-break text-pretty" data-mdx-content>

@@ -47,7 +47,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-th-borders': theme('colors.zinc.200'),
         '--tw-prose-td-borders': theme('colors.zinc.100'),
 
-        '--tw-prose-invert-body': theme('colors.zinc.400'),
+        '--tw-prose-invert-body': theme('colors.zinc.200'),
         '--tw-prose-invert-headings': theme('colors.zinc.200'),
         '--tw-prose-invert-links': theme('colors.teal.400'),
         '--tw-prose-invert-links-hover': theme('colors.teal.400'),
@@ -63,7 +63,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-invert-code-bg': theme('colors.zinc.200 / 0.05'),
         '--tw-prose-invert-pre-code': theme('colors.zinc.100'),
         '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 0.4)',
-        '--tw-prose-invert-pre-border': theme('colors.zinc.200 / 0.1'),
+        '--tw-prose-invert-pre-border': theme('colors.zinc.500'),
         '--tw-prose-invert-th-borders': theme('colors.zinc.700'),
         '--tw-prose-invert-td-borders': theme('colors.zinc.800'),
 
@@ -77,8 +77,9 @@ export default function typographyStyles({ theme }: PluginUtils) {
         p: {
           marginTop: theme('spacing.7'),
           marginBottom: theme('spacing.7'),
-          lineHeight: theme('lineHeight.7'),
-          fontSize: theme('fontSize.base')[0],
+          lineHeight: theme('lineHeight.8'),
+          fontSize: theme('fontSize.lg')[0],
+          fontWeight: theme('fontWeight.regular'),
           color: 'var(--tw-prose-body)',
         },
 
@@ -111,7 +112,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         // Inline elements
         a: {
           color: 'var(--tw-prose-links)',
-          fontWeight: theme('fontWeight.regular'),
+          fontWeight: theme('fontWeight.semibold'),
           textDecoration: 'underline',
           textDecorationColor: 'var(--tw-prose-underline)',
           transitionProperty: 'color, text-decoration-color',
@@ -129,12 +130,15 @@ export default function typographyStyles({ theme }: PluginUtils) {
         code: {
           display: 'inline-block',
           color: 'var(--tw-prose-code)',
+          fontFamily: theme('fontFamily.mono'),
           fontSize: theme('fontSize.sm')[0],
-          fontWeight: theme('fontWeight.semibold'),
+          fontWeight: theme('fontWeight.regular'),
           backgroundColor: 'var(--tw-prose-code-bg)',
+          border: '1px solid',
+          borderColor: 'var(--tw-prose-pre-border)',
           borderRadius: theme('borderRadius.lg'),
-          paddingLeft: theme('spacing.1'),
-          paddingRight: theme('spacing.1'),
+          paddingLeft: theme('spacing.2'),
+          paddingRight: theme('spacing.2'),
         },
         'a code': {
           color: 'inherit',

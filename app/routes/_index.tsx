@@ -133,7 +133,7 @@ function Profile() {
         <ProfileIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">About me</span>
       </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+      <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
         I&apos;m Wei Yen. Ex-software engineer, currently working full-time on
         building{" "}
         <a
@@ -194,14 +194,14 @@ export default function Home() {
   return (
     <Container className={"mt-16"}>
       <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+        <div className="flex flex-col gap-10 lg:pr-16 xl:pr-24">
+          <Profile />
+          {/* <Newsletter /> */}
+        </div>
         <div className="flex flex-col gap-16 py-6">
           {articles.map((article) => (
             <Article key={article.slug} article={article} />
           ))}
-        </div>
-        <div className="flex flex-col gap-10 lg:pl-16 xl:pl-24">
-          <Profile />
-          {/* <Newsletter /> */}
         </div>
       </div>
     </Container>

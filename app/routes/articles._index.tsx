@@ -39,7 +39,7 @@ function Article({ article }: { article: Article }) {
 export const metadata = {
   title: "Articles",
   description:
-    "All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order.",
+    "Articles that I have written for fun and profit",
 };
 
 const LoaderDataZ = z.object({ articles: ArticleZ.array() });
@@ -56,7 +56,7 @@ export default function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Articles"
+      title="✍️ Articles"
       intro="I write about maths, programming, and other things I find interesting."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
