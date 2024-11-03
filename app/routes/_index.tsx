@@ -134,7 +134,7 @@ function Profile() {
         <span className="ml-3">About me</span>
       </h2>
       <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
-        I&apos;m Wei Yen. Ex-software engineer, currently working full-time on
+        I&apos;m Wei Yen, @yen223 on the internet. Ex-software engineer, currently working full-time on
         building{" "}
         <a
           href={"https://getselectable.com"}
