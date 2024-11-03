@@ -28,7 +28,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
     DEFAULT: {
       css: {
         '--tw-prose-body': theme('colors.zinc.600'),
-        '--tw-prose-headings': theme('colors.zinc.900'),
+        '--tw-prose-headings': theme('colors.sky.900'),
         '--tw-prose-links': theme('colors.teal.500'),
         '--tw-prose-links-hover': theme('colors.teal.600'),
         '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
@@ -48,7 +48,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-td-borders': theme('colors.zinc.100'),
 
         '--tw-prose-invert-body': theme('colors.zinc.200'),
-        '--tw-prose-invert-headings': theme('colors.zinc.200'),
+        '--tw-prose-invert-headings': theme('colors.sky.200'),
         '--tw-prose-invert-links': theme('colors.teal.400'),
         '--tw-prose-invert-links-hover': theme('colors.teal.400'),
         '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
@@ -86,13 +86,14 @@ export default function typographyStyles({ theme }: PluginUtils) {
         // Headings
         'h2, h3': {
           color: 'var(--tw-prose-headings)',
-          fontWeight: theme('fontWeight.semibold'),
+          fontWeight: theme('fontWeight.bold'),
         },
         h2: {
           fontSize: theme('fontSize.xl')[0],
           lineHeight: theme('lineHeight.7'),
           marginTop: theme('spacing.20'),
-          marginBottom: theme('spacing.4'),
+          marginBottom: theme('spacing.8'),
+          color: 'var(--tw-prose-headings)',
         },
         h3: {
           fontSize: theme('fontSize.base')[0],
@@ -218,6 +219,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           fontSize: 'inherit',
           fontWeight: 'inherit',
           backgroundColor: 'transparent',
+          border: 'none',
           borderRadius: 0,
           padding: 0,
         },
