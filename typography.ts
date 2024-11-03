@@ -31,7 +31,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-headings': theme('colors.sky.900'),
         '--tw-prose-links': theme('colors.teal.500'),
         '--tw-prose-links-hover': theme('colors.teal.600'),
-        '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
+        '--tw-prose-underline': theme('colors.teal.500'),
         '--tw-prose-underline-hover': theme('colors.teal.500'),
         '--tw-prose-bold': theme('colors.zinc.900'),
         '--tw-prose-counters': theme('colors.zinc.900'),
@@ -47,11 +47,11 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-th-borders': theme('colors.zinc.200'),
         '--tw-prose-td-borders': theme('colors.zinc.100'),
 
-        '--tw-prose-invert-body': theme('colors.zinc.200'),
-        '--tw-prose-invert-headings': theme('colors.sky.200'),
+        '--tw-prose-invert-body': theme('colors.zinc.300'),
+        '--tw-prose-invert-headings': theme('colors.sky.400'),
         '--tw-prose-invert-links': theme('colors.teal.400'),
         '--tw-prose-invert-links-hover': theme('colors.teal.400'),
-        '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
+        '--tw-prose-invert-underline': theme('colors.teal.400'),
         '--tw-prose-invert-underline-hover': theme('colors.teal.400'),
         '--tw-prose-invert-bold': theme('colors.zinc.200'),
         '--tw-prose-invert-counters': theme('colors.zinc.200'),
@@ -86,7 +86,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         // Headings
         'h2, h3': {
           color: 'var(--tw-prose-headings)',
-          fontWeight: theme('fontWeight.bold'),
+          fontWeight: theme('fontWeight.semibold'),
         },
         h2: {
           fontSize: theme('fontSize.xl')[0],
