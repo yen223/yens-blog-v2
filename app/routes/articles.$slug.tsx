@@ -65,7 +65,7 @@ export default function Article() {
           </ButtonLink>
           <article>
             <header className="flex flex-col mb-16">
-              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
+              <h1 className="mt-6 text-4xl font-bold tracking-tight sm:tracking-normal text-zinc-800 sm:text-4xl dark:text-zinc-100">
                 {article.title}
               </h1>
               <time

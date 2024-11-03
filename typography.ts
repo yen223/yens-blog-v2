@@ -48,7 +48,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-td-borders': theme('colors.zinc.100'),
 
         '--tw-prose-invert-body': theme('colors.zinc.300'),
-        '--tw-prose-invert-headings': theme('colors.amber.500'),
+        '--tw-prose-invert-headings': theme('colors.zinc.50'),
         '--tw-prose-invert-links': theme('colors.teal.400'),
         '--tw-prose-invert-links-hover': theme('colors.teal.400'),
         '--tw-prose-invert-underline': theme('colors.teal.400'),
@@ -89,11 +89,11 @@ export default function typographyStyles({ theme }: PluginUtils) {
           fontWeight: theme('fontWeight.semibold'),
         },
         h2: {
-          fontSize: theme('fontSize.xl')[0],
+          fontSize: theme('fontSize.2xl')[0],
           lineHeight: theme('lineHeight.7'),
           marginTop: theme('spacing.20'),
-          marginBottom: theme('spacing.8'),
-          color: 'var(--tw-prose-headings)',
+          marginBottom: theme('spacing.6'),
+          color: 'var(--tw-prose-headings)',          
         },
         h3: {
           fontSize: theme('fontSize.base')[0],
@@ -207,7 +207,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           fontSize: theme('fontSize.sm')[0],
           fontWeight: theme('fontWeight.medium'),
           backgroundColor: 'var(--tw-prose-pre-bg)',
-          borderRadius: theme('borderRadius.3xl'),
+          borderRadius: theme('borderRadius.lg'),
           padding: theme('spacing.8'),
           overflowX: 'auto',
           border: '1px solid',
