@@ -6,10 +6,12 @@ import { LoaderFunctionArgs } from "@remix-run/router";
 import { useLoaderData } from "react-router";
 import markdoc from "@markdoc/markdoc";
 import React from "react";
-import {ArticleZ} from "~/lib/types";
-import {formatDate} from "~/lib/formatDate";
-import {ButtonLink} from "~/components/Button";
-import { Fence, fence } from "~/lib/syntaxHighlight";
+import { ArticleZ } from "~/lib/types";
+import { formatDate } from "~/lib/formatDate";
+import { ButtonLink } from "~/components/Button";
+import { Fence, fence } from "~/lib/markdown/syntaxHighlight";
+import { Video, video } from "~/lib/markdown/video";
+import { Image, image } from "~/lib/markdown/image";
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -49,17 +51,17 @@ export default function Article() {
   const data = useLoaderData();
   const { article } = LoaderDataZ.parse(data);
   const ast = markdoc.parse(article.content);
-  const node = markdoc.transform(ast, { nodes: { fence } });
+  const node = markdoc.transform(ast, { nodes: { fence, image }, tags: { video } });
 
   return (
     <Container className="mt-16">
       <div className="xl:relative">
         <div className="mx-auto max-w-3xl">
           <ButtonLink
-              type="button"
-              to={"/articles"}
-              aria-label="Go back to articles"
-              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20"
+            type="button"
+            to={"/articles"}
+            aria-label="Go back to articles"
+            className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20"
           >
             <ArrowLeftIcon className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
           </ButtonLink>
@@ -77,7 +79,7 @@ export default function Article() {
               </time>
             </header>
             <Prose className="mt-8 word-break text-pretty" data-mdx-content>
-              {markdoc.renderers.react(node, React, {components: { Fence }})}
+              {markdoc.renderers.react(node, React, { components: { Fence, Video, Image } })}
             </Prose>
           </article>
         </div>
