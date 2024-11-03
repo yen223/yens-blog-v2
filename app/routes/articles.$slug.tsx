@@ -46,6 +46,13 @@ export async function loader({
   }
   return { article };
 }
+export function meta({ data }: { data: LoaderData }) {
+  const { article } = data;
+  return [
+    { title: `${article.title}` },
+    { name: "description", content: article.description },
+  ];
+}
 
 export default function Article() {
   const data = useLoaderData();
