@@ -48,7 +48,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-td-borders': theme('colors.zinc.100'),
 
         '--tw-prose-invert-body': theme('colors.zinc.300'),
-        '--tw-prose-invert-headings': theme('colors.sky.400'),
+        '--tw-prose-invert-headings': theme('colors.amber.500'),
         '--tw-prose-invert-links': theme('colors.teal.400'),
         '--tw-prose-invert-links-hover': theme('colors.teal.400'),
         '--tw-prose-invert-underline': theme('colors.teal.400'),
@@ -77,8 +77,8 @@ export default function typographyStyles({ theme }: PluginUtils) {
         p: {
           marginTop: theme('spacing.7'),
           marginBottom: theme('spacing.7'),
-          lineHeight: theme('lineHeight.8'),
-          fontSize: theme('fontSize.lg')[0],
+          lineHeight: theme('lineHeight.7'),
+          fontSize: theme('fontSize.base')[0],
           fontWeight: theme('fontWeight.regular'),
           color: 'var(--tw-prose-body)',
         },
