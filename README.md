@@ -1,6 +1,6 @@
 # Yen's Blog
 
-This codebase hosts my personal blog.
+This codebase hosts my personal blog, hosted at [https://weiyen.net](https://weiyen.net) .
 
 The blog is built with [Remix](https://remix.run/) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/).
 
