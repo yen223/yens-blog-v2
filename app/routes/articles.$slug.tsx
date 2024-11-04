@@ -29,6 +29,7 @@ function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 const ParamZ = z.object({ slug: z.string() });
 const LoaderDataZ = z.object({
   article: ArticleZ,
+  formattedDate: z.string(),
 });
 type LoaderData = z.infer<typeof LoaderDataZ>;
 
@@ -37,14 +38,14 @@ export async function loader({
 }: LoaderFunctionArgs): Promise<LoaderData> {
   const slug = ParamZ.parse(params).slug;
   const article = await getCachedArticle(slug);
-
   if (!article) {
     throw new Response(null, {
       status: 404,
       statusText: `${slug} not Found`,
     });
   }
-  return { article };
+  const formattedDate = formatDate(article.date);
+  return { article, formattedDate };
 }
 export function meta({ data }: { data: LoaderData }) {
   const { article } = data;
@@ -56,7 +57,7 @@ export function meta({ data }: { data: LoaderData }) {
 
 export default function Article() {
   const data = useLoaderData();
-  const { article } = LoaderDataZ.parse(data);
+  const { article, formattedDate } = LoaderDataZ.parse(data);
   const ast = markdoc.parse(article.content);
   const node = markdoc.transform(ast, { nodes: { fence, image }, tags: { video } });
 
@@ -82,7 +83,7 @@ export default function Article() {
                 className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
               >
                 {/* <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" /> */}
-                <span>Published <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{formatDate(article.date)}</span></span>
+                <span>Published <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{formattedDate}</span></span>
               </time>
             </header>
             <Prose className="mt-8 word-break text-pretty" data-mdx-content>
