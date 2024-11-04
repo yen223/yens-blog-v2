@@ -1,6 +1,4 @@
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
+import { Highlight, themes } from "prism-react-renderer"
 
 
 type FenceProps = {
@@ -10,9 +8,19 @@ type FenceProps = {
 
 export function Fence({ children, language }: FenceProps) {
   return (
-    <SyntaxHighlighter language={language} style={tomorrow}>
-      {children}
-    </SyntaxHighlighter>
+    <Highlight code={children.trim()} language={language} theme={themes.vsDark}>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre style={style}>
+          {tokens.map((line, i) => (
+            <div key={i} {...getLineProps({ line })}>
+              {line.map((token, key) => (
+                <span key={key} {...getTokenProps({ token })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
   );
 }
 
