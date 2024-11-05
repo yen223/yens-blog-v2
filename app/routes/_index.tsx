@@ -193,7 +193,7 @@ export default function Home() {
   const { articles } = LoaderDataZ.parse(data);
   return (
     <Container className={"mt-16"}>
-      <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+      <div className="mx-auto grid max-w-3xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
         <div className="flex flex-col gap-10 lg:pr-16 xl:pr-24">
           <Profile />
           {/* <Newsletter /> */}
