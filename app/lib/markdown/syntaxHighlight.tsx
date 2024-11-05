@@ -3,12 +3,12 @@ import { Highlight, themes } from "prism-react-renderer"
 
 type FenceProps = {
   children: string;
-  language: string;
+  language?: string;
 };
 
 export function Fence({ children, language }: FenceProps) {
   return (
-    <Highlight code={children.trim()} language={language} theme={themes.vsDark}>
+    <Highlight code={children.trim()} language={language || ""} theme={themes.vsDark}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre style={style}>
           {tokens.map((line, i) => (
