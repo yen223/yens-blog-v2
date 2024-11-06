@@ -8,7 +8,22 @@ tags:
 description: "macOS comes with a lot of built-in utilities. Here's a list of some that I find interesting."
 ---
 
-Sometimes when I'm bored, I like to look at the list of [macOS Bash commands](https://ss64.com/mac/). Here's some commands that I found interesting.
+Sometimes when I'm bored, I like to look at the list of [macOS Bash commands](https://ss64.com/mac/). Here's some commands that I found interesting:
+
+
+## Access your Keychain programmatically
+
+If you store your secrets in the Keychain (and you should!), you can access them programmatically using `security`.
+
+```bash
+security find-internet-password -s "https://example.com"
+```
+
+I found this useful for writing automated scripts that used locally-stored credentials.
+
+Link: [https://ss64.com/mac/security.html](https://ss64.com/mac/security.html)
+
+Bonus tip: If you are using 1Password, there is a [1Password CLI](https://developer.1password.com/docs/ssh/get-started#install-the-1password-cli) that you can use to access your 1Password items from the command line.
 
 ## Open files from the terminal
 
@@ -89,21 +104,6 @@ be a third-party tool, but it is now built-in to macOS.
 I use this mostly to prevent my Mac from sleeping when I am running a server.
 
 Link: [https://ss64.com/mac/caffeinate.html](https://ss64.com/mac/caffeinate.html)
-
-## Access your Keychain programmatically
-
-If you store your secrets in the Keychain (and you should!), you can access them programmatically using `security`.
-
-```bash
-security find-internet-password -s "https://example.com"
-```
-
-I found this useful for writing automated scripts that used locally-stored credentials.
-
-Link: [https://ss64.com/mac/security.html](https://ss64.com/mac/security.html)
-
-Bonus tip: If you are using 1Password, there is a [1Password CLI](https://developer.1password.com/docs/ssh/get-started#install-the-1password-cli) that you can use to access your 1Password items from the command line.
-
 
 ## Generate UUIDs
 
