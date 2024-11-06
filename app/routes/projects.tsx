@@ -1,10 +1,5 @@
 import { Card } from "~/components/Card";
 import { SimpleLayout } from "~/components/SimpleLayout";
-import logoAnimaginary from "~/images/logos/animaginary.svg";
-import logoCosmos from "~/images/logos/cosmos.svg";
-import logoHelioStream from "~/images/logos/helio-stream.svg";
-import logoOpenShuttle from "~/images/logos/open-shuttle.svg";
-import logoPlanetaria from "~/images/logos/planetaria.svg";
 import logoSelectable from "~/images/logos/selectable-app.png";
 import logoCrossword from "~/images/logos/crossword.svg";
 const projects = [
@@ -38,7 +33,7 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="My Projects"
+      title="🛠️ Projects"
       intro="A selection of projects I've worked on that I'm proud to show to the world."
     >
       <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
