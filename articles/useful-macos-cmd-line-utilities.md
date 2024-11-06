@@ -23,7 +23,7 @@ I found this useful for writing automated scripts that used locally-stored crede
 
 Link: [https://ss64.com/mac/security.html](https://ss64.com/mac/security.html)
 
-Bonus tip: If you are using 1Password, there is a [1Password CLI](https://developer.1password.com/docs/ssh/get-started#install-the-1password-cli) that you can use to access your 1Password items from the command line.
+Bonus tip: If you are using 1Password, there is a [1Password CLI](https://developer.1password.com/docs/cli/get-started/) that you can use to access your 1Password items from the command line.
 
 ## Open files from the terminal
 
