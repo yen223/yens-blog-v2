@@ -1,5 +1,6 @@
 import { Highlight, themes } from "prism-react-renderer"
-
+import { Prism } from 'prism-react-renderer'
+import bashLang from 'refractor/lang/bash';
 
 type FenceProps = {
   children: string;
@@ -7,8 +8,14 @@ type FenceProps = {
 };
 
 export function Fence({ children, language }: FenceProps) {
+  bashLang(Prism)
   return (
-    <Highlight code={children.trim()} language={language || ""} theme={themes.vsDark}>
+    <Highlight 
+      prism={Prism}
+      code={children.trim()} 
+      language={language || ""} 
+      theme={themes.vsDark}
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre style={style}>
           {tokens.map((line, i) => (
