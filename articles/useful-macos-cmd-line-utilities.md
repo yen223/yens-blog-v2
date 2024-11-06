@@ -20,6 +20,8 @@ open file.txt
 
 This will open the file in the default application for that file type, as if you had double-clicked it in the Finder.
 
+Link: [https://ss64.com/mac/open.html](https://ss64.com/mac/open.html)
+
 ## Copy and paste
 
 `pbcopy` and `pbpaste` are command-line utilities that allow you to copy and paste text to the pasteboard (what other operating systems might call the "clipboard").
@@ -39,6 +41,11 @@ pbpaste
 
 This is very useful for getting data from files into the browser, or other GUI applications.
 
+#### Links:
+- [https://ss64.com/mac/pbcopy.html](https://ss64.com/mac/pbcopy.html)
+- [https://ss64.com/mac/pbpaste.html](https://ss64.com/mac/pbpaste.html)
+
+
 ## UTC date
 
 If you work with servers a lot, it can be useful to know the current time in UTC, when e.g. looking at
@@ -56,6 +63,8 @@ Alternatively, you can use
 TZ=UTC date
 ```
 
+Link: [https://ss64.com/mac/date.html](https://ss64.com/mac/date.html)
+
 ## Internet speedtest
 
 If you want to run an Internet speedtest, you can run one directly from the terminal with
@@ -63,6 +72,8 @@ If you want to run an Internet speedtest, you can run one directly from the term
 ```bash
 networkQuality  # Note the capital "Q"!
 ```
+
+Link: [https://ss64.com/mac/networkquality.html](https://ss64.com/mac/networkquality.html)
 
 ## Prevent your Mac from sleeping
 
@@ -77,6 +88,8 @@ be a third-party tool, but it is now built-in to macOS.
 
 I use this mostly to prevent my Mac from sleeping when I am running a server.
 
+Link: [https://ss64.com/mac/caffeinate.html](https://ss64.com/mac/caffeinate.html)
+
 ## Access your Keychain programmatically
 
 If you store your secrets in the Keychain (and you should!), you can access them programmatically using `security`.
@@ -86,6 +99,8 @@ security find-internet-password -s "https://example.com"
 ```
 
 I found this useful for writing automated scripts that used locally-stored credentials.
+
+Link: [https://ss64.com/mac/security.html](https://ss64.com/mac/security.html)
 
 Bonus tip: If you are using 1Password, there is a [1Password CLI](https://developer.1password.com/docs/ssh/get-started#install-the-1password-cli) that you can use to access your 1Password items from the command line.
 
@@ -106,10 +121,10 @@ uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy
 
 I use this a lot when writing unit tests that require IDs.
 
-
+Link: [https://ss64.com/mac/uuidgen.html](https://ss64.com/mac/uuidgen.html)
 ## Honourable mentions
 
-- `mdfind`: Spotlight search, but in the terminal. I generally use Spotlight itself (or rather the excellent [Raycast](https://www.raycast.com/)).
-- `say`: This command makes your Mac speak the text you give it.
-- `screencapture`: This command allows you to take screenshots and save them to a file. I prefer using `cmd-shift-5` for this.
-- `networksetup`: This command allows you to configure your network settings programmatically. I found its API very intimidating, and so I haven't really used it much.
+- `mdfind`: Spotlight search, but in the terminal. I generally use Spotlight itself (or rather the excellent [Raycast](https://www.raycast.com/)). [Link](https://ss64.com/mac/mdfind.html)
+- `say`: This command makes your Mac speak the text you give it. [Link](https://ss64.com/mac/say.html)
+- `screencapture`: This command allows you to take screenshots and save them to a file. I prefer using `cmd-shift-5` for this. [Link](https://ss64.com/mac/screencapture.html)
+- `networksetup`: This command allows you to configure your network settings programmatically. I found its API very intimidating, and so I haven't really used it much. [Link](https://ss64.com/mac/networksetup.html)
