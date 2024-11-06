@@ -1,5 +1,5 @@
 ---
-title: "Useful command-line utilities that are built-in to macOS"
+title: "Useful built-in macOS command-line utilities"
 slug: "useful-macos-cmd-line-utilities"
 date: "2024-11-06"
 published: true
