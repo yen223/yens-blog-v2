@@ -2,10 +2,9 @@ import clsx from "clsx";
 
 import { Container } from "~/components/Container";
 import {
+  BlueSkyIcon,
   GitHubIcon,
-  InstagramIcon,
   LinkedInIcon,
-  XIcon,
 } from "~/components/SocialIcons";
 import portraitImage from "~/images/portrait.jpg";
 import { Link } from "@remix-run/react";
@@ -96,6 +95,9 @@ export default function About() {
             </SocialLink>
             <SocialLink href="https://www.linkedin.com/in/weiyen/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
+            </SocialLink>
+            <SocialLink href="https://bsky.app/profile/yen223.bsky.social" icon={BlueSkyIcon} className="mt-4">
+              Follow on Bluesky
             </SocialLink>
             <SocialLink
               href="mailto:hello@weiyen.com"
