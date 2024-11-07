@@ -92,7 +92,7 @@ Link: [https://ss64.com/mac/networkquality.html](https://ss64.com/mac/networkqua
 
 ## Prevent your Mac from sleeping
 
-If you are want to keep your Mac from sleeping, you can run `caffeinate` in the terminal.
+If you want to keep your Mac from sleeping, you can run `caffeinate` in the terminal.
 
 ```bash
 caffeinate
