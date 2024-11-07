@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Button, ButtonLink } from "~/components/Button";
 import { Card } from "~/components/Card";
 import { Container } from "~/components/Container";
-import { GitHubIcon, LinkedInIcon } from "~/components/SocialIcons";
+import { BlueSkyIcon, GitHubIcon, LinkedInIcon } from "~/components/SocialIcons";
 import { getCachedArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import type { Article } from "~/lib/types";
@@ -154,6 +154,7 @@ function Profile() {
           aria-label="Follow on LinkedIn"
           icon={LinkedInIcon}
         />
+        <SocialLink to="https://bsky.app/profile/yen223.bsky.social" aria-label="Follow on Bluesky" icon={BlueSkyIcon} />
       </div>
     </div>
   );
