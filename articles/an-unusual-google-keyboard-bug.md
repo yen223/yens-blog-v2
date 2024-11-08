@@ -1,6 +1,6 @@
 ---
-title: "A bizarre Google Keyboard bug"
-slug: "a-bizarre-google-keyboard-bug"
+title: "An unusual Google Keyboard bug"
+slug: "an-unusual-google-keyboard-bug"
 date: "2024-11-08"
 published: true
 tags:
