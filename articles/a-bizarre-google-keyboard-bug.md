@@ -43,7 +43,7 @@ This breaks any code that listens for any specific keyCode, e.g. if it's listeni
 
 ### Is this a problem with Gboard, or with the browser?
 
-I'm not entirely sure to be honest. The same bug happens on Chrome on Android, and on Firefox on Android, but they appear to manifest in different ways.
+The same bug happens on Chrome on Android, and on Firefox on Android, but they appear to manifest in different ways.
 
 In Chrome, *all letters* have keyCode `229`. In Firefox, typing letters generate the correct keyCode, but backspaces still have keyCode `229`, but with keyname `Process`.
 
