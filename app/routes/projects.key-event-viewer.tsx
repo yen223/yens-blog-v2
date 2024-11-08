@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "~/components/Container";
 
+export const meta = () => {
+  return [
+    { title: "Keyboard Event Viewer" },
+    { name: "description", content: "A tool to view keyboard events and help debug keyboard-related issues" },
+  ];
+};
+
 function KeyEventViewer() {
     const [events, setEvents] = useState<{ type: string, key: string, keyCode?: number, inputType: string, isComposing: boolean }[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -12,7 +19,7 @@ function KeyEventViewer() {
             setEvents(prev => [{
                 type: 'beforeinput',
                 key: '',
-                keyCode: e.keyCode,
+                keyCode: undefined,
                 inputType: e.inputType,
                 isComposing: e.isComposing
             }, ...prev]);
@@ -22,7 +29,7 @@ function KeyEventViewer() {
             setEvents(prev => [{
                 type: 'input',
                 key: '',
-                keyCode: (e as InputEvent).keyCode,
+                keyCode: undefined,
                 inputType: (e as InputEvent).inputType,
                 isComposing: (e as InputEvent).isComposing
             }, ...prev]);
