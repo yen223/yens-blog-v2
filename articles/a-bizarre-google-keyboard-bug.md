@@ -49,6 +49,10 @@ In Chrome, *all letters* have keyCode `229`. In Firefox, typing letters generate
 
 Given that the one common denominator is Gboard, I'm inclined to think it's a problem with Gboard.
 
+### Why does this happen?
+
+Honestly, I do not know. If you are a developer for Gboard, and you happen to read this, any insight would be appreciated!
+
 ## The solution
 
 If you need to listen for the `Backspace` key specifically, the best workaround appears to be to listen to the `beforeinput` event on the input element, and check if the `inputType` is `deleteContentBackward`.
