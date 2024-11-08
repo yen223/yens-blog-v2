@@ -2,6 +2,8 @@ import { Card } from "~/components/Card";
 import { SimpleLayout } from "~/components/SimpleLayout";
 import logoSelectable from "~/images/logos/selectable-app.png";
 import logoCrossword from "~/images/logos/crossword.svg";
+import { Link } from "@remix-run/react";
+
 const projects = [
   {
     name: "Selectable",
@@ -53,6 +55,14 @@ export default function Projects() {
           </Card>
         ))}
       </ul>
+      <section className="prose prose-zinc dark:prose-invert">
+        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">Tools</h2>
+        <ul className="space-y-4">
+          <li>
+            <Link to="/projects/key-event-viewer">Key Event Viewer</Link> - A tool to view key events in the browser
+          </li>
+        </ul>
+      </section>
     </SimpleLayout>
   );
 }
