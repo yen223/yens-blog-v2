@@ -6,10 +6,10 @@ type ImageProps = {
 
 export function Image({ src, alt, title }: ImageProps) {
     return (
-        <div className="flex flex-col items-center">
+        <figure className="flex flex-col items-center">
             <img src={src} alt={alt} title={title} />
             <figcaption>{title}</figcaption>
-        </div>
+        </figure>
     );
 }
 

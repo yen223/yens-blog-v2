@@ -19,5 +19,6 @@ export function Video({ src, controls = true, className, caption }: VideoProps) 
 
 export const video = {
     render: "Video",
-    attributes: { src: { type: String }, caption: { type: String } }
+    attributes: { src: { type: String }, caption: { type: String } },
+    selfClosing: true,
 };
