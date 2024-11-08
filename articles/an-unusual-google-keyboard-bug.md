@@ -6,7 +6,7 @@ published: true
 tags:
   - Android
   - Google Keyboard
-description: "This article is about a weird Google keyboard bug on Android."
+description: "Why backspaces sometimes don't work the way they should."
 ---
 
 There's a subtle bug that happens when you're using Gboard (the Google keyboard) on Android on certain websites. Watch what happens after I type `test` into the [Guardian crossword](https://www.theguardian.com/crosswords/cryptic/29529), and try to delete the word:
