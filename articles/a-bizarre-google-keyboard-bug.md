@@ -9,7 +9,7 @@ tags:
 description: "This article is about a weird Google keyboard bug on Android."
 ---
 
-There's a subtle bug that happens when you're using Gboard (the Google keyboard) on Android on certain websites. Watch what happens after I type `test` into the [Guardian crossword app](https://www.theguardian.com/crosswords/cryptic/29529), and try to delete the word:
+There's a subtle bug that happens when you're using Gboard (the Google keyboard) on Android on certain websites. Watch what happens after I type `test` into the [Guardian crossword](https://www.theguardian.com/crosswords/cryptic/29529), and try to delete the word:
 
 {% video src="/videos/guardian-crossword-bug.mp4" caption="The bug in the Guardian crossword" /%}
 
@@ -27,7 +27,7 @@ This does not happen with iOS keyboards, or with Gboard on iOS. This appears to 
 
 ## The bug
 
-The cause of the bug is that **Gboard doesn't issue the correct keyCode in its keydown/keypress/keyup events.**
+The cause of the bug is that **Gboard doesn't issue the correct keyCode in its keydown/keypress/keyup browser events.**
 
 I've built a [keyboard events viewer](/projects/key-event-viewer) to help illustrate the issue.
 
