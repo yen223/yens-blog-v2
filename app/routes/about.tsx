@@ -6,7 +6,6 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from "~/components/SocialIcons";
-import portraitImage from "~/images/portrait.jpg";
 import { Link } from "@remix-run/react";
 import { ComponentPropsWithoutRef, ComponentType, ReactNode } from "react";
 
