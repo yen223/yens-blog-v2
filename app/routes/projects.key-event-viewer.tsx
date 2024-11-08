@@ -77,7 +77,7 @@ function KeyEventViewer() {
                 Type in the input box below to see keydown, keyup, and input events in real-time.
             </p>
             <p className="text-zinc-600 dark:text-zinc-400 mb-8">
-                Based on <a href="https://w3c.github.io/uievents/tools/key-event-viewer.html" className="text-teal-500 hover:underline">the W3C Key Event Viewer</a>
+                Based on <a href="https://w3c.github.io/uievents/tools/key-event-viewer.html" className="text-teal-500 hover:underline">the W3C Key Event Viewer</a>, but designed to be more mobile-friendly
             </p>
             <input
                 type="text"
