@@ -12,7 +12,7 @@ description: "This article contains a collection of interesting things I've lear
 ---
 
 ## The FILTER clause in SQL
-( H/T [@winand.at](https://bsky.app/profile/winand.at/post/3lagizjuo4e2y))
+( H/T [@winand.at](https://bsky.app/profile/winand.at/post/3lagizjuo4e2y) )
 
 ```sql
 SELECT 
@@ -34,6 +34,6 @@ except that you don't need to write a complicated `case` expression.
 
 ## Cloudflare free-tier limit
 
-There is a 100,000-request daily limit on the free tier of Cloudflare Workers + Pages.
+There is a daily limit of 100,000 requests on the free tier of Cloudflare Workers + Pages.
 
-I learned this the hard way, thanks to a recent article making it to #2 on [Hacker News](https://news.ycombinator.com/item?id=42057431), and getting about 108,000 page views in a day.
+I learned this the hard way, thanks to a recent article making it to #2 on [Hacker News](https://news.ycombinator.com/item?id=42057431), and getting about 108,000 page views in a day, causing the site to hit its quota and go offline for about 2 hours.
