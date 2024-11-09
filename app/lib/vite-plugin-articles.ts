@@ -55,6 +55,16 @@ export function articlesPlugin(): Plugin {
         'app/articles.json',
         JSON.stringify(sortedArticles, null, 2)
       )
+    },
+    configureServer(server) {
+      // Watch for changes to markdown files
+      server.watcher.add('articles/*.md')
+      server.watcher.on('change', (file) => {
+        if (file.endsWith('.md')) {
+          // Trigger rebuild when markdown files change
+          server.restart()
+        }
+      })
     }
   }
 } 
