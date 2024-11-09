@@ -9,7 +9,7 @@ export const meta = () => {
 };
 
 function KeyEventViewer() {
-    const [events, setEvents] = useState<{ type: string, key: string, keyCode?: number, inputType: string, isComposing: boolean }[]>([]);
+    const [events, setEvents] = useState<{ type: string, key: string, keyCode?: number, inputType: string, isComposing: boolean, index: number }[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
         const input = inputRef.current;
@@ -21,7 +21,8 @@ function KeyEventViewer() {
                 key: '',
                 keyCode: undefined,
                 inputType: e.inputType,
-                isComposing: e.isComposing
+                isComposing: e.isComposing,
+                index: prev.length
             }, ...prev]);
         };
 
@@ -31,7 +32,8 @@ function KeyEventViewer() {
                 key: '',
                 keyCode: undefined,
                 inputType: (e as InputEvent).inputType,
-                isComposing: (e as InputEvent).isComposing
+                isComposing: (e as InputEvent).isComposing,
+                index: prev.length
             }, ...prev]);
         };
 
@@ -41,7 +43,8 @@ function KeyEventViewer() {
                 key: e.key,
                 keyCode: e.keyCode,
                 inputType: '',
-                isComposing: e.isComposing
+                isComposing: e.isComposing,
+                index: prev.length
             }, ...prev]);
         };
 
@@ -51,7 +54,8 @@ function KeyEventViewer() {
                 key: e.key,
                 keyCode: e.keyCode,
                 inputType: '',
-                isComposing: e.isComposing
+                isComposing: e.isComposing,
+                index: prev.length
             }, ...prev]);
         };
         input.addEventListener('keydown', handleKeyDown);
@@ -103,8 +107,8 @@ function KeyEventViewer() {
                         </tr>
                     </thead>
                     <tbody>
-                        {events.map((event, i) => (
-                            <tr key={i} className="border-b dark:border-zinc-700">
+                        {events.map((event) => (
+                            <tr key={event.index} className="border-b dark:border-zinc-700 animate-[flash_1s_ease-in-out]">
                                 <td className="p-2 text-zinc-400">{event.type}</td>
                                 <td className="p-2 text-zinc-400 font-semibold">{event.key}</td>
                                 <td className="p-2 text-zinc-400">{event.keyCode}</td>
