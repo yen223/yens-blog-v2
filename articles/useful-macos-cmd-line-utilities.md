@@ -122,9 +122,34 @@ uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy
 I use this a lot when writing unit tests that require IDs.
 
 Link: [https://ss64.com/mac/uuidgen.html](https://ss64.com/mac/uuidgen.html)
+
 ## Honourable mentions
 
 - `mdfind`: Spotlight search, but in the terminal. I generally use Spotlight itself (or rather the excellent [Raycast](https://www.raycast.com/)). [Link](https://ss64.com/mac/mdfind.html)
 - `say`: This command makes your Mac speak the text you give it. [Link](https://ss64.com/mac/say.html)
 - `screencapture`: This command allows you to take screenshots and save them to a file. I prefer using `cmd-shift-5` for this. [Link](https://ss64.com/mac/screencapture.html)
 - `networksetup`: This command allows you to configure your network settings programmatically. I found its API very intimidating, and so I haven't really used it much. [Link](https://ss64.com/mac/networksetup.html)
+
+---
+
+## Update [9 Nov 2024]
+
+After posting this article on [Hacker News](https://news.ycombinator.com/item?id=42057431) and making it to #2 on the front page(!), the folks over there suggested many *many* more interesting utilities. 
+
+Here are some of my favourites:
+
+- `sips`: The Scriptable Image Processing System, for converting between various image formats. [Link](https://ss64.com/mac/sips.html)  
+- `afinfo`: To probe metadata of audio files. [Link](https://ss64.com/mac/afinfo.html)
+- `mdls`: To probe metadata of all kinds of files. [Link](https://ss64.com/mac/mdls.html)
+- `afconvert`: For converting between various audio formats. [Link](https://ss64.com/mac/afconvert.html)
+- `diskutil`: For managing disk volumes, and a solid alternative to the built-in"Disk Utility" app. [Link](https://ss64.com/mac/diskutil.html)
+- `powermetrics`: For monitoring system power consumption. [Link](https://ss64.com/mac/powermetrics.html)
+- `pmset`: For power management tasks, e.g. to automatically turn your Mac on or off. [Link](https://ss64.com/mac/pmset.html)
+- `dot_clean`: Removes dot_underscore files. Useful when sharing files with non-Mac machines. [Link](https://ss64.com/mac/dot_clean.html)
+
+(Apologies if I missed your suggestion, there were just so many!)
+
+There are also a couple of other people who made similar lists that are worth checking out, e.g.
+
+- [https://saurabhs.org/advanced-macos-commands](https://saurabhs.org/advanced-macos-commands)
+- [https://notes.billmill.org/computer_usage/mac_os/mac_os_command_line_programs.html](https://notes.billmill.org/computer_usage/mac_os/mac_os_command_line_programs.html)

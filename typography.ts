@@ -56,7 +56,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-invert-bold': theme('colors.zinc.200'),
         '--tw-prose-invert-counters': theme('colors.zinc.200'),
         '--tw-prose-invert-bullets': theme('colors.zinc.200'),
-        '--tw-prose-invert-hr': theme('colors.zinc.700 / 0.4'),
+        '--tw-prose-invert-hr': theme('colors.zinc.700'),
         '--tw-prose-invert-quote-borders': theme('colors.zinc.500'),
         '--tw-prose-invert-captions': theme('colors.zinc.500'),
         '--tw-prose-invert-code': theme('colors.zinc.300'),
