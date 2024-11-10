@@ -32,4 +32,4 @@ FROM users;
 
 except that a) it reads more naturally, and b) you don't need to write a complicated `case` expression.
 
-`FILTER` is supported in Postgres 9.4 and above, and in sqlite. It is unfortunately not widely supported in other databases.
+`FILTER` is supported in [Postgres 9.4](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-AGGREGATES:~:text=then%20only%20the%20input%20rows%20for%20which%20the-,filter_clause,-evaluates%20to%20true%20are%20fed%20to%20the%20aggregate) and above, and in [sqlite](https://www.sqlite.org/syntax/filter-clause.html). It is unfortunately not widely supported in other databases.
