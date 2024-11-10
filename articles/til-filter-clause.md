@@ -1,5 +1,5 @@
 ---
-title: "TIL: The FILTER clause in SQL"
+title: "Interesting things I've learned: The FILTER clause in SQL"
 slug: "til-filter-clause"
 date: "2024-11-10"
 published: true
