@@ -35,7 +35,7 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="🛠️ Projects"
+      title="💼 Projects"
       intro="A selection of projects I've worked on that I'm proud to show to the world."
     >
       <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -56,7 +56,7 @@ export default function Projects() {
         ))}
       </ul>
       <section className="prose prose-zinc dark:prose-invert">
-        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">Tools</h2>
+        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">🛠️ Tools</h2>
         <ul className="space-y-4">
           <li>
             <Link to="/projects/key-event-viewer">Key Event Viewer</Link> - A tool to view key events in the browser
