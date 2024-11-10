@@ -61,6 +61,9 @@ export default function Projects() {
           <li>
             <Link to="/projects/key-event-viewer">Key Event Viewer</Link> - A tool to view key events in the browser
           </li>
+          <li>
+            <Link to="/projects/sql-ast-viz">SQL AST Visualizer</Link> - A tool to visualize the AST of a SQL statement
+          </li>
         </ul>
       </section>
     </SimpleLayout>
