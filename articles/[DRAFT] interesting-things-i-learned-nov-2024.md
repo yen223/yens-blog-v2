@@ -11,27 +11,6 @@ tags:
 description: "This article contains a collection of interesting things I've learned while working on my projects."
 ---
 
-## The FILTER clause in SQL
-( H/T [@winand.at](https://bsky.app/profile/winand.at/post/3lagizjuo4e2y) )
-
-```sql
-SELECT 
-    count(*) as user_count,
-    count(*) filter (where age > 18) as adult_user_count
-FROM users;
-```
-
-is the equivalent of:
-
-```sql
-SELECT 
-    count(*) as user_count,
-    sum(case when age > 18 then 1 else 0 end) as adult_user_count
-FROM users;
-```
-
-except that you don't need to write a complicated `case` expression.
-
 ## Cloudflare free-tier limit
 
 There is a daily limit of 100,000 requests on the free tier of Cloudflare Workers + Pages.
