@@ -1,5 +1,5 @@
 ---
-title: "Counting nulls and non-nulls in Postgres"
+title: "Interesting things I've learned: counting nulls and non-nulls in Postgres"
 slug: "til-counting-nulls-in-postgres"
 date: "2024-11-14"
 published: true
