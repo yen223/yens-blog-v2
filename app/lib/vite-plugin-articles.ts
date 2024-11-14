@@ -15,7 +15,6 @@ import * as fs from 'fs/promises'
 import markdoc from '@markdoc/markdoc'
 import yaml from 'js-yaml'
 import { FrontmatterZ } from './types'
-import path from 'path'
 
 export function articlesPlugin(): Plugin {
   return {
@@ -26,7 +25,6 @@ export function articlesPlugin(): Plugin {
       const articles = await Promise.all(
         files.map(async (file) => {
           const content = await fs.readFile(file, 'utf-8')
-          const slug = path.basename(file, '.md')
           
           // Parse the markdown content
           const ast = markdoc.parse(content)
@@ -40,7 +38,6 @@ export function articlesPlugin(): Plugin {
           return {
             ...frontmatter,
             content,
-            slug,
           }
         })
       )

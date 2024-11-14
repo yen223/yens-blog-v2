@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const FrontmatterZ = z.object({
   title: z.string(),
+  slug: z.string(),
   date: z.string(),
   tags: z.string().array(),
   description: z.string().default(""),
