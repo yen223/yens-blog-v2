@@ -1,5 +1,5 @@
 ---
-title: "Interesting things I've learned: counting nulls and non-nulls in Postgres"
+title: "Interesting things I've learned: Counting nulls and non-nulls in Postgres"
 slug: "til-counting-nulls-in-postgres"
 date: "2024-11-14"
 published: true
@@ -28,8 +28,8 @@ This is useful in a check constraint, if you need to ensure that exactly some nu
 ```sql
 CREATE TABLE purchase_order (
     id UUID PRIMARY KEY,
-    contact_email TEXT NULLABLE,
-    contact_phone TEXT NULLABLE
+    contact_email TEXT NULL,
+    contact_phone TEXT NULL
 );
 
 -- If we want to ensure that at least one of email or phone is provided 
