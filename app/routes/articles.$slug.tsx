@@ -33,6 +33,12 @@ const LoaderDataZ = z.object({
 });
 type LoaderData = z.infer<typeof LoaderDataZ>;
 
+export function headers() {
+  return {
+    "Cache-Control": "public, max-age=300", // 5 minutes in seconds
+  };
+}
+
 export async function loader({
   params,
 }: LoaderFunctionArgs): Promise<LoaderData> {
