@@ -145,7 +145,7 @@ function Profile() {
         .
       </p>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        I love maths, coffee, and all things programming.
+        I like databases, programming languages, maths, and wordplay.
       </p>
       <div className="mt-6 flex gap-6">
         <SocialLink to="https://github.com/yen223" aria-label="Follow on GitHub" icon={GitHubIcon} />

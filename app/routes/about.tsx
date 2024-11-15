@@ -69,7 +69,7 @@ export default function About() {
                 .
               </p>
               <p>
-                I love databases, programming languages, maths, and wordplay.
+                I like databases, programming languages, maths, and wordplay.
               </p>
               <p>
                 I was previously a software engineer at Rokt, Mathspace, Western Digital and Accenture.
