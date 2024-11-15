@@ -123,7 +123,8 @@ ALTER TABLE payment ADD CONSTRAINT valid_payment_state CHECK (
 ### Disadvantages
 
 - This requires the columns across all variants have distinct names.
-- 
+- The `CHECK` constraint is complex, and can be error-prone.
+
 ## Option 3: Use a JSONB column
 
 If you are using TypeScript or a language that has automatic JSON serialization/deserialization, you can simply store the value as-is in a JSONB column.
