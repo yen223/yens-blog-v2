@@ -99,11 +99,11 @@ export default function About() {
               Follow on Bluesky
             </SocialLink>
             <SocialLink
-              href="mailto:hello@weiyen.com"
+              href="mailto:hello@weiyen.net"
               icon={MailIcon}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
             >
-              hello@weiyen.com
+              hello@weiyen.net
             </SocialLink>
           </ul>
         </div>
