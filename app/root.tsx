@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/cloudflare";
+import type { LinksFunction } from "@remix-run/node";
 import {
   Link,
   Links,
