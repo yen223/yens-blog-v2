@@ -79,7 +79,7 @@ export default function About() {
               <h2>About this site</h2>
               <p>This site is open-source. The code is hosted on <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>.</p>
               <p>
-                This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://www.digitalocean.com/">DigitalOcean</a>.
+                This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://www.digitalocean.com/?refcode=61c4d2b4f1b7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste">DigitalOcean</a> (referral link).
               </p>
               <p>
                 The design is based on <a href="https://tailwindui.com/templates/spotlight">Tailwind Spotlight</a>
