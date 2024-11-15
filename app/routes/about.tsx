@@ -69,7 +69,7 @@ export default function About() {
                 .
               </p>
               <p>
-                I love maths, coffee, and all things programming.
+                I love databases, programming languages, maths, and wordplay.
               </p>
               <p>
                 I was previously a software engineer at Rokt, Mathspace, Western Digital and Accenture.
@@ -79,7 +79,7 @@ export default function About() {
               <h2>About this site</h2>
               <p>This site is open-source. The code is hosted on <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>.</p>
               <p>
-                This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://developers.cloudflare.com/pages">Cloudflare Pages</a>.
+                This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://www.digitalocean.com/">DigitalOcean</a>.
               </p>
               <p>
                 The design is based on <a href="https://tailwindui.com/templates/spotlight">Tailwind Spotlight</a>
