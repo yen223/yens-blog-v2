@@ -17,7 +17,7 @@ Articles are written in Markdown and stored in the `articles` directory.
 
 ## Development
 
-Run the dev server:
+Run the dev server locally:
 
 ```sh
 npm run dev
@@ -25,9 +25,5 @@ npm run dev
 
 ## Deployment
 
-First, build your app for production:
-
-```sh
-npm run build
-```
+Push to the `main` branch to deploy.
 
