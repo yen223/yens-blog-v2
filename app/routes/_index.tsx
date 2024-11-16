@@ -154,7 +154,7 @@ function Profile() {
           aria-label="Follow on LinkedIn"
           icon={LinkedInIcon}
         />
-        <SocialLink to="https://bsky.app/profile/yen223.bsky.social" aria-label="Follow on Bluesky" icon={BlueSkyIcon} />
+        <SocialLink to="https://bsky.app/profile/weiyen.net" aria-label="Follow on Bluesky" icon={BlueSkyIcon} />
       </div>
     </div>
   );

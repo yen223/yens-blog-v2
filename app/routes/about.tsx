@@ -95,7 +95,7 @@ export default function About() {
             <SocialLink href="https://www.linkedin.com/in/weiyen/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
             </SocialLink>
-            <SocialLink href="https://bsky.app/profile/yen223.bsky.social" icon={BlueSkyIcon} className="mt-4">
+            <SocialLink href="https://bsky.app/profile/weiyen.net" icon={BlueSkyIcon} className="mt-4">
               Follow on Bluesky
             </SocialLink>
             <SocialLink
