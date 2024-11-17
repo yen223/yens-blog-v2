@@ -9,7 +9,7 @@ tags:
 description: "How to make null = null evaluate to true in Postgres"
 ---
 
-It is a well-known fact that you should always use `IS NULL` instead to test if some value is null. That is because `NULL = NULL` does not evaluate to true in SQL, instead it evaluates to `NULL`. 
+It is a well-known fact that you should always use `IS NULL` to test if some value is null. That is because `NULL = NULL` does not evaluate to true in SQL, instead it evaluates to `NULL`. 
 
 However, if you insist on violating SQL standards and making `NULL = NULL` be true, you can. There's a runtime configuration option for that: `transform_null_equals` ([docs](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-TRANSFORM-NULL-EQUALS)).
 
