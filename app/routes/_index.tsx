@@ -10,6 +10,7 @@ import { getCachedArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import type { Article } from "~/lib/types";
 import { ArticleZ } from "~/lib/types";
+import { BLUESKY_LINK } from "~/constants";
 
 const LoaderDataZ = z.object({ articles: ArticleZ.array() });
 type LoaderData = z.infer<typeof LoaderDataZ>;
@@ -154,7 +155,7 @@ function Profile() {
           aria-label="Follow on LinkedIn"
           icon={LinkedInIcon}
         />
-        <SocialLink to="https://bsky.app/profile/weiyen.net" aria-label="Follow on Bluesky" icon={BlueSkyIcon} />
+        <SocialLink to={BLUESKY_LINK} aria-label="Follow on Bluesky" icon={BlueSkyIcon} />
       </div>
     </div>
   );

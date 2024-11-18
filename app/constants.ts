@@ -1,0 +1,1 @@
+export const BLUESKY_LINK = "https://bsky.app/profile/weiyen.net";

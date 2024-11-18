@@ -12,6 +12,7 @@ import { ButtonLink } from "~/components/Button";
 import { Fence, fence } from "~/lib/markdown/syntaxHighlight";
 import { Video, video } from "~/lib/markdown/video";
 import { Image, image } from "~/lib/markdown/image";
+import { BLUESKY_LINK } from "~/constants";
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -94,6 +95,10 @@ export default function Article() {
             </header>
             <Prose className="mt-8 word-break text-pretty" data-mdx-content>
               {markdoc.renderers.react(node, React, { components: { Fence, Video, Image } })}
+              <hr />
+              <em>
+                Like this article? Follow me on <a href={BLUESKY_LINK}>Bluesky</a> or subscribe to the <a href="/feed/all">RSS feed</a> to get notified about new articles.
+              </em>
             </Prose>
           </article>
         </div>

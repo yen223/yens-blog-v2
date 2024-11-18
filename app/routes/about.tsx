@@ -8,6 +8,7 @@ import {
 } from "~/components/SocialIcons";
 import { Link } from "@remix-run/react";
 import { ComponentPropsWithoutRef, ComponentType, ReactNode } from "react";
+import { BLUESKY_LINK } from "~/constants";
 
 function SocialLink({
   className,
@@ -95,7 +96,7 @@ export default function About() {
             <SocialLink href="https://www.linkedin.com/in/weiyen/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
             </SocialLink>
-            <SocialLink href="https://bsky.app/profile/weiyen.net" icon={BlueSkyIcon} className="mt-4">
+            <SocialLink href={BLUESKY_LINK} icon={BlueSkyIcon} className="mt-4">
               Follow on Bluesky
             </SocialLink>
             <SocialLink
