@@ -28,7 +28,7 @@ The next time you come back to the project,`nvm use` will use this version of no
 ### Add `save-exact` to the `.npmrc` file
 
 ```bash
-cat "save-exact=true" >> .npmrc
+echo "save-exact=true" >> .npmrc
 ```
 
 This means that when I install a dependency using `npm install`, it will pin the exact major.minor.patch version of the dependency to the `package.json` file. 
