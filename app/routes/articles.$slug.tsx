@@ -92,6 +92,9 @@ export default function Article() {
                 {/* <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" /> */}
                 <span>Published <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{formattedDate}</span></span>
               </time>
+              <p className="italic text-zinc-400 dark:text-zinc-400 pt-4">
+                {article.description}
+              </p>
             </header>
             <Prose className="mt-8 word-break text-pretty" data-mdx-content>
               {markdoc.renderers.react(node, React, { components: { Fence, Video, Image } })}
