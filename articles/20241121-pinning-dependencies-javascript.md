@@ -40,3 +40,9 @@ If you read complaints about people struggling to rebuild a NodeJS project that 
 2. They didn't pin their dependencies, and now some of the newer dependencies are breaking their build. By default, `npm install` installs `^version` dependencies, which only pins the major version of the dependency. Unfortunately, a lot of dependencies do break on minor or patch versions.
 
 These two steps prevent both of these issues.
+
+### Caveat
+
+This only applies to *application* projects, not *library* projects. 
+
+If you are building a library that will be used by other projects, you absolutely should not pin your dependencies, because you want to allow flexibility for consumers of your library to use the versions they want.
