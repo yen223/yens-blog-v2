@@ -59,9 +59,9 @@ export function meta({ data }: { data: LoaderData }) {
   return [
     { title: `${article.title}` },
     { name: "description", content: article.description },
-    { property: "og:image", content: `articles/${article.slug}/oggraph.png` },
+    { property: "og:image", content: `${article.slug}/oggraph.png` },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: `articles/${article.slug}/oggraph.png` },
+    { name: "twitter:image", content: `${article.slug}/oggraph.png` },
   ];
 }
 
