@@ -83,7 +83,7 @@ export async function generateOgImage({
             </svg>
             <div style="position: absolute; inset: 0; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.8) 30%, transparent 100%);">
               <div style="max-width: 72rem; padding-bottom: 64px;">
-                <h2 style="font-size: 36px; font-weight: bold; margin-bottom: 16px; color: white;">${title}</h2>
+                <h2 style="font-size: 48px; font-weight: bold; margin-bottom: 16px; color: white;">${title}</h2>
                 <p style="font-size: 24px; opacity: 0.9; color: white;">${description}</p>
               </div>
             </div>
