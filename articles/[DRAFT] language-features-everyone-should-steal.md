@@ -25,7 +25,6 @@ type Account = {
 
 In Typescript, you can use the [subscript notation](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html) to reference types of fields defined in object types. In the example above, the type of `Account.ownerId` is always going to be whatever `User.id` is. If `User.id` was changed into a `UUID` type, `Account.ownerId` would also be changed into a `UUID` type.
 
-I do not know enough type theory to understand why this isn't more widespread. This is a very common thing to model, even in more mainstream applications. ORMs that model foreign keys.
 
 ## Typescript - Utility types
 
