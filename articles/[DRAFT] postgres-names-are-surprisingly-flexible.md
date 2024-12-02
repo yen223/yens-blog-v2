@@ -1,15 +1,13 @@
 ---
-title: "Silly things you can do in Postgres"
-slug: "silly-things-you-can-do-in-postgres"
-date: "2024-11-20"
+title: Postgres names are surprisingly flexible
+description: A list of interesting things you can do with Postgres table names
+slug: "postgres-names-are-surprisingly-flexible"
 published: false
+date: "2024-12-02"
 tags:
-  - TIL
   - Postgres
-description: "Please do this in production and let me know how it goes."
+  - SQL
 ---
-
-## Put emojis in table names
 
 As long as the Postgres server uses UTF-8 as its encoding, you can create a table with emojis as the name.
 
@@ -37,21 +35,3 @@ There are surprisingly few restrictions to what you can name your tables:
 
 - Quoted identifiers can contain any character, including spaces and punctuation. `This is a valid identifier!!` is a valid identifier, so long as it's quoted with double quotes.
 - The length of an identifier is restricted to `NAMEDATALEN` - 1 bytes. `NAMEDATALEN` is 63 by default, but can be set at compile time.
-
-## Leave off spaces in queries
-
-This is a valid query:
-
-```sql
-select*from"employees"where"employee_id"='1'and"last_name"='Davolio';
-```
-
-The Postgres tokeniser doesn't require spaces in cases where the tokens are unambiguous. This means with clever use of single and double quotes, you can leave off spaces in queries.
-
-## "Fix" how nulls are handled
-
-You may have run into this before:
-
-```sql
-
-```
