@@ -111,7 +111,7 @@ CREATE TABLE users_history (
 
 You can optionally add `INCLUDING` and `EXCLUDING` clauses to control what else gets copied over.
 
-I've written about this in more detail [here](til-postgres-create-table-like)
+I've written about this in more detail [here](/articles/til-postgres-create-table-like)
 
 `CREATE TABLE ... LIKE` is supported in Postgres 7.4 and newer ([docs](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-PARMS-LIKE))
 
