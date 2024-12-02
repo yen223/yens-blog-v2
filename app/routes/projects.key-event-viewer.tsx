@@ -83,6 +83,9 @@ function KeyEventViewer() {
             <p className="text-zinc-600 dark:text-zinc-400 mb-8">
                 Based on <a href="https://w3c.github.io/uievents/tools/key-event-viewer.html" className="text-teal-500 hover:underline">the W3C Key Event Viewer</a>, but designed to be more mobile-friendly
             </p>
+            <p className="text-zinc-600 dark:text-zinc-400 mb-8">
+                Source code <a href="https://github.com/yen223/yens-blog-v2/blob/main/app/routes/projects.key-event-viewer.tsx" className="text-teal-500 hover:underline">here</a>
+            </p>
             <input
                 type="text"
                 className="w-full border rounded p-2 dark:bg-zinc-800 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600"
