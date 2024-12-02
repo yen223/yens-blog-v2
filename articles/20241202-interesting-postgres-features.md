@@ -162,4 +162,4 @@ The difference between `date_bin` and the more traditionally-used `date_trunc` i
 
 `date_bin` is available in Postgres 14+ ([docs](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-BIN))
 
-[1]: interesting-postgres-features/comment-on-screenshot.png "Datagrip showing table comment"
+[1]: /articles/interesting-postgres-features/comment-on-screenshot.png "Datagrip showing table comment"
