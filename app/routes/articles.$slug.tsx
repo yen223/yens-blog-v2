@@ -55,16 +55,6 @@ export async function loader({
   return { article, formattedDate };
 }
 
-export function links({ data }: { data: LoaderData }) {
-  const { article } = data;
-  return [
-    {
-      rel: "canonical",
-      href: `https://weiyen.net/articles/${article.slug}`,
-    },
-  ];
-}
-
 export function meta({ data }: { data: LoaderData }) {
   const { article } = data;
   return [
