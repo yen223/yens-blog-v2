@@ -54,11 +54,25 @@ export async function loader({
   const formattedDate = formatDate(article.date);
   return { article, formattedDate };
 }
+
+export function links({ data }: { data: LoaderData }) {
+  const { article } = data;
+  return [
+    {
+      rel: "canonical",
+      href: `https://weiyen.net/articles/${article.slug}`,
+    },
+  ];
+}
+
 export function meta({ data }: { data: LoaderData }) {
   const { article } = data;
   return [
     { title: `${article.title}` },
     { name: "description", content: article.description },
+    { property: "og:title", content: article.title },
+    { property: "og:description", content: article.description },
+    { property: "og:url", content: `https://weiyen.net/articles/${article.slug}` },
     { property: "og:image", content: `https://weiyen.net/articles/${article.slug}/oggraph.png` },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:image", content: `https://weiyen.net/articles/${article.slug}/oggraph.png` },
