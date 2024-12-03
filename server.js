@@ -25,17 +25,6 @@ app.use(compression());
 // http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
 app.disable("x-powered-by");
 
-// Redirect trailing slashes to prevent duplicate content
-app.use((req, res, next) => {
-    if (req.path.endsWith('/') && req.path.length > 1) {
-        const query = req.url.slice(req.path.length)
-        const safepath = req.path.slice(0, -1).replace(/\/+/g, '/')
-        res.redirect(301, safepath + query)
-    } else {
-        next()
-    }
-})
-
 // handle asset requests
 if (viteDevServer) {
     app.use(viteDevServer.middlewares);
