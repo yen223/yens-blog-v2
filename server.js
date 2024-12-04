@@ -42,19 +42,6 @@ app.use(express.static("build/client", { maxAge: "1h" }));
 
 app.use(morgan("tiny"));
 
-
-// Redirect trailing slashes to prevent duplicate content
-// app.use((req, res, next) => {
-//     if (req.path.endsWith('/') && req.path.length > 1) {
-//         const query = req.url.slice(req.path.length)
-//         const safepath = req.path.slice(0, -1).replace(/\/+/g, '/')
-//         console.log(`Redirecting ${req.path} to ${safepath + query}`)
-//         res.redirect(301, safepath + query)
-//     } else {
-//         next()
-//     }
-// })
-
 // handle SSR requests
 app.all("*", remixHandler);
 
