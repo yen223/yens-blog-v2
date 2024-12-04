@@ -42,7 +42,7 @@ All of these are valid identifiers, which means you can use them as table names:
 - `"..."`
 - `"SELECT"`
 
-You only need to quote identifiers if they contain punctuation or spaces, if they match a reserved word, or if they start with a digit.
+Identifiers don't need to be quoted if they "begin with a letter (a-z, but also letters with diacritical marks and non-Latin letters) or an underscore (_)."
 
 All the above rules apply to all identifiers, including column names, index names, and constraint names:
 
@@ -53,3 +53,5 @@ ALTER TABLE 💩😀🤔
 ```
 
 Please don't do this. However if you choose to do this, please tell me all about it.
+
+See [https://www.postgresql.org/docs/current/sql-syntax-lexical.html](https://www.postgresql.org/docs/current/sql-syntax-lexical.html) for more details.
