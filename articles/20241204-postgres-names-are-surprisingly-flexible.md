@@ -44,6 +44,8 @@ All of these are valid identifiers, which means you can use them as table names:
 
 You only need to quote identifiers if they contain punctuation or spaces, if they match a reserved word, or if they start with a digit.
 
+All the above rules apply to all identifiers, including column names, index names, and constraint names:
+
 ```sql
 ALTER TABLE 💩😀🤔
   ADD CONSTRAINT "🚫 empty names! 😤" CHECK (length(name) > 0);
