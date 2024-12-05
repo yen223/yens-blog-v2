@@ -1,5 +1,5 @@
 ---
-title: "A few interesting Postgres features"
+title: "Useful Postgres features you might not know about"
 slug: "interesting-postgres-features"
 date: "2024-12-02"
 published: true
@@ -9,7 +9,7 @@ tags:
 description: "Postgres features that may fly under the radar."
 ---
 
-## The COMMENT ON statement
+## Add descriptions to tables and columns
 
 `COMMENT ON` can be used to add comments to tables, columns, indexes, and other database entities.
 
@@ -28,7 +28,7 @@ Comments are stored in the `pg_catalog.pg_description` table.
 `COMMENT ON` is supported in all versions of Postgres ([docs](https://www.postgresql.org/docs/current/sql-comment.html)).
 
 
-## num_nonnulls and num_nulls
+## Count non-null and null arguments
 
 `num_nonnulls(...)` counts the number of provided arguments that are not null. 
 
@@ -64,14 +64,15 @@ ALTER TABLE purchase_order ADD CONSTRAINT contact_info_check CHECK (
 `num_nonnulls` and `num_nulls` are available in Postgres 9.6+ ([docs](https://www.postgresql.org/docs/9.6/functions-comparison.html#:~:text=Table%209%2D3.%20Comparison%20Functions))
 
 
-## The FILTER clause
+## Add different filters to different aggregations
 
 In Postgres, if you wanted to perform two or more aggregations with different filters, you might be able to use the `FILTER` clause.
 
 ```sql
 SELECT 
     count(*) as user_count,
-    count(*) filter (where verified = true) as verified_user_count
+    count(*) filter (where verified = true) as verified_user_count,
+    count(*) filter (where verified = false) as unverified_user_count
 FROM users;
 ```
 
@@ -80,7 +81,8 @@ is the equivalent of:
 ```sql
 SELECT 
     count(*) as user_count,
-    sum(case when verified = true then 1 else 0 end) as verified_user_count
+    sum(case when verified = true then 1 else 0 end) as verified_user_count,
+    sum(case when verified = false then 1 else 0 end) as unverified_user_count
 FROM users;
 ```
 
@@ -88,7 +90,7 @@ except that a) it reads more naturally, and b) you don't need to write a complic
 
 `FILTER` is supported in Postgres 9.4 and above ([docs](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-AGGREGATES:~:text=then%20only%20the%20input%20rows%20for%20which%20the-,filter_clause,-evaluates%20to%20true%20are%20fed%20to%20the%20aggregate)).
 
-## CREATE TABLE ... LIKE
+## Duplicate a table's schema
 
 If you want to create a table with the same columns as an existing table, there is a shorthand for this: `CREATE TABLE ... LIKE`.
 
@@ -115,7 +117,7 @@ I've written about this in more detail [here](/articles/til-postgres-create-tabl
 
 `CREATE TABLE ... LIKE` is supported in Postgres 7.4 and newer ([docs](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-PARMS-LIKE))
 
-## date_bin()
+## Bucket timestamps into intervals
 
 The `date_bin` function can be used to bin a timestamp to some given interval, aligned to the specified origin.
 
@@ -163,3 +165,9 @@ The difference between `date_bin` and the more traditionally-used `date_trunc` i
 `date_bin` is available in Postgres 14+ ([docs](https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-BIN))
 
 [1]: /articles/interesting-postgres-features/comment-on-screenshot.png "Datagrip showing table comment"
+
+---
+
+## Update [5 Dec 2024]
+
+The title and subtitles of the article were tweaked for clarity.
