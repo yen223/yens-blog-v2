@@ -62,7 +62,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         '--tw-prose-invert-code': theme('colors.zinc.100'),
         '--tw-prose-invert-code-bg': theme('colors.zinc.800'),
         '--tw-prose-invert-pre-code': theme('colors.zinc.100'),
-        '--tw-prose-invert-pre-bg': theme('colors.zinc.800'),
+        '--tw-prose-invert-pre-bg': theme('colors.zinc.950'),
         '--tw-prose-invert-pre-border': theme('colors.zinc.500'),
         '--tw-prose-invert-th-borders': theme('colors.zinc.700'),
         '--tw-prose-invert-td-borders': theme('colors.zinc.800'),
@@ -107,7 +107,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
 
         // Images
         img: {
-          borderRadius: theme('borderRadius.3xl'),
+          borderRadius: theme('borderRadius.xl'),
         },
 
         // Inline elements
@@ -206,7 +206,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
           fontWeight: theme('fontWeight.medium'),
           backgroundColor: 'var(--tw-prose-pre-bg)',
           borderRadius: theme('borderRadius.lg'),
-          padding: theme('spacing.8'),
+          padding: theme('spacing.6'),
           overflowX: 'auto',
         },
         'pre code': {
