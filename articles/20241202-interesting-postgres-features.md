@@ -21,7 +21,7 @@ COMMENT ON COLUMN users.name IS 'The full name of the user';
 
 SQL clients can pick up on these comments, and display them whenever you're browsing the database schema. In `psql`, you can view tables with comments using `\d+`
 
-![Datagrip showing table comment][1]
+![Screenshot of Datagrip showing a comment of a table][1]
 
 Comments are stored in the `pg_catalog.pg_description` table. 
 
@@ -113,7 +113,7 @@ CREATE TABLE users_history (
 
 You can optionally add `INCLUDING` and `EXCLUDING` clauses to control what else gets copied over.
 
-I've written about this in more detail [here](/articles/til-postgres-create-table-like)
+I've written about this in more detail [in a separate article](/articles/til-postgres-create-table-like)
 
 `CREATE TABLE ... LIKE` is supported in Postgres 7.4 and newer ([docs](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-PARMS-LIKE))
 

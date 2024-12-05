@@ -94,9 +94,8 @@ export default function Article() {
               </h1>
               <time
                 dateTime={article.date}
-                className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
+                className="order-first flex items-center text-base font-light text-zinc-400 dark:text-zinc-300"
               >
-                {/* <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" /> */}
                 <span>Published <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{formattedDate}</span></span>
               </time>
               <p className="text-zinc-400 dark:text-zinc-400 pt-4">
