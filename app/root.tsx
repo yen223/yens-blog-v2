@@ -76,7 +76,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex bg-zinc-50 dark:bg-zinc-950 overflow-y-scroll">
+      <body className="flex bg-zinc-50 dark:bg-zinc-900 overflow-y-scroll">
         <RootLayout>{children}</RootLayout>
         <ScrollRestoration />
         <Scripts />

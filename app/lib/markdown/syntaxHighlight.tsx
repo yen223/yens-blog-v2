@@ -10,23 +10,28 @@ type FenceProps = {
 export function Fence({ children, language }: FenceProps) {
   bashLang(Prism)
   return (
-    <Highlight 
+    <Highlight
       prism={Prism}
-      code={children.trim()} 
-      language={language || ""} 
+      code={children.trim()}
+      language={language || ""}
       theme={themes.vsDark}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre style={style}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
+      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+        const updatedStyle = { ...style, backgroundColor: "var(--tw-prose-pre-bg)" };
+        return (
+          (
+            <pre style={updatedStyle} >
+              {tokens.map((line, i) => (
+                <div key={i} {...getLineProps({ line })}>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token })} />
+                  ))}
+                </div>
               ))}
-            </div>
-          ))}
-        </pre>
-      )}
+            </pre>
+          )
+        )
+      }}
     </Highlight>
   );
 }
