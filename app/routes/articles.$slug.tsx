@@ -3,16 +3,13 @@ import { Prose } from "~/components/Prose";
 import { getCachedArticle } from "~/lib/articles.server";
 import { z } from "zod";
 import { LoaderFunctionArgs } from "@remix-run/router";
-import { useLoaderData } from "react-router";
-import markdoc from "@markdoc/markdoc";
+import { useLoaderData } from "@remix-run/react";
 import React from "react";
 import { ArticleZ } from "~/lib/types";
 import { formatDate } from "~/lib/formatDate";
 import { ButtonLink } from "~/components/Button";
-import { Fence, fence } from "~/lib/markdown/syntaxHighlight";
-import { Video, video } from "~/lib/markdown/video";
-import { Image, image } from "~/lib/markdown/image";
 import { BLUESKY_LINK } from "~/constants";
+import { parseMarkdown } from "~/lib/markdown/parse";
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -34,15 +31,7 @@ const LoaderDataZ = z.object({
 });
 type LoaderData = z.infer<typeof LoaderDataZ>;
 
-export function headers() {
-  return {
-    "Cache-Control": "public, max-age=300", // 5 minutes in seconds
-  };
-}
-
-export async function loader({
-  params,
-}: LoaderFunctionArgs): Promise<LoaderData> {
+export async function loader({ params }: LoaderFunctionArgs) {
   const slug = ParamZ.parse(params).slug;
   const article = await getCachedArticle(slug);
   if (!article) {
@@ -52,7 +41,8 @@ export async function loader({
     });
   }
   const formattedDate = formatDate(article.date);
-  return { article, formattedDate };
+  const articleHtml = article.html ?? (await parseMarkdown(article.content)).value;
+  return { article, formattedDate, articleHtml };
 }
 
 export function meta({ data }: { data: LoaderData }) {
@@ -70,10 +60,8 @@ export function meta({ data }: { data: LoaderData }) {
 }
 
 export default function Article() {
-  const data = useLoaderData();
-  const { article, formattedDate } = LoaderDataZ.parse(data);
-  const ast = markdoc.parse(article.content);
-  const node = markdoc.transform(ast, { nodes: { fence, image }, tags: { video } });
+  const data = useLoaderData<typeof loader>();
+  const { article, formattedDate, articleHtml } = data;
 
   return (
     <Container className="mt-16">
@@ -103,7 +91,7 @@ export default function Article() {
               </p>
             </header>
             <Prose className="mt-8 word-break text-pretty" data-mdx-content>
-              {markdoc.renderers.react(node, React, { components: { Fence, Video, Image } })}
+              <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
               <hr />
               <em>
                 Like this article? Follow me on <a href={BLUESKY_LINK}>Bluesky</a> or subscribe to the <a href="/feed/all">RSS feed</a> to get notified about new articles.
