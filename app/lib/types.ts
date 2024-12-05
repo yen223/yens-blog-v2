@@ -12,6 +12,7 @@ export const FrontmatterZ = z.object({
 export type Frontmatter = z.infer<typeof FrontmatterZ>;
 export const ArticleZ = FrontmatterZ.extend({
   content: z.string(),
+  html: z.string().nullable(),
   slug: z.string(),
 });
 export type Article = z.infer<typeof ArticleZ>;

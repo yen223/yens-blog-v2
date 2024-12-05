@@ -9,17 +9,7 @@ import { ArticleZ } from "~/lib/types";
 import { formatDate } from "~/lib/formatDate";
 import { ButtonLink } from "~/components/Button";
 import { BLUESKY_LINK } from "~/constants";
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkFrontmatter from "remark-frontmatter";
-import remarkParseFrontmatter from "remark-parse-frontmatter";
-import rehypeStringify from "rehype-stringify";
-import remarkRehype from "remark-rehype";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSemanticImages from "~/lib/markdown/semanticImages";
-import rehypeRaw from 'rehype-raw'
-import rehypeComponents from "rehype-components";
-import { CaptionedVideo } from "~/lib/markdown/captionedVideo";
+import { parseMarkdown } from "~/lib/markdown/parse";
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -51,36 +41,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
     });
   }
   const formattedDate = formatDate(article.date);
-
-  const articleHtml = await unified()
-    // Take Markdown as input and turn it into MD syntax tree
-    .use(remarkParse)
-    // Add support for frontmatter in Markdown
-    .use(remarkFrontmatter, ["yaml"])
-    // Prase and validate Markdown frontmatter (YAML)
-    .use(remarkParseFrontmatter)
-    .use(remarkRehype, {
-      // Necessary for support HTML embeds (see next plugin)
-      allowDangerousHtml: true,
-    })
-    .use(rehypeRaw)
-    .use(rehypeComponents, {
-      components: {
-        "captioned-video": CaptionedVideo,
-      },
-    })
-    .use(rehypePrettyCode, {
-      keepBackground: false,
-    })
-    .use(rehypeSemanticImages, {
-      elements: {
-        figure: { className: "flex flex-col items-center mt-16 mb-16" },
-        figcaption: { className: "text-md text-zinc-500 dark:text-zinc-400" },
-      }
-    })
-    .use(rehypeStringify)
-    .process(article.content);
-  return { article, formattedDate, articleHtml: articleHtml.value };
+  const articleHtml = article.html ?? (await parseMarkdown(article.content)).value;
+  return { article, formattedDate, articleHtml };
 }
 
 export function meta({ data }: { data: LoaderData }) {

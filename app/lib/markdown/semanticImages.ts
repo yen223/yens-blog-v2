@@ -109,8 +109,6 @@ export const rehypeSemanticImage: Plugin<[Partial<RehypeSemanticImages>?], Root>
     };
 };
 
-export default rehypeSemanticImage;
-
 function mergeOptions(userOptions: Partial<RehypeSemanticImages> = {}): RehypeSemanticImagesRequired {
     return {
         ...defaultOptions,

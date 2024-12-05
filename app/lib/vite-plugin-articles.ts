@@ -12,9 +12,8 @@
 import type { Plugin } from 'vite'
 import { glob } from 'glob'
 import * as fs from 'fs/promises'
-import markdoc from '@markdoc/markdoc'
-import yaml from 'js-yaml'
 import { FrontmatterZ } from './types'
+import { parseMarkdown } from './markdown/parse'
 
 export function articlesPlugin(): Plugin {
   return {
@@ -27,17 +26,16 @@ export function articlesPlugin(): Plugin {
           const content = await fs.readFile(file, 'utf-8')
           
           // Parse the markdown content
-          const ast = markdoc.parse(content)
-          const frontmatterRaw = ast.attributes.frontmatter
-            ? yaml.load(ast.attributes.frontmatter)
-            : {}
+          const parsed = await parseMarkdown(content)
           
+          const frontmatterRaw = parsed.data.frontmatter
           // Validate frontmatter
           const frontmatter = FrontmatterZ.parse(frontmatterRaw)
           
           return {
             ...frontmatter,
             content,
+            html: parsed.value,
           }
         })
       )

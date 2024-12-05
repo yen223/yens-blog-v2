@@ -1,6 +1,7 @@
 import { h } from "hastscript";
 import { type ElementContent } from "hast";
 import { type ComponentFunction } from "rehype-components";
+
 type VideoProps = {
     src: string;
     controls?: boolean;
