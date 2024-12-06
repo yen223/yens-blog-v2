@@ -91,13 +91,13 @@ export default function About() {
         <div className="lg:pl-20">
           <ul>
             <SocialLink href="https://github.com/yen223" icon={GitHubIcon} className="mt-4">
-              Follow on GitHub
+              Follow me on GitHub
             </SocialLink>
             <SocialLink href="https://www.linkedin.com/in/weiyen/" icon={LinkedInIcon} className="mt-4">
-              Follow on LinkedIn
+              Follow me on LinkedIn
             </SocialLink>
             <SocialLink href={BLUESKY_LINK} icon={BlueSkyIcon} className="mt-4">
-              Follow on Bluesky
+              Follow me on Bluesky
             </SocialLink>
             <SocialLink
               href="mailto:hello@weiyen.net"
