@@ -7,8 +7,7 @@ import { Link } from "@remix-run/react";
 const projects = [
   {
     name: "Selectable",
-    description:
-      "A mobile-friendly Postgres database management app",
+    description: "A mobile-friendly Postgres database management app",
     link: { href: "https://getselectable.com", label: "getselectable.com" },
     logo: logoSelectable,
   },
@@ -16,9 +15,12 @@ const projects = [
     name: "The unofficial Guardian crossword archives",
     description:
       "The Guardian cryptic crosswords, but with a more mobile-friendly interface.",
-    link: { href: "https://unofficial-guardian-crossword-app.pages.dev/", label: "unofficial-guardian-crossword-app.pages.dev" },
+    link: {
+      href: "https://unofficial-guardian-crossword-app.pages.dev/",
+      label: "unofficial-guardian-crossword-app.pages.dev",
+    },
     logo: logoCrossword,
-  }
+  },
 ];
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
@@ -42,7 +44,11 @@ export default function Projects() {
         {projects.map((project) => (
           <Card as="li" key={project.name}>
             <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <img src={project.logo} alt="" className="h-14 w-14 rounded-full object-cover" />
+              <img
+                src={project.logo}
+                alt=""
+                className="h-14 w-14 rounded-full object-cover"
+              />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link to={project.link.href}>{project.name}</Card.Link>
@@ -56,13 +62,22 @@ export default function Projects() {
         ))}
       </ul>
       <section className="prose prose-zinc dark:prose-invert">
-        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">🛠️ Tools</h2>
+        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">
+          🛠️ Tools
+        </h2>
         <ul className="space-y-4">
           <li>
-            <Link to="/projects/key-event-viewer">Key Event Viewer</Link> - A tool to view key events in the browser
+            <Link to="/projects/key-event-viewer">Key Event Viewer</Link> - A
+            tool to view key events in the browser
           </li>
           <li>
-            <Link to="/projects/sql-ast-viz">SQL AST Visualizer</Link> - A tool to visualize the AST of a SQL statement
+            <Link to="/projects/sql-ast-viz">SQL AST Visualizer</Link> - A tool
+            to visualize the AST of a SQL statement
+          </li>
+          <li>
+            <Link to="https://github.com/yen223/hotpot">Hotpot</Link> - A
+            command-line alternative to Google Authenticator, to manage 2FA
+            tokens
           </li>
         </ul>
       </section>
