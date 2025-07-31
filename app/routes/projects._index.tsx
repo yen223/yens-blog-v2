@@ -67,12 +67,12 @@ export default function Projects() {
         </h2>
         <ul className="space-y-4">
           <li>
-            <Link to="/projects/key-event-viewer">Key Event Viewer</Link> - A
-            tool to view key events in the browser
+            <Link to="/projects/key-event-viewer">Keyboard Event Viewer</Link> -
+            A tool to view keyboard events in the browser
           </li>
           <li>
-            <Link to="/projects/sql-ast-viz">SQL AST Visualizer</Link> - A tool
-            to visualize the AST of a SQL statement
+            <Link to="/projects/sql-ast-parser">SQL AST Parser</Link> - A tool
+            to show the AST of a SQL statement
           </li>
           <li>
             <Link to="https://github.com/yen223/hotpot">Hotpot</Link> - A

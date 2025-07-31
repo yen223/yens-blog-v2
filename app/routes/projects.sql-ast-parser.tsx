@@ -47,20 +47,20 @@ export default function SQLASTViz() {
         <textarea
           name="sql"
           defaultValue={sql}
-          className="w-full h-32 p-2 border rounded shadow-md shadow-zinc-800/5 
+          className="w-full h-32 p-2 border rounded shadow-md shadow-zinc-800/5
                              border-zinc-900/10 bg-white placeholder:text-zinc-400
-                             focus:border-teal-500 focus:outline-none focus:ring-4 
-                             focus:ring-teal-500/10 
-                             dark:border-zinc-700 dark:bg-zinc-700/[0.15] 
+                             focus:border-teal-500 focus:outline-none focus:ring-4
+                             focus:ring-teal-500/10
+                             dark:border-zinc-700 dark:bg-zinc-700/[0.15]
                              dark:text-zinc-200 dark:placeholder:text-zinc-500
                              dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
           placeholder="Enter SQL statement here..."
         />
         <button
           type="submit"
-          className="mt-4 bg-zinc-800 text-zinc-100 px-4 py-2 rounded 
+          className="mt-4 bg-zinc-800 text-zinc-100 px-4 py-2 rounded
                              hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70
-                             dark:bg-zinc-700 dark:hover:bg-zinc-600 
+                             dark:bg-zinc-700 dark:hover:bg-zinc-600
                              dark:active:bg-zinc-700 dark:active:text-zinc-100/70"
         >
           Parse SQL
@@ -68,7 +68,7 @@ export default function SQLASTViz() {
       </form>
       {actionError && (
         <div
-          className="mt-4 p-4 bg-red-100/10 border border-red-400/20 
+          className="mt-4 p-4 bg-red-100/10 border border-red-400/20
                                text-red-700 dark:text-red-400 rounded"
         >
           {actionError}
