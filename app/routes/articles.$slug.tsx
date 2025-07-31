@@ -8,21 +8,9 @@ import React from "react";
 import { ArticleZ } from "~/lib/types";
 import { formatDate } from "~/lib/formatDate";
 import { ButtonLink } from "~/components/Button";
+import { ArrowLeftIcon } from "~/components/Icons";
 import { BLUESKY_LINK } from "~/constants";
 import { parseMarkdown } from "~/lib/markdown/parse";
-
-function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M7.25 11.25 3.75 8m0 0 3.5-3.25M3.75 8h8.5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 const ParamZ = z.object({ slug: z.string() });
 const LoaderDataZ = z.object({
