@@ -21,14 +21,13 @@ SELECT * FROM camelCaseTable; -- ERROR: relation "camelcasetable" does not exist
 SELECT * FROM "camelCaseTable"; -- WORKS
 ```
 
-In Postgres, identifiers (i.e. names of tables, columns and other database objects) are case-sensitive. A table named `camelCaseTable` is different from a table named `camelcasetable`. 
+In Postgres, identifiers (i.e. names of tables, columns and other database objects) are case-sensitive. A table named `camelCaseTable` is different from a table named `camelcasetable`.
 
 According to the docs:
 
 > Quoting an identifier also makes it case-sensitive, whereas unquoted names are always folded to lower case. For example, the identifiers FOO, foo, and "foo" are considered the same by PostgreSQL, but "Foo" and "FOO" are different from these three and each other. (The folding of unquoted names to lower case in PostgreSQL is incompatible with the SQL standard, which says that unquoted names should be folded to upper case. Thus, foo should be equivalent to "FOO" not "foo" according to the standard. If you want to write portable applications you are advised to always quote a particular name or never quote it.)
 >
 > Source: [Postgres docs](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#:~:text=Quoting%20an%20identifier,never%20quote%20it.%29)
-
 
 An unquoted identifier in any SQL statement is "folded" to a lowercased version of itself. So these two queries are effectively the same:
 

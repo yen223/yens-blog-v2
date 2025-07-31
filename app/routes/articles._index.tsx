@@ -11,9 +11,7 @@ function Article({ article }: { article: Article }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`${article.slug}`}>
-          {article.title}
-        </Card.Title>
+        <Card.Title href={`${article.slug}`}>{article.title}</Card.Title>
         <Card.Eyebrow
           as="time"
           dateTime={article.date}
@@ -38,8 +36,7 @@ function Article({ article }: { article: Article }) {
 
 export const metadata = {
   title: "Articles",
-  description:
-    "Articles that I have written for fun and profit",
+  description: "Articles that I have written for fun and profit",
 };
 
 const LoaderDataZ = z.object({ articles: ArticleZ.array() });

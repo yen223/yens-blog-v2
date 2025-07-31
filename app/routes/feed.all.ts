@@ -13,7 +13,8 @@ export const loader: LoaderFunction = async ({ request }) => {
     <atom:link href="${SITE_URL}/rss" rel="self" type="application/rss+xml"/>
     ${articles
       .filter((article) => article.published)
-      .map((article) => `
+      .map(
+        (article) => `
       <item>
         <title>${article.title}</title>
         <description>${article.description}</description>
@@ -21,7 +22,9 @@ export const loader: LoaderFunction = async ({ request }) => {
         <guid>${SITE_URL}/articles/${article.slug}</guid>
         <pubDate>${new Date(article.date).toUTCString()}</pubDate>
       </item>
-    `).join('')}
+    `
+      )
+      .join("")}
   </channel>
 </rss>`;
 

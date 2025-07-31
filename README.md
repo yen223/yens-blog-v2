@@ -2,7 +2,7 @@
 
 This codebase hosts my personal blog, hosted at [https://weiyen.net](https://weiyen.net).
 
-The blog is 
+The blog is
 
 - Built with [Remix](https://remix.run/)
 - Deployed on [DigitalOcean](https://www.digitalocean.com/)
@@ -26,4 +26,3 @@ npm run dev
 ## Deployment
 
 Push to the `main` branch to deploy.
-

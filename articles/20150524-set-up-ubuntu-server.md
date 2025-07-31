@@ -13,7 +13,7 @@ description: "This guide explains how to set up ssh access for an Ubuntu server.
 
 You've signed up for a VPS, and now you have received `root` access into the server. Before you do anything else, it's always a good idea to properly set up ssh access, because it's more secure **and** more convenient.
 
-*Note: This guide assumes you are running OSX or Linux locally. The instructions for Windows will be different.*
+_Note: This guide assumes you are running OSX or Linux locally. The instructions for Windows will be different._
 
 Here's how:
 
@@ -50,7 +50,7 @@ Take note of the path to the public key, which in my case is `/home/vagrant/.ssh
 
 ## Step 2
 
-Log into the VPS using `ssh`, replacing *"123.456.789.12"* with your VPS IP address:
+Log into the VPS using `ssh`, replacing _"123.456.789.12"_ with your VPS IP address:
 
 ```bash
 ssh root@123.456.789.12

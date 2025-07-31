@@ -20,7 +20,7 @@ CREATE TABLE users (
 );
 ```
 
-... and now you want to create a `users_history` table to track changes that happen to users. Suppose `users_history` shares the same columns as `users`. 
+... and now you want to create a `users_history` table to track changes that happen to users. Suppose `users_history` shares the same columns as `users`.
 
 You can achieve this using the `LIKE` clause ([docs](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-PARMS-LIKE)).
 
@@ -32,11 +32,11 @@ CREATE TABLE users_history (LIKE users);
 Note that you can specify additional columns:
 
 ```sql
--- Create a new table with the same columns as `users`, 
+-- Create a new table with the same columns as `users`,
 -- but that also tracks modification time and modification type
 CREATE TABLE users_history (
-  LIKE users, 
-  modified_at timestamptz NOT NULL, 
+  LIKE users,
+  modified_at timestamptz NOT NULL,
   change_type text NOT NULL
 );
 ```
@@ -53,7 +53,7 @@ ALTER TABLE users_history DROP COLUMN created_at;
 By default, `LIKE` only copies over column names and types. By specifying the optional setting `INCLUDING <x>`, you can also copy over specified properties:
 
 ```sql
--- Copy over everything mentioned below 
+-- Copy over everything mentioned below
 CREATE TABLE users_history (LIKE users INCLUDING ALL);
 
 -- Copy over comments
@@ -87,7 +87,7 @@ CREATE TABLE users_history (LIKE users INCLUDING STORAGE);
 You can also specify `EXCLUDING <x>` to exclude certain properties. This is most useful when used in conjunction with `INCLUDING ALL`
 
 ```sql
--- Copy over everything, except for indexes and 
+-- Copy over everything, except for indexes and
 -- primary key + unique + exclude constraints
 CREATE TABLE users_history (LIKE users INCLUDING ALL EXCLUDING INDEXES);
 ```

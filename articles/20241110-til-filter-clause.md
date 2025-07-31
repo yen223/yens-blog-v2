@@ -15,7 +15,7 @@ _( H/T [@winand.at](https://bsky.app/profile/winand.at/post/3lagizjuo4e2y) )_
 In SQL, if you wanted to perform two or more aggregations with different filters, you might be able to use the `FILTER` clause.
 
 ```sql
-SELECT 
+SELECT
     count(*) as user_count,
     count(*) filter (where verified = true) as verified_user_count
 FROM users;
@@ -24,7 +24,7 @@ FROM users;
 is the equivalent of:
 
 ```sql
-SELECT 
+SELECT
     count(*) as user_count,
     sum(case when verified = true then 1 else 0 end) as verified_user_count
 FROM users;

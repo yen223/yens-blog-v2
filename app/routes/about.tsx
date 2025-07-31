@@ -64,36 +64,53 @@ export default function About() {
             <section>
               <p>
                 I'm currently working full-time on building{" "}
-                <a href={"https://getselectable.com"}>
-                  Selectable
-                </a>
-                .
+                <a href={"https://getselectable.com"}>Selectable</a>.
               </p>
               <p>
                 I like databases, programming languages, maths, and wordplay.
               </p>
               <p>
-                I was previously a software engineer at Rokt, Mathspace, Western Digital and Accenture.
+                I was previously a software engineer at Rokt, Mathspace, Western
+                Digital and Accenture.
               </p>
             </section>
             <section>
               <h2>About this site</h2>
-              <p>This site is open-source. The code is hosted on <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>.</p>
               <p>
-                This site is built with <a href="https://remix.run">Remix</a> and hosted on <a href="https://www.digitalocean.com/?refcode=61c4d2b4f1b7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste">DigitalOcean</a> (referral link).
+                This site is open-source. The code is hosted on{" "}
+                <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>.
               </p>
               <p>
-                The design is based on <a href="https://tailwindui.com/templates/spotlight">Tailwind Spotlight</a>
+                This site is built with <a href="https://remix.run">Remix</a>{" "}
+                and hosted on{" "}
+                <a href="https://www.digitalocean.com/?refcode=61c4d2b4f1b7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste">
+                  DigitalOcean
+                </a>{" "}
+                (referral link).
+              </p>
+              <p>
+                The design is based on{" "}
+                <a href="https://tailwindui.com/templates/spotlight">
+                  Tailwind Spotlight
+                </a>
               </p>
             </section>
           </div>
         </div>
         <div className="lg:pl-20">
           <ul>
-            <SocialLink href="https://github.com/yen223" icon={GitHubIcon} className="mt-4">
+            <SocialLink
+              href="https://github.com/yen223"
+              icon={GitHubIcon}
+              className="mt-4"
+            >
               Follow me on GitHub
             </SocialLink>
-            <SocialLink href="https://www.linkedin.com/in/weiyen/" icon={LinkedInIcon} className="mt-4">
+            <SocialLink
+              href="https://www.linkedin.com/in/weiyen/"
+              icon={LinkedInIcon}
+              className="mt-4"
+            >
               Follow me on LinkedIn
             </SocialLink>
             <SocialLink href={BLUESKY_LINK} icon={BlueSkyIcon} className="mt-4">

@@ -14,7 +14,7 @@ description: "Postgres features that may fly under the radar."
 `COMMENT ON` can be used to add comments to tables, columns, indexes, and other database entities.
 
 ```sql
-COMMENT ON TABLE users IS 
+COMMENT ON TABLE users IS
   'This table is deprecated. Please use the users_v2 table instead.';
 COMMENT ON COLUMN users.name IS 'The full name of the user';
 ```
@@ -23,24 +23,23 @@ SQL clients can pick up on these comments, and display them whenever you're brow
 
 ![Screenshot of Datagrip showing a comment of a table][1]
 
-Comments are stored in the `pg_catalog.pg_description` table. 
+Comments are stored in the `pg_catalog.pg_description` table.
 
 `COMMENT ON` is supported in all versions of Postgres ([docs](https://www.postgresql.org/docs/current/sql-comment.html)).
 
-
 ## Count non-null and null arguments
 
-`num_nonnulls(...)` counts the number of provided arguments that are not null. 
+`num_nonnulls(...)` counts the number of provided arguments that are not null.
 
 ```sql
-SELECT num_nonnulls('a', 'b', null); 
+SELECT num_nonnulls('a', 'b', null);
 -- Returns 2
 ```
 
 `num_nulls(...)` counts the number of provided arguments that are null.
 
 ```sql
-SELECT num_nulls('a', 'b', null); 
+SELECT num_nulls('a', 'b', null);
 -- Returns 1
 ```
 
@@ -53,8 +52,8 @@ CREATE TABLE purchase_order (
     contact_phone TEXT NULL
 );
 
--- If we want to ensure that at least one of email or phone is provided 
--- when making a purchase order, we can add a check constraint using 
+-- If we want to ensure that at least one of email or phone is provided
+-- when making a purchase order, we can add a check constraint using
 -- `num_nonnulls`
 ALTER TABLE purchase_order ADD CONSTRAINT contact_info_check CHECK (
     num_nonnulls(contact_email, contact_phone) >= 1
@@ -63,13 +62,12 @@ ALTER TABLE purchase_order ADD CONSTRAINT contact_info_check CHECK (
 
 `num_nonnulls` and `num_nulls` are available in Postgres 9.6+ ([docs](https://www.postgresql.org/docs/9.6/functions-comparison.html#:~:text=Table%209%2D3.%20Comparison%20Functions))
 
-
 ## Add different filters to different aggregations
 
 In Postgres, if you wanted to perform two or more aggregations with different filters, you might be able to use the `FILTER` clause.
 
 ```sql
-SELECT 
+SELECT
     count(*) as user_count,
     count(*) filter (where verified = true) as verified_user_count,
     count(*) filter (where verified = false) as unverified_user_count
@@ -79,7 +77,7 @@ FROM users;
 is the equivalent of:
 
 ```sql
-SELECT 
+SELECT
     count(*) as user_count,
     sum(case when verified = true then 1 else 0 end) as verified_user_count,
     sum(case when verified = false then 1 else 0 end) as unverified_user_count
@@ -102,11 +100,11 @@ CREATE TABLE users (
     created_at timestamptz NOT NULL DEFAULT now()
 );
 
--- This creates a users_history table with the same columns as the users table, 
+-- This creates a users_history table with the same columns as the users table,
 -- but with additional columns
 CREATE TABLE users_history (
-  LIKE users INCLUDING ALL, 
-  modified_at timestamptz NOT NULL, 
+  LIKE users INCLUDING ALL,
+  modified_at timestamptz NOT NULL,
   modification_type text NOT NULL
 );
 ```
@@ -129,17 +127,17 @@ The `date_bin` function can be used to bin a timestamp to some given interval, a
 
 ```sql
 
--- This returns the start of the nearest 10-minute interval that each event_time 
+-- This returns the start of the nearest 10-minute interval that each event_time
 -- belongs to, starting from 13:02:00.
-SELECT 
+SELECT
   event_time,
   date_bin(
     '10 minutes', -- Interval length
     event_time, -- Timestamp to align
     TIMESTAMP '2024-12-02 13:02:00' -- Start of the first interval
   )
-FROM 
-  (VALUES 
+FROM
+  (VALUES
     (TIMESTAMP '2024-12-02 14:24:00'),
     (TIMESTAMP '2024-12-02 14:26:00'),
     (TIMESTAMP '2024-12-02 14:35:12'),
@@ -148,7 +146,7 @@ FROM
   ) AS t(event_time);
 
 /*
-     event_time      |      date_bin       
+     event_time      |      date_bin
 ---------------------+---------------------
  2024-12-02 14:24:00 | 2024-12-02 14:22:00
  2024-12-02 14:26:00 | 2024-12-02 14:22:00

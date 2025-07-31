@@ -19,9 +19,10 @@ When creating a new NodeJS project, it's a good idea to do these two things firs
 nvm use --lts
 node -v > .nvmrc
 ```
+
 `nvm` ([docs](https://github.com/nvm-sh/nvm)) is the Node Version Manager. It allows you to install and switch between different versions of node.
 
-The commands above adds a `.nvmrc` file to the project that indicates which version of node the project requires. 
+The commands above adds a `.nvmrc` file to the project that indicates which version of node the project requires.
 
 The next time you come back to the project,`nvm use` will use this version of node.
 
@@ -31,7 +32,7 @@ The next time you come back to the project,`nvm use` will use this version of no
 echo "save-exact=true" >> .npmrc
 ```
 
-This means that when I install a dependency using `npm install`, it will pin the exact major.minor.patch version of the dependency to the `package.json` file. 
+This means that when I install a dependency using `npm install`, it will pin the exact major.minor.patch version of the dependency to the `package.json` file.
 
 It's the equivalent of always adding the `--save-exact` flag ([docs](https://docs.npmjs.com/cli/v8/commands/npm-install#save-exact)) to every `npm install` command.
 
@@ -46,6 +47,6 @@ These two steps prevent both of these issues.
 
 ### Caveat
 
-This only applies to **application** projects, not **library** projects. 
+This only applies to **application** projects, not **library** projects.
 
 If you are building a library that will be used by other projects, you absolutely should not pin your dependencies, because you want to allow flexibility for consumers of your library to use the versions they want.

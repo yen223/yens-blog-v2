@@ -272,7 +272,10 @@ export function Header() {
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1 ">
-                <Link className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-200 pointer-events-auto" to="/">
+                <Link
+                  className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-200 pointer-events-auto"
+                  to="/"
+                >
                   Wei Yen
                 </Link>
               </div>

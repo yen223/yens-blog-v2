@@ -14,18 +14,18 @@ I do not know how to write Vite plugins. Thanks to Cursor, I've made [one](https
 [Cursor](https://www.cursor.com/) is an "AI-powered code editor". There was some initial hype about it, but I decided to give it a go yesterday.
 
 Articles in this blog are written in Markdown, and are stored in the `articles` directory.
-As part of rebuilding this blog, I wanted to experiment with pre-loading all the articles in the Remix server on startup, in order to speed 
-up page load time. 
+As part of rebuilding this blog, I wanted to experiment with pre-loading all the articles in the Remix server on startup, in order to speed
+up page load time.
 
-My initial approach was to write a function that would load all files in the `articles` directory via `import.meta.glob`. 
+My initial approach was to write a function that would load all files in the `articles` directory via `import.meta.glob`.
 Unfortunately, this caused the site to hit a startup CPU limit on deployment.
 
-So instead, I decided to compile all the articles into a single file at build time, and import them in the server. This is theoretically a much faster process, 
+So instead, I decided to compile all the articles into a single file at build time, and import them in the server. This is theoretically a much faster process,
 as it avoids the overhead of dynamic imports at runtime. This basically meant I needed to write a Vite plugin.
 
-I have no experience writing Vite plugins. I know how to use Vite plugins, and I know how they work in principle. But I've never had 
-reason to write one, and so I've never taken the time to learn how. But that didn't matter. I just asked Cursor to write a Vite plugin for me, 
-and it did. 
+I have no experience writing Vite plugins. I know how to use Vite plugins, and I know how they work in principle. But I've never had
+reason to write one, and so I've never taken the time to learn how. But that didn't matter. I just asked Cursor to write a Vite plugin for me,
+and it did.
 
 ![Cursor writing a Vite plugin][1]
 

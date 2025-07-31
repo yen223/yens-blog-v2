@@ -35,7 +35,7 @@ Normally, when you type a letter e.g. 't', the browser should fire a [keydown](h
 
 <captioned-video src="/videos/desktop-events.mp4" caption="This is on Chrome 130, macOS 15"></captioned-video>
 
-However, Gboard has a peculiar behaviour where when it's generating autocomplete suggestions, backspaces *always* have keyCode `229` - `Unidentified`. But once it's not generating suggestions, backspaces have the correct keyCode `8`.
+However, Gboard has a peculiar behaviour where when it's generating autocomplete suggestions, backspaces _always_ have keyCode `229` - `Unidentified`. But once it's not generating suggestions, backspaces have the correct keyCode `8`.
 
 <captioned-video src="/videos/gboard-events.mp4" caption="Keyboard events in Gboard"></captioned-video>
 
@@ -45,7 +45,7 @@ This breaks any code that listens for any specific keyCode, e.g. if it's listeni
 
 The same bug happens on Chrome on Android, and on Firefox on Android, but they appear to manifest in different ways.
 
-In Chrome, *all letters* have keyCode `229`. In Firefox, typing letters generate the correct keyCode, but backspaces still have keyCode `229`, but with keyname `Process`.
+In Chrome, _all letters_ have keyCode `229`. In Firefox, typing letters generate the correct keyCode, but backspaces still have keyCode `229`, but with keyname `Process`.
 
 Given that the one common denominator is Gboard, I'm inclined to think it's a problem with Gboard.
 
@@ -58,11 +58,11 @@ Honestly, I do not know. If you are a developer for Gboard, and you happen to re
 If you need to listen for the `Backspace` key specifically, the best workaround appears to be to listen to the `beforeinput` event on the input element, and check if the `inputType` is `deleteContentBackward`.
 
 ```js
-let input = document.querySelector('input');
-input.addEventListener('beforeinput', (event) => {
-    if (event.inputType === 'deleteContentBackward') {
-        // Handle backspace
-    }
+let input = document.querySelector("input");
+input.addEventListener("beforeinput", (event) => {
+  if (event.inputType === "deleteContentBackward") {
+    // Handle backspace
+  }
 });
 ```
 
@@ -72,16 +72,16 @@ Note that if you are using React, there is [yet another problem](https://github.
 const ref = useRef<HTMLInputElement>(null);
 
 useEffect(() => {
-    const listener = (event: InputEvent) => {
-        if (event.inputType === 'deleteContentBackward') {
-            // Handle backspace
-        }
+  const listener = (event: InputEvent) => {
+    if (event.inputType === "deleteContentBackward") {
+      // Handle backspace
     }
-    ref.current?.addEventListener('beforeinput', listener);
-    return () => ref.current?.removeEventListener('beforeinput', listener);
+  };
+  ref.current?.addEventListener("beforeinput", listener);
+  return () => ref.current?.removeEventListener("beforeinput", listener);
 }, []);
 
-return <input ref={ref} />
+return <input ref={ref} />;
 ```
 
 If you want to listen to specific letters, you can try and use the `data` prop in the `beforeinput` event.

@@ -29,17 +29,17 @@ export default function handleRequest(
   trackPageView(request);
   return isbot(request.headers.get("user-agent") || "")
     ? handleBotRequest(
-      request,
-      responseStatusCode,
-      responseHeaders,
-      remixContext
-    )
+        request,
+        responseStatusCode,
+        responseHeaders,
+        remixContext
+      )
     : handleBrowserRequest(
-      request,
-      responseStatusCode,
-      responseHeaders,
-      remixContext
-    );
+        request,
+        responseStatusCode,
+        responseHeaders,
+        remixContext
+      );
 }
 
 function handleBotRequest(

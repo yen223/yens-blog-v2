@@ -26,7 +26,7 @@ length("Bobby") == 5  # str -> int
 length("Caroline") == 8  # str -> int
 ```
 
-Then we can trivially get from a *list* of strings to a *list* of integers, just by using the same `length` function and the `map` operation:
+Then we can trivially get from a _list_ of strings to a _list_ of integers, just by using the same `length` function and the `map` operation:
 
 ```python
 >>> map(length, ["Adam", "Bobby", "Caroline"])
@@ -43,7 +43,6 @@ The map function has the following signature:
 
 That is, it takes a function that transforms type `a` to type `b`, and gives us a function that transforms `f a` to `f b`, where `f a` is a functor that wraps the type `a`.
 
-
 It's important to point out that `f` aren't limited to lists - sets and trees can be mapped over in a similar manner.
 
 It doesn't even have to be collections either. Consider the `Option a` type, which represents a "container" that may contain some value of type `a`, or nothing. It is a common pattern to say, I have this thing that may be some value, or it might be null. If I have an actual value, then do `a -> b`; otherwise, just give me null. Either way, I want an Option of type `b`.
@@ -57,4 +56,3 @@ Option a -> (a -> b) -> Option b
 Which after some rearranging, looks a lot like the definition of `map` above! Indeed, Option types can be thought of as functors as well.
 
 In summary, a functor is a "wrapper" of one type, that can be transformed into a "wrapper" of a different type, just by applying a function on its elements. Simple as that.
-

@@ -10,7 +10,6 @@ tags:
 description: "This article reflects on the my experience of pursuing a Master's degree at ANU."
 ---
 
-
 After getting my Bachelor's degree, I immediately got a job working in the corporate world. After a few years grinding away at a tedious job, I figured it was as good a time as any to refresh my skills. 12 months ago, I made the risky decision to leave my job and come to Canberra to do my [Master of Computing at ANU](http://programsandcourses.anu.edu.au/program/7706XMCOMP), specializing in Artificial Intelligence.
 
 So far, I only regret one thing - I should have done this sooner.
@@ -33,7 +32,7 @@ Doing the Master's degree had the nice side-benefit of allowing me to meet with 
 
 Any first-year undergraduate CS student can tell you that an AI is nothing more than just a slightly more complicated piece of software. When I first started this course, I came in thinking that 4 years of programming out in the real world should be more than enough experience.
 
-Boy, was I ever so wrong. *Never* trust first-year undergrads.
+Boy, was I ever so wrong. _Never_ trust first-year undergrads.
 
 The vastness of the AI space makes it a tough field to get into. It draws heavily from statistics, probability theory, linear algebra, and even a little bit of linguistics and psychology. This meant that you need a very strong grasp of foundational maths to be able to keep up with the coursework. Something which I didn't realize I lacked until I started the course.
 

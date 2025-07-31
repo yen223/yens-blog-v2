@@ -10,7 +10,6 @@ description: "macOS comes with a lot of built-in utilities. Here's a list of som
 
 Sometimes when I'm bored, I like to look at the list of [macOS Bash commands](https://ss64.com/mac/). Here's some commands that I found interesting:
 
-
 ## Access your Keychain programmatically
 
 If you store your secrets in the Keychain (and you should!), you can access them programmatically using `security`.
@@ -57,9 +56,9 @@ pbpaste
 This is very useful for getting data from files into the browser, or other GUI applications.
 
 #### Links:
+
 - [https://ss64.com/mac/pbcopy.html](https://ss64.com/mac/pbcopy.html)
 - [https://ss64.com/mac/pbpaste.html](https://ss64.com/mac/pbpaste.html)
-
 
 ## UTC date
 
@@ -72,7 +71,7 @@ This is a one-liner in the terminal:
 date -u
 ```
 
-Alternatively, you can use 
+Alternatively, you can use
 
 ```bash
 TZ=UTC date
@@ -134,11 +133,11 @@ Link: [https://ss64.com/mac/uuidgen.html](https://ss64.com/mac/uuidgen.html)
 
 ## Update [9 Nov 2024]
 
-After posting this article on [Hacker News](https://news.ycombinator.com/item?id=42057431) and making it to #2 on the front page(!), the folks over there suggested many *many* more interesting utilities. 
+After posting this article on [Hacker News](https://news.ycombinator.com/item?id=42057431) and making it to #2 on the front page(!), the folks over there suggested many _many_ more interesting utilities.
 
 Here are some of my favourites:
 
-- `sips`: The Scriptable Image Processing System, for converting between various image formats. [Link](https://ss64.com/mac/sips.html)  
+- `sips`: The Scriptable Image Processing System, for converting between various image formats. [Link](https://ss64.com/mac/sips.html)
 - `afinfo`: To probe metadata of audio files. [Link](https://ss64.com/mac/afinfo.html)
 - `mdls`: To probe metadata of all kinds of files. [Link](https://ss64.com/mac/mdls.html)
 - `afconvert`: For converting between various audio formats. [Link](https://ss64.com/mac/afconvert.html)

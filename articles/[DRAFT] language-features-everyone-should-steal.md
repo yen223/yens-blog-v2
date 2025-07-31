@@ -14,17 +14,16 @@ description: "How to model tagged unions in SQL"
 
 ```typescript
 type User = {
-    id: number,
-    name: string,
-}
+  id: number;
+  name: string;
+};
 
 type Account = {
-    ownerId: User["id"]  // <-- This is a reference to the User.id type. `ownerId` is now also of type `number`
-}
+  ownerId: User["id"]; // <-- This is a reference to the User.id type. `ownerId` is now also of type `number`
+};
 ```
 
 In Typescript, you can use the [subscript notation](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html) to reference types of fields defined in object types. In the example above, the type of `Account.ownerId` is always going to be whatever `User.id` is. If `User.id` was changed into a `UUID` type, `Account.ownerId` would also be changed into a `UUID` type.
-
 
 ## Typescript - Utility types
 

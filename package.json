@@ -6,6 +6,8 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "node ./server.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc",

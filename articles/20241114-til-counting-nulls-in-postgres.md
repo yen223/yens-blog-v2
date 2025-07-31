@@ -9,17 +9,17 @@ tags:
 description: "The num_nonnulls and num_nulls functions in Postgres"
 ---
 
-`num_nonnulls(...)` counts the number of provided arguments that are not null. 
+`num_nonnulls(...)` counts the number of provided arguments that are not null.
 
 ```sql
-SELECT num_nonnulls('a', 'b', null); 
+SELECT num_nonnulls('a', 'b', null);
 -- Returns 2
 ```
 
 `num_nulls(...)` counts the number of provided arguments that are null.
 
 ```sql
-SELECT num_nulls('a', 'b', null); 
+SELECT num_nulls('a', 'b', null);
 -- Returns 1
 ```
 
@@ -32,8 +32,8 @@ CREATE TABLE purchase_order (
     contact_phone TEXT NULL
 );
 
--- If we want to ensure that at least one of email or phone is provided 
--- when making a purchase order, we can add a check constraint using 
+-- If we want to ensure that at least one of email or phone is provided
+-- when making a purchase order, we can add a check constraint using
 -- `num_nonnulls`
 ALTER TABLE purchase_order ADD CONSTRAINT contact_info_check CHECK (
     num_nonnulls(contact_email, contact_phone) >= 1

@@ -41,7 +41,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
     });
   }
   const formattedDate = formatDate(article.date);
-  const articleHtml = article.html ?? (await parseMarkdown(article.content)).value;
+  const articleHtml =
+    article.html ?? (await parseMarkdown(article.content)).value;
   return { article, formattedDate, articleHtml };
 }
 
@@ -52,10 +53,19 @@ export function meta({ data }: { data: LoaderData }) {
     { name: "description", content: article.description },
     { property: "og:title", content: article.title },
     { property: "og:description", content: article.description },
-    { property: "og:url", content: `https://weiyen.net/articles/${article.slug}` },
-    { property: "og:image", content: `https://weiyen.net/articles/${article.slug}/oggraph.png` },
+    {
+      property: "og:url",
+      content: `https://weiyen.net/articles/${article.slug}`,
+    },
+    {
+      property: "og:image",
+      content: `https://weiyen.net/articles/${article.slug}/oggraph.png`,
+    },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: `https://weiyen.net/articles/${article.slug}/oggraph.png` },
+    {
+      name: "twitter:image",
+      content: `https://weiyen.net/articles/${article.slug}/oggraph.png`,
+    },
   ];
 }
 
@@ -84,7 +94,12 @@ export default function Article() {
                 dateTime={article.date}
                 className="order-first flex items-center text-base font-light text-zinc-400 dark:text-zinc-300"
               >
-                <span>Published <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{formattedDate}</span></span>
+                <span>
+                  Published{" "}
+                  <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
+                    {formattedDate}
+                  </span>
+                </span>
               </time>
               <p className="text-zinc-400 dark:text-zinc-400 pt-4">
                 {article.description}
@@ -94,7 +109,10 @@ export default function Article() {
               <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
               <hr />
               <em>
-                Like this article? Follow me on <a href={BLUESKY_LINK}>Bluesky</a> or subscribe to the <a href="/feed/all">RSS feed</a> to get notified about new articles.
+                Like this article? Follow me on{" "}
+                <a href={BLUESKY_LINK}>Bluesky</a> or subscribe to the{" "}
+                <a href="/feed/all">RSS feed</a> to get notified about new
+                articles.
               </em>
             </Prose>
           </article>

@@ -11,21 +11,30 @@ import {
 import "./tailwind.css";
 import "./prism.css";
 import { RootLayout } from "~/components/RootLayout";
-import {
-  isRouteErrorResponse,
-  useRouteError,
-} from "@remix-run/react";
+import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
 import { SimpleLayout } from "./components/SimpleLayout";
 
 export const meta = () => {
   return [
     { title: "Wei Yen's Personal Site" },
-    { name: "description", content: "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology." },
+    {
+      name: "description",
+      content:
+        "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology.",
+    },
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: "Wei Yen's Personal Site" },
-    { name: "twitter:description", content: "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology." },
+    {
+      name: "twitter:description",
+      content:
+        "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology.",
+    },
     { property: "og:title", content: "Wei Yen's Personal Site" },
-    { property: "og:description", content: "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology." },
+    {
+      property: "og:description",
+      content:
+        "I'm Wei Yen, a software engineer based in Sydney. I write about software development, programming, and technology.",
+    },
     { property: "og:type", content: "website" },
   ];
 };
@@ -52,7 +61,7 @@ export const links: LinksFunction = () => [
   {
     rel: "icon",
     type: "image/png",
-    sizes: "32x32", 
+    sizes: "32x32",
     href: "/favicon-32x32.png",
   },
   {
@@ -64,7 +73,7 @@ export const links: LinksFunction = () => [
   {
     rel: "manifest",
     href: "/site.webmanifest",
-  }
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

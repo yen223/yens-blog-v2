@@ -1,7 +1,7 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { articlesPlugin } from './app/lib/vite-plugin-articles'
+import { articlesPlugin } from "./app/lib/vite-plugin-articles";
 
 declare module "@remix-run/node" {
   interface Future {
@@ -24,6 +24,5 @@ export default defineConfig({
     tsconfigPaths(),
     articlesPlugin(),
   ],
-  assetsInclude: ['**/*.md', 'articles/**/*.md'],
+  assetsInclude: ["**/*.md", "articles/**/*.md"],
 });
-

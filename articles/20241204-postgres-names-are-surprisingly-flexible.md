@@ -22,27 +22,29 @@ INSERT INTO 💩😀🤔 (name) VALUES ('poop');
 
 SELECT * FROM 💩😀🤔;
 /*
- id | name 
+ id | name
 ----+------
   1 | poop
 (1 row)
 */
 ```
+
 Notice that you don't need to quote the emoji name. Given that there's no case-folding with emojis, emojis are superior to [uppercase letters in table names](/articles/avoid-capital-letters-in-postgres-names) in this one respect.
 
 There are surprisingly few restrictions to what you can name your tables:
 
-- Quoted identifiers can contain any character, including spaces and punctuation. 
+- Quoted identifiers can contain any character, including spaces and punctuation.
 - The length of an identifier is restricted to `NAMEDATALEN` - 1 bytes. `NAMEDATALEN` is 63 by default, but can be set at compile time.
 
 All of these are valid identifiers, which means you can use them as table names:
+
 - `" "`
 - `"This is a valid identifier!!"`
 - `表名`
 - `"..."`
 - `"SELECT"`
 
-Identifiers don't need to be quoted if they "begin with a letter (a-z, but also letters with diacritical marks and non-Latin letters) or an underscore (_)."
+Identifiers don't need to be quoted if they "begin with a letter (a-z, but also letters with diacritical marks and non-Latin letters) or an underscore (\_)."
 
 All the above rules apply to all identifiers, including column names, index names, and constraint names:
 

@@ -33,7 +33,14 @@ export function Footer() {
               </div>
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
                 &copy; {new Date().getFullYear()} Wei Yen Lee. All rights
-                reserved. This site is <a href="https://github.com/yen223/yens-blog-v2" className="text-teal-500 underline">open source</a>!
+                reserved. This site is{" "}
+                <a
+                  href="https://github.com/yen223/yens-blog-v2"
+                  className="text-teal-500 underline"
+                >
+                  open source
+                </a>
+                !
               </p>
             </div>
           </ContainerInner>

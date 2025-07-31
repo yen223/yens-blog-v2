@@ -9,57 +9,57 @@
  * 6. Writes the processed articles to a JSON file for use in the app
  */
 
-import type { Plugin } from 'vite'
-import { glob } from 'glob'
-import * as fs from 'fs/promises'
-import { FrontmatterZ } from './types'
-import { parseMarkdown } from './markdown/parse'
+import type { Plugin } from "vite";
+import { glob } from "glob";
+import * as fs from "fs/promises";
+import { FrontmatterZ } from "./types";
+import { parseMarkdown } from "./markdown/parse";
 
 export function articlesPlugin(): Plugin {
   return {
-    name: 'vite-plugin-articles',
+    name: "vite-plugin-articles",
     async buildStart() {
       // Find all .md files in the articles directory
-      const files = await glob('articles/*.md')
+      const files = await glob("articles/*.md");
       const articles = await Promise.all(
         files.map(async (file) => {
-          const content = await fs.readFile(file, 'utf-8')
-          
+          const content = await fs.readFile(file, "utf-8");
+
           // Parse the markdown content
-          const parsed = await parseMarkdown(content)
-          
-          const frontmatterRaw = parsed.data.frontmatter
+          const parsed = await parseMarkdown(content);
+
+          const frontmatterRaw = parsed.data.frontmatter;
           // Validate frontmatter
-          const frontmatter = FrontmatterZ.parse(frontmatterRaw)
-          
+          const frontmatter = FrontmatterZ.parse(frontmatterRaw);
+
           return {
             ...frontmatter,
             content,
             html: parsed.value,
-          }
+          };
         })
-      )
+      );
 
       // Sort articles by date
       const sortedArticles = articles
-        .filter(article => article.published)
-        .sort((a, z) => +new Date(z.date) - +new Date(a.date))
+        .filter((article) => article.published)
+        .sort((a, z) => +new Date(z.date) - +new Date(a.date));
 
       // Write to JSON file
       await fs.writeFile(
-        'app/articles.json',
+        "app/articles.json",
         JSON.stringify(sortedArticles, null, 2)
-      )
+      );
     },
     configureServer(server) {
       // Watch for changes to markdown files
-      server.watcher.add('articles/*.md')
-      server.watcher.on('change', (file) => {
-        if (file.endsWith('.md')) {
+      server.watcher.add("articles/*.md");
+      server.watcher.on("change", (file) => {
+        if (file.endsWith(".md")) {
           // Trigger rebuild when markdown files change
-          server.restart()
+          server.restart();
         }
-      })
-    }
-  }
-} 
+      });
+    },
+  };
+}

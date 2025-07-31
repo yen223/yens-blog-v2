@@ -5,7 +5,11 @@ import { z } from "zod";
 import { Button, ButtonLink } from "~/components/Button";
 import { Card } from "~/components/Card";
 import { Container } from "~/components/Container";
-import { BlueSkyIcon, GitHubIcon, LinkedInIcon } from "~/components/SocialIcons";
+import {
+  BlueSkyIcon,
+  GitHubIcon,
+  LinkedInIcon,
+} from "~/components/SocialIcons";
 import { getCachedArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
 import type { Article } from "~/lib/types";
@@ -104,7 +108,9 @@ function ArrowDownIcon(props: ComponentPropsWithoutRef<"svg">) {
 function Article({ article }: { article: Article }) {
   return (
     <Card as="article">
-      <Card.Title href={`./articles/${article.slug}`}>{article.title}</Card.Title>
+      <Card.Title href={`./articles/${article.slug}`}>
+        {article.title}
+      </Card.Title>
       <Card.Eyebrow as="time" dateTime={article.date} decorate>
         {formatDate(article.date)}
       </Card.Eyebrow>
@@ -135,8 +141,8 @@ function Profile() {
         <span className="ml-3">About me</span>
       </h2>
       <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
-        I&apos;m Wei Yen, @yen223 on the internet. Ex-software engineer, currently working full-time on
-        building{" "}
+        I&apos;m Wei Yen, @yen223 on the internet. Ex-software engineer,
+        currently working full-time on building{" "}
         <a
           href={"https://getselectable.com"}
           className="text-teal-500 underline"
@@ -149,13 +155,21 @@ function Profile() {
         I like databases, programming languages, maths, and wordplay.
       </p>
       <div className="mt-6 flex gap-6">
-        <SocialLink to="https://github.com/yen223" aria-label="Follow on GitHub" icon={GitHubIcon} />
+        <SocialLink
+          to="https://github.com/yen223"
+          aria-label="Follow on GitHub"
+          icon={GitHubIcon}
+        />
         <SocialLink
           to="https://www.linkedin.com/in/weiyen/"
           aria-label="Follow on LinkedIn"
           icon={LinkedInIcon}
         />
-        <SocialLink to={BLUESKY_LINK} aria-label="Follow on Bluesky" icon={BlueSkyIcon} />
+        <SocialLink
+          to={BLUESKY_LINK}
+          aria-label="Follow on Bluesky"
+          icon={BlueSkyIcon}
+        />
       </div>
     </div>
   );

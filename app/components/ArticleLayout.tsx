@@ -1,9 +1,9 @@
-import { Container } from '~/components/Container'
-import { Prose } from '~/components/Prose'
-import {formatDate} from "~/lib/formatDate";
-import {Article} from "~/lib/types";
+import { Container } from "~/components/Container";
+import { Prose } from "~/components/Prose";
+import { formatDate } from "~/lib/formatDate";
+import { Article } from "~/lib/types";
 
-function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
@@ -13,15 +13,15 @@ function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 export function ArticleLayout({
   article,
   children,
 }: {
-  article: Article
-  children: React.ReactNode
+  article: Article;
+  children: React.ReactNode;
 }) {
   return (
     <Container className="mt-16 lg:mt-32">
@@ -47,5 +47,5 @@ export function ArticleLayout({
         </div>
       </div>
     </Container>
-  )
+  );
 }

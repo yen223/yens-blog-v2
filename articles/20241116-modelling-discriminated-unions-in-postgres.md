@@ -9,32 +9,36 @@ tags:
 description: "How to model discriminated unions in SQL"
 ---
 
-A discriminated union is a data type that represents a value that can take on exactly one of several different shapes, or *variants*. 
+A discriminated union is a data type that represents a value that can take on exactly one of several different shapes, or _variants_.
 
 To take an example, here is a [discriminated union](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) in TypeScript. Values of type `PaymentState` can take on one of three variants: `pending`, `completed`, or `failed`. Each variant has a different set of fields:
 
 ```typescript
-type PaymentState = 
-| { status: "pending" } 
-| { status: "completed", amount: number, authorizedBy: string }
-| { status: "failed", error: string }
+type PaymentState =
+  | { status: "pending" }
+  | { status: "completed"; amount: number; authorizedBy: string }
+  | { status: "failed"; error: string };
 
 // ✅ This is a valid PaymentState
-const ps1: PaymentState = { status: "completed", amount: 100, authorizedBy: "John" }
+const ps1: PaymentState = {
+  status: "completed",
+  amount: 100,
+  authorizedBy: "John",
+};
 
 // ✅ This is a valid PaymentState
-const ps2: PaymentState = { status: "failed", error: "Insufficient funds" }
+const ps2: PaymentState = { status: "failed", error: "Insufficient funds" };
 
 // ❌ This is not a valid PaymentState
 // The "failed" variant does not have an "amount" field
-const ps3: PaymentState = { status: "failed", amount: 120 }
+const ps3: PaymentState = { status: "failed", amount: 120 };
 ```
 
 Depending on the language, discriminated unions are also known as:
 
-- Scala, Kotlin: *sealed classes*
-- Swift, Rust: *enums*
-- Haskell, Ocaml: *sum types*
+- Scala, Kotlin: _sealed classes_
+- Swift, Rust: _enums_
+- Haskell, Ocaml: _sum types_
 
 Each have different subtleties, but the general core ideas are the same.
 
@@ -142,5 +146,6 @@ CREATE TABLE payment (
 - Depending on the application layer's language, this approach can mean you don't need to write any additional code to handle serializing/deserializing the discriminated union.
 
 ### Disadvantages
+
 - This is the least type-safe approach. Postgres has no way to enforce the schema of the incoming JSON value. You will need to rely on the application layer to ensure the correct fields are provided.
 - JSONB queries are inherently more complex than traditional queries on table columns.
