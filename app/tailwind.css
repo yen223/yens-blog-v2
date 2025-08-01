@@ -4,16 +4,19 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-gray-950;
+  color-scheme: dark;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+@layer components {
+  .prose p {
+    font-family: "Crimson Pro", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 }
 
 @keyframes flash {
   0% {
-    @apply bg-zinc-200/20 dark:bg-zinc-700/20;
+    @apply bg-zinc-700/20;
   }
   100% {
     background-color: transparent;

@@ -63,7 +63,7 @@ export async function parseMarkdown(content: string) {
     .use(rehypeSemanticImage, {
       elements: {
         figure: { className: "flex flex-col items-center mt-16 mb-16" },
-        figcaption: { className: "text-md text-zinc-500 dark:text-zinc-400" },
+        figcaption: { className: "text-md text-zinc-400" },
       },
     })
     .use(rehypeSlug)
@@ -73,7 +73,7 @@ export async function parseMarkdown(content: string) {
         "",
         {
           className:
-            "ml-2 text-zinc-500 no-underline hover:text-zinc-900 dark:hover:text-cyan-300 w-4 h-4 inline",
+            "ml-2 text-zinc-500 no-underline hover:text-cyan-300 w-4 h-4 inline",
         },
         linkSvg
       ),

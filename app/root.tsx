@@ -6,12 +6,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+ isRouteErrorResponse, useRouteError } from "@remix-run/react";
 
 import "./tailwind.css";
 import "./prism.css";
 import { RootLayout } from "~/components/RootLayout";
-import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
 import { SimpleLayout } from "./components/SimpleLayout";
 
 export const meta = () => {
@@ -47,7 +46,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap",
   },
   {
     rel: "icon",
@@ -78,14 +77,14 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="bg-zinc-50 dark:bg-zinc-950">
+    <html lang="en" className="bg-zinc-900">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="flex bg-zinc-50 dark:bg-zinc-900 overflow-y-scroll">
+      <body className="flex bg-zinc-900 overflow-y-scroll">
         <RootLayout>{children}</RootLayout>
         <ScrollRestoration />
         <Scripts />

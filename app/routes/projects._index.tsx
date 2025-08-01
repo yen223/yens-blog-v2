@@ -33,26 +33,26 @@ export default function Projects() {
       <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-800 shadow-md shadow-zinc-800/5">
               <img
                 src={project.logo}
                 alt=""
                 className="h-14 w-14 rounded-full object-cover"
               />
             </div>
-            <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+            <h2 className="mt-6 text-base font-semibold text-zinc-100">
               <Card.Link to={project.link.href}>{project.name}</Card.Link>
             </h2>
             <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-200 transition group-hover:text-teal-500">
               <LinkIcon className="h-6 w-6 flex-none" />
               <span className="ml-2">{project.link.label}</span>
             </p>
           </Card>
         ))}
       </ul>
-      <section className="prose prose-zinc dark:prose-invert">
-        <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-100">
+      <section className="prose prose-zinc prose-invert">
+        <h2 className="text-2xl font-semibold text-zinc-100">
           🛠️ Tools
         </h2>
         <ul className="space-y-4">

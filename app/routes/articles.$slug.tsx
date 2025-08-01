@@ -4,11 +4,8 @@ import { getCachedArticle } from "~/lib/articles.server";
 import { z } from "zod";
 import { LoaderFunctionArgs } from "@remix-run/router";
 import { useLoaderData } from "@remix-run/react";
-import React from "react";
 import { ArticleZ } from "~/lib/types";
 import { formatDate } from "~/lib/formatDate";
-import { ButtonLink } from "~/components/Button";
-import { ArrowLeftIcon } from "~/components/Icons";
 import { BLUESKY_LINK } from "~/constants";
 import { parseMarkdown } from "~/lib/markdown/parse";
 
@@ -64,36 +61,28 @@ export default function Article() {
   return (
     <Container className="mt-16">
       <div className="xl:relative">
-        <div className="mx-auto max-w-3xl">
-          <ButtonLink
-            type="button"
-            to={"/articles"}
-            aria-label="Go back to articles"
-            className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20"
-          >
-            <ArrowLeftIcon className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
-          </ButtonLink>
+        <div className="max-w-3xl">
           <article>
             <header className="flex flex-col mb-16">
-              <h1 className="mt-6 text-4xl font-bold tracking-tight sm:tracking-normal text-zinc-800 sm:text-4xl dark:text-zinc-100">
+              <h1 className="mt-6 text-4xl font-semibold tracking-normal sm:tracking-normal text-zinc-100 sm:text-4xl font-sans">
                 {article.title}
               </h1>
               <time
                 dateTime={article.date}
-                className="order-first flex items-center text-base font-light text-zinc-400 dark:text-zinc-300"
+                className="order-first flex items-center text-base font-light text-zinc-300"
               >
                 <span>
                   Published{" "}
-                  <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
+                  <span className="text-zinc-200 font-semibold">
                     {formattedDate}
                   </span>
                 </span>
               </time>
-              <p className="text-zinc-400 dark:text-zinc-400 pt-4">
+              <p className="text-zinc-400 pt-4">
                 {article.description}
               </p>
             </header>
-            <Prose className="mt-8 word-break text-pretty" data-mdx-content>
+            <Prose className="mt-8 word-break text-pretty font-serif" data-mdx-content>
               <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
               <hr />
               <em>

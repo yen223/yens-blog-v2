@@ -7,7 +7,7 @@ export function Prose({
 }: ComponentPropsWithoutRef<"div">) {
   return (
     <div
-      className={clsx(className, "prose dark:prose-invert antialiased")}
+      className={clsx(className, "prose prose-invert antialiased")}
       {...props}
     />
   );

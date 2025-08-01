@@ -1,6 +1,5 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import { Link, redirect, useRouteError } from "@remix-run/react";
-import { isRouteErrorResponse } from "@remix-run/react";
+import { Link, redirect, useRouteError , isRouteErrorResponse } from "@remix-run/react";
 import { z } from "zod";
 import { Container } from "~/components/Container";
 
@@ -42,7 +41,7 @@ export function ErrorBoundary() {
     : "Sorry, an unexpected error occurred.";
   return (
     <Container>
-      <div className="flex flex-col prose dark:prose-invert">
+      <div className="flex flex-col prose prose-invert">
         <h2>{title}</h2>
         <p>{message}</p>
         <Link to="/">Go back to the home page</Link>

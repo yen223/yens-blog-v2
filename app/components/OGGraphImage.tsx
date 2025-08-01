@@ -121,20 +121,20 @@ function OGGraphImageBackground() {
             d="M 40 0 L 0 0 0 40"
             fill="none"
             stroke="#374151"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </pattern>
         <linearGradient id="darkFadeGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#111827" />
-          <stop offset="100%" stop-color="#1f2937" />
+          <stop offset="0%" stopColor="#111827" />
+          <stop offset="100%" stopColor="#1f2937" />
         </linearGradient>
         <radialGradient id="glowBlue" cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2" />
-          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="glowPurple" cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.2" />
-          <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+          <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -145,19 +145,19 @@ function OGGraphImageBackground() {
       <path
         d="M 900 50 L 1100 150"
         stroke="#3b82f6"
-        stroke-width="1.5"
-        stroke-opacity="0.3"
+        strokeWidth="1.5"
+        strokeOpacity="0.3"
       />
       <path
         d="M 150 450 L 250 550"
         stroke="#8b5cf6"
-        stroke-width="1.5"
-        stroke-opacity="0.3"
+        strokeWidth="1.5"
+        strokeOpacity="0.3"
       />
-      <circle cx="900" cy="50" r="3" fill="#3b82f6" fill-opacity="0.8" />
-      <circle cx="1100" cy="150" r="3" fill="#3b82f6" fill-opacity="0.8" />
-      <circle cx="150" cy="450" r="3" fill="#8b5cf6" fill-opacity="0.8" />
-      <circle cx="250" cy="550" r="3" fill="#8b5cf6" fill-opacity="0.8" />
+      <circle cx="900" cy="50" r="3" fill="#3b82f6" fillOpacity="0.8" />
+      <circle cx="1100" cy="150" r="3" fill="#3b82f6" fillOpacity="0.8" />
+      <circle cx="150" cy="450" r="3" fill="#8b5cf6" fillOpacity="0.8" />
+      <circle cx="250" cy="550" r="3" fill="#8b5cf6" fillOpacity="0.8" />
     </svg>
   );
 }

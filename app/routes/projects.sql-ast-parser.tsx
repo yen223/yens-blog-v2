@@ -39,7 +39,7 @@ export default function SQLASTViz() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-zinc-800 dark:text-zinc-100">
+      <h1 className="text-3xl font-bold mb-6 text-zinc-100">
         SQL AST Visualizer
       </h1>
 
@@ -48,20 +48,16 @@ export default function SQLASTViz() {
           name="sql"
           defaultValue={sql}
           className="w-full h-32 p-2 border rounded shadow-md shadow-zinc-800/5
-                             border-zinc-900/10 bg-white placeholder:text-zinc-400
-                             focus:border-teal-500 focus:outline-none focus:ring-4
-                             focus:ring-teal-500/10
-                             dark:border-zinc-700 dark:bg-zinc-700/[0.15]
-                             dark:text-zinc-200 dark:placeholder:text-zinc-500
-                             dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
+                             border-zinc-700 bg-zinc-700/[0.15]
+                             text-zinc-200 placeholder:text-zinc-500
+                             focus:border-teal-400 focus:outline-none focus:ring-4
+                             focus:ring-teal-400/10"
           placeholder="Enter SQL statement here..."
         />
         <button
           type="submit"
-          className="mt-4 bg-zinc-800 text-zinc-100 px-4 py-2 rounded
-                             hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70
-                             dark:bg-zinc-700 dark:hover:bg-zinc-600
-                             dark:active:bg-zinc-700 dark:active:text-zinc-100/70"
+          className="mt-4 bg-zinc-700 text-zinc-100 px-4 py-2 rounded
+                             hover:bg-zinc-600 active:bg-zinc-700 active:text-zinc-100/70"
         >
           Parse SQL
         </button>
@@ -69,20 +65,20 @@ export default function SQLASTViz() {
       {actionError && (
         <div
           className="mt-4 p-4 bg-red-100/10 border border-red-400/20
-                               text-red-700 dark:text-red-400 rounded"
+                               text-red-400 rounded"
         >
           {actionError}
         </div>
       )}
       {ast && (
         <div className="mt-4">
-          <h2 className="text-xl font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
+          <h2 className="text-xl font-semibold mb-2 text-zinc-100">
             Abstract Syntax Tree:
           </h2>
           <pre
-            className="bg-zinc-50 dark:bg-zinc-800/90 p-4 rounded overflow-auto
-                                  text-zinc-600 dark:text-zinc-300 border
-                                  border-zinc-100 dark:border-zinc-700/40"
+            className="bg-zinc-800/90 p-4 rounded overflow-auto
+                                  text-zinc-300 border
+                                  border-zinc-700/40"
           >
             {JSON.stringify(ast, null, 2)}
           </pre>
