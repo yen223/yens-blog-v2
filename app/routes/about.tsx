@@ -8,7 +8,7 @@ import {
   MailIconSolid,
 } from "~/components/Icons";
 import { Link } from "@remix-run/react";
-import { ComponentPropsWithoutRef, ComponentType, ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
 import { BLUESKY_LINK } from "~/constants";
 
 function SocialLink({

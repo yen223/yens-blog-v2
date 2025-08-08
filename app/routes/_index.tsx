@@ -2,7 +2,6 @@ import { ComponentPropsWithoutRef, ComponentType } from "react";
 import { Link, useLoaderData } from "@remix-run/react";
 import { z } from "zod";
 
-import { Button, ButtonLink } from "~/components/Button";
 import { Card } from "~/components/Card";
 import { Container } from "~/components/Container";
 import {
@@ -10,7 +9,6 @@ import {
   GitHubIcon,
   LinkedInIcon,
   ProfileIcon,
-  MailIcon,
 } from "~/components/Icons";
 import { getCachedArticles } from "~/lib/articles.server";
 import { formatDate } from "~/lib/formatDate";
@@ -96,34 +94,6 @@ function Profile() {
   );
 }
 
-function Newsletter() {
-  return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-700/40 p-6"
-    >
-      <h2 className="flex text-sm font-semibold text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
-      </p>
-      <div className="mt-6 flex">
-        <input
-          type="email"
-          placeholder="Email address"
-          aria-label="Email address"
-          required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-700 bg-zinc-700/[0.15] px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 text-zinc-200 placeholder:text-zinc-500 focus:border-teal-400 focus:outline-none focus:ring-4 focus:ring-teal-400/10 sm:text-sm"
-        />
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
-      </div>
-    </form>
-  );
-}
 
 export default function Home() {
   const data = useLoaderData();

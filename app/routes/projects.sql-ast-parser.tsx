@@ -1,4 +1,4 @@
-import { parse, deparse } from "pgsql-parser";
+import { parse } from "pgsql-parser";
 
 import { data } from "@remix-run/node";
 import type { ActionFunctionArgs } from "@remix-run/node";

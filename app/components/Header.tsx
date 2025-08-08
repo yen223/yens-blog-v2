@@ -8,7 +8,6 @@ import {
 import clsx from "clsx";
 
 import { Container } from "~/components/Container";
-import avatarImage from "~/images/avatar.jpg";
 import { Link, NavLink, useLocation } from "@remix-run/react";
 import { CloseIcon, ChevronDownIcon } from "./Icons";
 
@@ -112,77 +111,9 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
   );
 }
 
-// function ThemeToggle() {
-//   // const { resolvedTheme, setTheme } = useTheme();
-//   const otherTheme = resolvedTheme === "dark" ? "light" : "dark";
-//   const [mounted, setMounted] = useState(false);
 
-//   useEffect(() => {
-//     setMounted(true);
-//   }, []);
 
-//   return (
-//     <button
-//       type="button"
-//       aria-label={mounted ? `Switch to ${otherTheme} theme` : "Toggle theme"}
-//       className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-//       onClick={() => setTheme(otherTheme)}
-//     >
-//       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-//       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
-//     </button>
-//   );
-// }
 
-function clamp(number: number, a: number, b: number) {
-  const min = Math.min(a, b);
-  const max = Math.max(a, b);
-  return Math.min(Math.max(number, min), max);
-}
-
-function AvatarContainer({
-  // eslint-disable-next-line react/prop-types
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<"div">) {
-  return (
-    <div
-      className={clsx(
-        className,
-        "h-10 w-10 rounded-full bg-zinc-800/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-white/10 backdrop-blur"
-      )}
-      {...props}
-    />
-  );
-}
-
-function Avatar({
-  large = false,
-  className,
-  ...props
-}: Omit<React.ComponentPropsWithoutRef<typeof Link>, "to"> & {
-  large?: boolean;
-}) {
-  return (
-    <Link
-      {...props}
-      to="/"
-      aria-label="Home"
-      className={clsx(className, "pointer-events-auto")}
-    >
-      <img
-        src={avatarImage}
-        alt=""
-        sizes={large ? "4rem" : "2.25rem"}
-        className={clsx(
-          "rounded-full bg-zinc-800 object-cover",
-          large ? "h-16 w-16" : "h-9 w-9"
-        )}
-        // priority
-      />
-    </Link>
-  );
-}
 
 export function Header() {
   const isHomePage = useLocation().pathname === "/";
@@ -223,11 +154,7 @@ export function Header() {
                 <MobileNavigation className="pointer-events-auto md:hidden" />
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
-              <div className="flex justify-end md:flex-1">
-                {/* <div className="pointer-events-auto">
-                  <ThemeToggle />
-                </div> */}
-              </div>
+              <div className="flex justify-end md:flex-1"></div>
             </div>
           </Container>
         </div>

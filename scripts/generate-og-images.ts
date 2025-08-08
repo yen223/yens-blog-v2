@@ -23,7 +23,6 @@ async function main() {
       // Generate OG image
       const imageBuffer = await generateOgImage({
         title: article.title,
-        date: article.date,
         description: article.description,
       });
 
