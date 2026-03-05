@@ -63,6 +63,13 @@ function Profile() {
         I&apos;m Wei Yen, @yen223 on the internet. Ex-software engineer,
         currently working on{" "}
         <a
+          href={"https://getselectable.com"}
+          className="text-teal-500 underline"
+        >
+          Selectable
+        </a>
+        {" "}and{" "}
+        <a
           href={"https://stratachecks.com"}
           className="text-teal-500 underline"
         >

@@ -54,6 +54,7 @@ export default function About() {
             <section>
               <p>
                 I'm currently working on{" "}
+                <a href={"https://getselectable.com"}>Selectable</a> and{" "}
                 <a href={"https://stratachecks.com"}>StrataChecks</a>.
               </p>
               <p>
