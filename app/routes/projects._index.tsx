@@ -2,10 +2,18 @@ import { Card } from "~/components/Card";
 import { SimpleLayout } from "~/components/SimpleLayout";
 import logoSelectable from "~/images/logos/selectable-app.png";
 import logoCrossword from "~/images/logos/crossword.svg";
+import logoStratachecks from "~/images/logos/stratachecks.svg";
 import { Link } from "@remix-run/react";
 import { LinkIcon } from "~/components/Icons";
 
 const projects = [
+  {
+    name: "StrataChecks",
+    description:
+      "A due diligence tool for NSW strata property buyers. Look up any strata scheme's tribunal history, management details, and get AI-powered risk analysis of strata reports.",
+    link: { href: "https://stratachecks.com", label: "stratachecks.com" },
+    logo: logoStratachecks,
+  },
   {
     name: "Selectable",
     description: "A mobile-friendly Postgres database management app",
