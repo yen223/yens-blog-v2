@@ -61,12 +61,12 @@ function Profile() {
       </h2>
       <p className="mt-6 text-sm text-zinc-400">
         I&apos;m Wei Yen, @yen223 on the internet. Ex-software engineer,
-        currently working full-time on building{" "}
+        currently working on{" "}
         <a
-          href={"https://getselectable.com"}
+          href={"https://stratachecks.com"}
           className="text-teal-500 underline"
         >
-          Selectable
+          StrataChecks
         </a>
         .
       </p>

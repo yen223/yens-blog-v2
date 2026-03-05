@@ -53,8 +53,8 @@ export default function About() {
           <div className="mt-6 space-y-12 prose prose-zinc prose-invert">
             <section>
               <p>
-                I'm currently working full-time on building{" "}
-                <a href={"https://getselectable.com"}>Selectable</a>.
+                I'm currently working on{" "}
+                <a href={"https://stratachecks.com"}>StrataChecks</a>.
               </p>
               <p>
                 I like databases, programming languages, maths, and wordplay.

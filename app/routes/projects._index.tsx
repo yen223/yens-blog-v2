@@ -2,7 +2,7 @@ import { Card } from "~/components/Card";
 import { SimpleLayout } from "~/components/SimpleLayout";
 import logoSelectable from "~/images/logos/selectable-app.png";
 import logoCrossword from "~/images/logos/crossword.svg";
-import logoStratachecks from "~/images/logos/stratachecks.svg";
+
 import { Link } from "@remix-run/react";
 import { LinkIcon } from "~/components/Icons";
 
@@ -12,7 +12,6 @@ const projects = [
     description:
       "A due diligence tool for NSW strata property buyers. Look up any strata scheme's tribunal history, management details, and get AI-powered risk analysis of strata reports.",
     link: { href: "https://stratachecks.com", label: "stratachecks.com" },
-    logo: logoStratachecks,
   },
   {
     name: "Selectable",
@@ -41,13 +40,15 @@ export default function Projects() {
       <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-800 shadow-md shadow-zinc-800/5">
-              <img
-                src={project.logo}
-                alt=""
-                className="h-14 w-14 rounded-full object-cover"
-              />
-            </div>
+            {project.logo && (
+              <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-800 shadow-md shadow-zinc-800/5">
+                <img
+                  src={project.logo}
+                  alt=""
+                  className="h-14 w-14 rounded-full object-cover"
+                />
+              </div>
+            )}
             <h2 className="mt-6 text-base font-semibold text-zinc-100">
               <Card.Link to={project.link.href}>{project.name}</Card.Link>
             </h2>
