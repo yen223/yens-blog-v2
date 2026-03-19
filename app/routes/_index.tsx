@@ -87,7 +87,7 @@ function Profile() {
           href={"https://eka.weiyen.net/posts"}
           className="text-teal-500 underline"
         >
-          her own blog
+          a blog
         </a>
         .
       </p>

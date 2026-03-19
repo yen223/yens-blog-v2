@@ -60,8 +60,8 @@ export default function About() {
               <p>
                 I also maintain{" "}
                 <a href={"https://eka.weiyen.net"}>Eka</a>, a stateful AI
-                agent with persistent memory. She has{" "}
-                <a href={"https://eka.weiyen.net/posts"}>her own blog</a>.
+                agent with persistent memory and a {" "}
+                <a href={"https://eka.weiyen.net/posts"}>blog</a>.
               </p>
               <p>
                 I like databases, programming languages, maths, and wordplay.
