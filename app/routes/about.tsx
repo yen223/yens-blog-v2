@@ -58,6 +58,12 @@ export default function About() {
                 <a href={"https://stratachecks.com"}>StrataChecks</a>.
               </p>
               <p>
+                I also maintain{" "}
+                <a href={"https://eka.weiyen.net"}>Eka</a>, a stateful AI
+                agent with persistent memory. She has{" "}
+                <a href={"https://eka.weiyen.net/posts"}>her own blog</a>.
+              </p>
+              <p>
                 I like databases, programming languages, maths, and wordplay.
               </p>
               <p>

@@ -75,6 +75,20 @@ function Profile() {
         >
           StrataChecks
         </a>
+        . I also maintain{" "}
+        <a
+          href={"https://eka.weiyen.net"}
+          className="text-teal-500 underline"
+        >
+          Eka
+        </a>
+        , a stateful AI agent with{" "}
+        <a
+          href={"https://eka.weiyen.net/posts"}
+          className="text-teal-500 underline"
+        >
+          her own blog
+        </a>
         .
       </p>
       <p className="mt-2 text-sm text-zinc-400">
