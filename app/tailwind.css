@@ -100,10 +100,10 @@ body > footer {
 }
 
 .wordmark {
-  font-family: var(--serif);
-  font-weight: 500;
+  font-family: var(--display);
+  font-weight: var(--display-weight);
   font-size: 22px;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--display-tracking);
   color: var(--ink);
   text-decoration: none;
   display: inline-flex;
@@ -293,12 +293,37 @@ body > footer {
   align-items: center;
   gap: 0.6em;
 }
-.section-head .kicker::before {
-  content: "⟶";
-  font-size: 1.35em;
-  line-height: 1;
-  letter-spacing: 0;
-  transform: translateY(-0.04em);
+/* Pure CSS long-arrow: a stroke + a chevron head, sized to match the
+   cap-height of the uppercase mono label. Avoids unicode arrow glyphs
+   whose baselines vary wildly between fonts. */
+.section-head .kicker .arrow {
+  display: inline-block;
+  width: 1.4em;
+  height: 0.55em;
+  position: relative;
+  flex-shrink: 0;
+  transform: translateY(-0.14em);
+}
+.section-head .kicker .arrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: currentColor;
+}
+.section-head .kicker .arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.35em;
+  height: 0.35em;
+  border-right: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: translate(-0.05em, -50%) rotate(45deg);
+  transform-origin: center;
 }
 .section-head h2 {
   font-family: var(--display);
@@ -321,11 +346,44 @@ body > footer {
 .post-list {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 16px var(--gutter) 100px;
+  padding: 16px var(--gutter) 40px;
   list-style: none;
 }
 .post-list > .post-row + .post-row {
   border-top: 1px solid var(--rule);
+}
+
+.post-list-more {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 100px;
+  display: grid;
+  grid-template-columns: var(--margin) 1fr;
+  gap: 40px;
+}
+@media (max-width: 900px) {
+  .post-list-more { grid-template-columns: 1fr; }
+}
+.show-more {
+  grid-column: 2;
+  justify-self: start;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  padding: 12px 18px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.show-more:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(240, 133, 94, 0.06);
+}
+@media (max-width: 900px) {
+  .show-more { grid-column: 1; }
 }
 
 .post-row {
@@ -407,7 +465,7 @@ body > footer {
 @media (max-width: 900px) {
   .post-tags {
     justify-content: flex-start;
-    margin-top: 4px;
+    margin-top: 12px;
   }
 }
 .tag {

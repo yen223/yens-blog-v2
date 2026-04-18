@@ -11,12 +11,20 @@ import type { Article } from "~/lib/types";
 import { ArticleZ } from "~/lib/types";
 import { BLUESKY_LINK } from "~/constants";
 
-const LoaderDataZ = z.object({ articles: ArticleZ.array() });
+const LoaderDataZ = z.object({
+  articles: ArticleZ.array(),
+  hasMore: z.boolean(),
+});
 type LoaderData = z.infer<typeof LoaderDataZ>;
 
+const HOME_POST_LIMIT = 10;
+
 export async function loader(): Promise<LoaderData> {
-  const articles = (await getCachedArticles()).slice(0, 10);
-  return { articles };
+  const all = await getCachedArticles();
+  return {
+    articles: all.slice(0, HOME_POST_LIMIT),
+    hasMore: all.length > HOME_POST_LIMIT,
+  };
 }
 
 const MONTHS = [
@@ -79,7 +87,7 @@ function PostRow({ article }: { article: Article }) {
 
 export default function Home() {
   const data = useLoaderData();
-  const { articles } = LoaderDataZ.parse(data);
+  const { articles, hasMore } = LoaderDataZ.parse(data);
 
   return (
     <>
@@ -114,8 +122,7 @@ export default function Home() {
         </aside>
         <div>
           <h1>
-            Notes on <em>databases</em>, languages, and the occasional
-            wordplay.
+            Hi, I&apos;m <em>Wei Yen</em>
           </h1>
           <p className="lede">
             I&apos;m <strong>Wei Yen</strong> — a software engineer in Sydney.
@@ -158,7 +165,10 @@ export default function Home() {
       </section>
 
       <div className="section-head">
-        <span className="kicker">01 / writing</span>
+        <span className="kicker">
+          <span className="arrow" aria-hidden="true" />
+          01 / writing
+        </span>
         <h2>
           Essays &amp; <em>longer thoughts</em>
         </h2>
@@ -169,6 +179,14 @@ export default function Home() {
           <PostRow key={article.slug} article={article} />
         ))}
       </ul>
+
+      {hasMore && (
+        <div className="post-list-more">
+          <Link to="/articles" className="show-more" prefetch="intent">
+            Show more articles →
+          </Link>
+        </div>
+      )}
     </>
   );
 }

@@ -55,7 +55,10 @@ export default function Projects() {
       </section>
 
       <div className="section-head">
-        <span className="kicker">01 / projects</span>
+        <span className="kicker">
+          <span className="arrow" aria-hidden="true" />
+          01 / projects
+        </span>
         <h2>Built &amp; shipped</h2>
       </div>
 
@@ -77,7 +80,10 @@ export default function Projects() {
       </ul>
 
       <div className="section-head">
-        <span className="kicker">02 / tools</span>
+        <span className="kicker">
+          <span className="arrow" aria-hidden="true" />
+          02 / tools
+        </span>
         <h2>
           Small <em>tools</em>
         </h2>

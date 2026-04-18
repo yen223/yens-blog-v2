@@ -43,7 +43,7 @@ export default function About() {
 
       <div className="about-main">
         <h1>
-          Hi. I&apos;m Wei — <em>an engineer</em> who likes wordplay.
+          Hi, I&apos;m <em>Yen</em>
         </h1>
 
         <p>
