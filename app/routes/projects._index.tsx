@@ -65,16 +65,18 @@ export default function Projects() {
       <ul className="project-grid">
         {projects.map((project) => (
           <li key={project.name} className="project-card">
-            <span className="project-name">{project.name}</span>
-            <span className="project-desc">{project.description}</span>
             <a
-              className="project-link"
+              className="project-link-overlay"
               href={project.link.href}
               target="_blank"
               rel="noreferrer"
+              aria-label={project.name}
             >
-              {project.link.label}
+              {project.name}
             </a>
+            <span className="project-name">{project.name}</span>
+            <span className="project-desc">{project.description}</span>
+            <span className="project-link">{project.link.label}</span>
           </li>
         ))}
       </ul>
@@ -90,37 +92,49 @@ export default function Projects() {
       </div>
       <ul className="project-grid">
         <li className="project-card">
+          <Link
+            className="project-link-overlay"
+            to="/projects/key-event-viewer"
+            aria-label="Keyboard Event Viewer"
+          >
+            Keyboard Event Viewer
+          </Link>
           <span className="project-name">Keyboard Event Viewer</span>
           <span className="project-desc">
             A tool to view keyboard events in the browser.
           </span>
-          <Link className="project-link" to="/projects/key-event-viewer">
-            open tool
-          </Link>
+          <span className="project-link">open tool</span>
         </li>
         <li className="project-card">
+          <Link
+            className="project-link-overlay"
+            to="/projects/sql-ast-parser"
+            aria-label="SQL AST Parser"
+          >
+            SQL AST Parser
+          </Link>
           <span className="project-name">SQL AST Parser</span>
           <span className="project-desc">
             A tool to show the AST of a SQL statement.
           </span>
-          <Link className="project-link" to="/projects/sql-ast-parser">
-            open tool
-          </Link>
+          <span className="project-link">open tool</span>
         </li>
         <li className="project-card">
+          <a
+            className="project-link-overlay"
+            href="https://github.com/yen223/hotpot"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Hotpot"
+          >
+            Hotpot
+          </a>
           <span className="project-name">Hotpot</span>
           <span className="project-desc">
             A command-line alternative to Google Authenticator for managing 2FA
             tokens.
           </span>
-          <a
-            className="project-link"
-            href="https://github.com/yen223/hotpot"
-            target="_blank"
-            rel="noreferrer"
-          >
-            github/yen223/hotpot
-          </a>
+          <span className="project-link">github/yen223/hotpot</span>
         </li>
       </ul>
     </>

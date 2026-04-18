@@ -4,6 +4,14 @@ import { data } from "@remix-run/node";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
 
+export const meta = () => [
+  { title: "SQL AST Parser — Wei Yen" },
+  {
+    name: "description",
+    content: "Paste a SQL statement and inspect its abstract syntax tree.",
+  },
+];
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const sql = formData.get("sql");
@@ -38,52 +46,56 @@ export default function SQLASTViz() {
   } = useActionData<typeof action>() ?? {};
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-zinc-100">
-        SQL AST Visualizer
-      </h1>
+    <>
+      <section className="home-hero">
+        <div />
+        <div>
+          <h1>
+            SQL <em>AST parser</em>
+          </h1>
+          <p className="lede">
+            Paste a SQL statement below and inspect its abstract syntax tree —
+            powered by{" "}
+            <a href="https://github.com/pyramation/pgsql-parser">pgsql-parser</a>
+            .
+          </p>
+        </div>
+      </section>
 
-      <form method="post" className="mb-4">
-        <textarea
-          name="sql"
-          defaultValue={sql}
-          className="w-full h-32 p-2 border rounded shadow-md shadow-zinc-800/5
-                             border-zinc-700 bg-zinc-700/[0.15]
-                             text-zinc-200 placeholder:text-zinc-500
-                             focus:border-teal-400 focus:outline-none focus:ring-4
-                             focus:ring-teal-400/10"
-          placeholder="Enter SQL statement here..."
-        />
-        <button
-          type="submit"
-          className="mt-4 bg-zinc-700 text-zinc-100 px-4 py-2 rounded
-                             hover:bg-zinc-600 active:bg-zinc-700 active:text-zinc-100/70"
-        >
-          Parse SQL
-        </button>
-      </form>
-      {actionError && (
-        <div
-          className="mt-4 p-4 bg-red-100/10 border border-red-400/20
-                               text-red-400 rounded"
-        >
-          {actionError}
-        </div>
-      )}
-      {ast && (
-        <div className="mt-4">
-          <h2 className="text-xl font-semibold mb-2 text-zinc-100">
-            Abstract Syntax Tree:
-          </h2>
-          <pre
-            className="bg-zinc-800/90 p-4 rounded overflow-auto
-                                  text-zinc-300 border
-                                  border-zinc-700/40"
-          >
-            {JSON.stringify(ast, null, 2)}
-          </pre>
-        </div>
-      )}
-    </div>
+      <div className="section-head">
+        <span className="kicker">
+          <span className="arrow" aria-hidden="true" />
+          tool
+        </span>
+        <h2>
+          Parse <em>SQL</em>
+        </h2>
+      </div>
+
+      <div className="tool-wrap">
+        <form method="post">
+          <textarea
+            name="sql"
+            defaultValue={sql}
+            className="tool-textarea"
+            placeholder="SELECT id, name FROM users WHERE active = true;"
+          />
+          <div className="tool-row">
+            <button type="submit" className="tool-button">
+              Parse SQL
+            </button>
+          </div>
+        </form>
+
+        {actionError ? <div className="tool-error">{actionError}</div> : null}
+
+        {ast ? (
+          <>
+            <h3 className="tool-section-title">Abstract syntax tree</h3>
+            <pre className="tool-ast">{JSON.stringify(ast, null, 2)}</pre>
+          </>
+        ) : null}
+      </div>
+    </>
   );
 }

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Container } from "~/components/Container";
 
 export const meta = () => {
   return [
@@ -12,77 +11,57 @@ export const meta = () => {
   ];
 };
 
+type KeyEvent = {
+  type: string;
+  key: string;
+  keyCode?: number;
+  inputType: string;
+  isComposing: boolean;
+  index: number;
+};
+
 function KeyEventViewer() {
-  const [events, setEvents] = useState<
-    {
-      type: string;
-      key: string;
-      keyCode?: number;
-      inputType: string;
-      isComposing: boolean;
-      index: number;
-    }[]
-  >([]);
+  const [events, setEvents] = useState<KeyEvent[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     const input = inputRef.current;
     if (!input) return;
 
-    const handleBeforeInput = (e: InputEvent) => {
-      setEvents((prev) => [
-        {
-          type: "beforeinput",
-          key: "",
-          keyCode: undefined,
-          inputType: e.inputType,
-          isComposing: e.isComposing,
-          index: prev.length,
-        },
-        ...prev,
-      ]);
-    };
+    const add = (event: Omit<KeyEvent, "index">) =>
+      setEvents((prev) => [{ ...event, index: prev.length }, ...prev]);
 
-    const handleInput = (e: Event) => {
-      setEvents((prev) => [
-        {
-          type: "input",
-          key: "",
-          keyCode: undefined,
-          inputType: (e as InputEvent).inputType,
-          isComposing: (e as InputEvent).isComposing,
-          index: prev.length,
-        },
-        ...prev,
-      ]);
-    };
+    const handleBeforeInput = (e: InputEvent) =>
+      add({
+        type: "beforeinput",
+        key: "",
+        inputType: e.inputType,
+        isComposing: e.isComposing,
+      });
+    const handleInput = (e: Event) =>
+      add({
+        type: "input",
+        key: "",
+        inputType: (e as InputEvent).inputType,
+        isComposing: (e as InputEvent).isComposing,
+      });
+    const handleKeyDown = (e: KeyboardEvent) =>
+      add({
+        type: "keydown",
+        key: e.key,
+        keyCode: e.keyCode,
+        inputType: "",
+        isComposing: e.isComposing,
+      });
+    const handleKeyUp = (e: KeyboardEvent) =>
+      add({
+        type: "keyup",
+        key: e.key,
+        keyCode: e.keyCode,
+        inputType: "",
+        isComposing: e.isComposing,
+      });
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      setEvents((prev) => [
-        {
-          type: "keydown",
-          key: e.key,
-          keyCode: e.keyCode,
-          inputType: "",
-          isComposing: e.isComposing,
-          index: prev.length,
-        },
-        ...prev,
-      ]);
-    };
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-      setEvents((prev) => [
-        {
-          type: "keyup",
-          key: e.key,
-          keyCode: e.keyCode,
-          inputType: "",
-          isComposing: e.isComposing,
-          index: prev.length,
-        },
-        ...prev,
-      ]);
-    };
     input.addEventListener("keydown", handleKeyDown);
     input.addEventListener("beforeinput", handleBeforeInput);
     input.addEventListener("input", handleInput);
@@ -97,67 +76,54 @@ function KeyEventViewer() {
   }, []);
 
   return (
-    <div className="my-8">
-      <h2 className="text-3xl font-bold text-zinc-100 mb-8">
-        Keyboard Event Viewer
-      </h2>
-      <p className="text-zinc-400 mb-8">
+    <div className="tool-wrap">
+      <p>
         This tool helps debug keyboard events by showing the exact sequence of
-        events fired when typing. Type in the input box below to see keydown,
-        keyup, and input events in real-time.
+        events fired when typing. Type in the input below to see keydown, keyup,
+        and input events in real-time.
       </p>
-      <p className="text-zinc-400 mb-8">
+      <p>
         Based on{" "}
-        <a
-          href="https://w3c.github.io/uievents/tools/key-event-viewer.html"
-          className="text-teal-500 hover:underline"
-        >
+        <a href="https://w3c.github.io/uievents/tools/key-event-viewer.html">
           the W3C Key Event Viewer
         </a>
-        , but designed to be more mobile-friendly
-      </p>
-      <p className="text-zinc-400 mb-8">
-        Source code{" "}
-        <a
-          href="https://github.com/yen223/yens-blog-v2/blob/main/app/routes/projects.key-event-viewer.tsx"
-          className="text-teal-500 hover:underline"
-        >
-          here
+        , but designed to be more mobile-friendly.{" "}
+        <a href="https://github.com/yen223/yens-blog-v2/blob/main/app/routes/projects.key-event-viewer.tsx">
+          Source code
         </a>
+        .
       </p>
-      <input
-        type="text"
-        className="w-full border rounded p-2 bg-zinc-800 border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600"
-        placeholder="Type here to test keyboard events"
-        ref={inputRef}
-      />
-      <button
-        onClick={() => setEvents([])}
-        className="mt-4 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded text-sm text-zinc-100"
-      >
-        Clear Events
-      </button>
 
-      <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm">
+      <input
+        ref={inputRef}
+        type="text"
+        className="tool-input"
+        placeholder="Type here to test keyboard events"
+      />
+
+      <div className="tool-row">
+        <button className="tool-button" onClick={() => setEvents([])}>
+          Clear events
+        </button>
+      </div>
+
+      <div style={{ overflowX: "auto" }}>
+        <table className="tool-table">
           <thead>
-            <tr className="border-b border-zinc-700">
-              <th className="text-left p-2">Event Type</th>
-              <th className="text-left p-2">Key</th>
-              <th className="text-left p-2">Code</th>
-              <th className="text-left p-2">Input Type</th>
+            <tr>
+              <th>Event Type</th>
+              <th>Key</th>
+              <th>Code</th>
+              <th>Input Type</th>
             </tr>
           </thead>
           <tbody>
             {events.map((event) => (
-              <tr
-                key={event.index}
-                className="border-b border-zinc-700 animate-[flash_1s_ease-in-out]"
-              >
-                <td className="p-2 text-zinc-400">{event.type}</td>
-                <td className="p-2 text-zinc-400 font-semibold">{event.key}</td>
-                <td className="p-2 text-zinc-400">{event.keyCode}</td>
-                <td className="p-2 text-zinc-400">{event.inputType}</td>
+              <tr key={event.index}>
+                <td>{event.type}</td>
+                <td className="is-key">{event.key}</td>
+                <td>{event.keyCode}</td>
+                <td>{event.inputType}</td>
               </tr>
             ))}
           </tbody>
@@ -169,8 +135,31 @@ function KeyEventViewer() {
 
 export default function KeyEventViewerPage() {
   return (
-    <Container className="my-8">
+    <>
+      <section className="home-hero">
+        <div />
+        <div>
+          <h1>
+            Keyboard <em>event viewer</em>
+          </h1>
+          <p className="lede">
+            Type into the input below to see the keyboard events fired — handy
+            for debugging IME, composition, and mobile-keyboard quirks.
+          </p>
+        </div>
+      </section>
+
+      <div className="section-head">
+        <span className="kicker">
+          <span className="arrow" aria-hidden="true" />
+          tool
+        </span>
+        <h2>
+          Live <em>events</em>
+        </h2>
+      </div>
+
       <KeyEventViewer />
-    </Container>
+    </>
   );
 }
