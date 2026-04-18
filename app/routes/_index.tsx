@@ -1,17 +1,12 @@
-import { ComponentPropsWithoutRef, ComponentType } from "react";
 import { Link, useLoaderData } from "@remix-run/react";
 import { z } from "zod";
 
-import { Card } from "~/components/Card";
-import { Container } from "~/components/Container";
 import {
   BlueSkyIcon,
   GitHubIcon,
   LinkedInIcon,
-  ProfileIcon,
 } from "~/components/Icons";
 import { getCachedArticles } from "~/lib/articles.server";
-import { formatDate } from "~/lib/formatDate";
 import type { Article } from "~/lib/types";
 import { ArticleZ } from "~/lib/types";
 import { BLUESKY_LINK } from "~/constants";
@@ -24,114 +19,157 @@ export async function loader(): Promise<LoaderData> {
   return { articles };
 }
 
-function Article({ article }: { article: Article }) {
+const MONTHS = [
+  "jan",
+  "feb",
+  "mar",
+  "apr",
+  "may",
+  "jun",
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+];
+
+function splitDate(iso: string) {
+  const d = new Date(`${iso}T00:00:00Z`);
+  return {
+    year: d.getUTCFullYear().toString(),
+    month: MONTHS[d.getUTCMonth()],
+    day: d.getUTCDate().toString(),
+  };
+}
+
+function PostRow({ article }: { article: Article }) {
+  const { year, month, day } = splitDate(article.date);
   return (
-    <Card as="article">
-      <Card.Title href={`./articles/${article.slug}`}>
+    <li className="post-row">
+      <Link to={`/articles/${article.slug}`} className="post-link" prefetch="intent">
         {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
-  );
-}
-
-function SocialLink({
-  icon: Icon,
-  ...props
-}: ComponentPropsWithoutRef<typeof Link> & {
-  icon: ComponentType<{ className?: string }>;
-}) {
-  return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-400 transition group-hover:fill-zinc-300" />
-    </Link>
-  );
-}
-
-function Profile() {
-  return (
-    <div className="rounded-2xl border border-zinc-500/40 p-6">
-      <h2 className="flex text-sm font-semibold text-zinc-100">
-        <ProfileIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">About me</span>
-      </h2>
-      <p className="mt-6 text-sm text-zinc-400">
-        I&apos;m Wei Yen, @yen223 on the internet. Ex-software engineer,
-        currently working on{" "}
-        <a
-          href={"https://getselectable.com"}
-          className="text-teal-500 underline"
-        >
-          Selectable
-        </a>
-        {" "}and{" "}
-        <a
-          href={"https://stratachecks.com"}
-          className="text-teal-500 underline"
-        >
-          StrataChecks
-        </a>
-        . I also maintain{" "}
-        <a
-          href={"https://eka.weiyen.net"}
-          className="text-teal-500 underline"
-        >
-          Eka
-        </a>
-        , a stateful AI agent with{" "}
-        <a
-          href={"https://eka.weiyen.net/posts"}
-          className="text-teal-500 underline"
-        >
-          a blog
-        </a>
-        .
-      </p>
-      <p className="mt-2 text-sm text-zinc-400">
-        I like databases, programming languages, maths, and wordplay.
-      </p>
-      <div className="mt-6 flex gap-6">
-        <SocialLink
-          to="https://github.com/yen223"
-          aria-label="Follow on GitHub"
-          icon={GitHubIcon}
-        />
-        <SocialLink
-          to="https://www.linkedin.com/in/weiyen/"
-          aria-label="Follow on LinkedIn"
-          icon={LinkedInIcon}
-        />
-        <SocialLink
-          to={BLUESKY_LINK}
-          aria-label="Follow on Bluesky"
-          icon={BlueSkyIcon}
-        />
+      </Link>
+      <div className="post-date">
+        <span className="num">{year}</span>
+        <span className="dot">·</span>
+        <span>
+          {month} {day}
+        </span>
       </div>
-    </div>
+      <div className="post-main">
+        <div className="post-title">{article.title}</div>
+        <div className="post-dek">{article.description}</div>
+      </div>
+      <div className="post-tags">
+        {article.tags.map((t, i) => (
+          <span
+            key={t}
+            className={`tag ${
+              i === 0 ? "tag-accent" : i === 1 ? "tag-moss" : ""
+            }`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+      <span className="post-arrow">→</span>
+    </li>
   );
 }
-
 
 export default function Home() {
   const data = useLoaderData();
   const { articles } = LoaderDataZ.parse(data);
+
   return (
-    <Container className={"mt-16"}>
-      <div className="mx-auto grid max-w-3xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-        <div className="flex flex-col gap-10 lg:pr-16 xl:pr-24">
-          <Profile />
-          {/* <Newsletter /> */}
+    <>
+      <section className="home-hero">
+        <aside className="home-side-meta">
+          <div className="line">
+            <span className="label">tending</span>
+            <span className="val">
+              <a href="https://getselectable.com">Selectable</a>,{" "}
+              <a href="https://stratachecks.com">StrataChecks</a>,{" "}
+              <a href="https://eka.weiyen.net">Eka</a>
+            </span>
+          </div>
+          <div className="line">
+            <span className="label">based in</span>
+            <span className="val">Sydney, AU</span>
+          </div>
+          <div className="line">
+            <span className="label">elsewhere</span>
+            <span className="val">
+              <a href="https://github.com/yen223">github</a>,{" "}
+              <a href="https://www.linkedin.com/in/weiyen/">linkedin</a>,{" "}
+              <a href={BLUESKY_LINK}>bluesky</a>
+            </span>
+          </div>
+          <div className="line">
+            <span className="label">email</span>
+            <span className="val">
+              <a href="mailto:hello@weiyen.net">hello@weiyen.net</a>
+            </span>
+          </div>
+        </aside>
+        <div>
+          <h1>
+            Notes on <em>databases</em>, languages, and the occasional
+            wordplay.
+          </h1>
+          <p className="lede">
+            I&apos;m <strong>Wei Yen</strong> — a software engineer in Sydney.
+            I&apos;m currently building{" "}
+            <a href="https://getselectable.com">Selectable</a>, a mobile-friendly
+            Postgres client, and <a href="https://stratachecks.com">StrataChecks</a>,
+            a due-diligence tool for NSW strata buyers. I also maintain{" "}
+            <a href="https://eka.weiyen.net">Eka</a>, a stateful AI agent with{" "}
+            <a href="https://eka.weiyen.net/posts">a blog</a>.
+          </p>
+          <p className="lede">
+            I like databases, programming languages, maths, and wordplay. Some
+            posts are essays, some are half-finished <code>seedlings</code>. You
+            are welcome to wander either.
+          </p>
+          <ul className="social-links">
+            <li>
+              <a href="https://github.com/yen223" aria-label="GitHub">
+                <GitHubIcon />
+                <span>github/yen223</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/weiyen/"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+                <span>linkedin/weiyen</span>
+              </a>
+            </li>
+            <li>
+              <a href={BLUESKY_LINK} aria-label="Bluesky">
+                <BlueSkyIcon />
+                <span>bluesky</span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div className="flex flex-col gap-16 py-6">
-          {articles.map((article) => (
-            <Article key={article.slug} article={article} />
-          ))}
-        </div>
+      </section>
+
+      <div className="section-head">
+        <span className="kicker">⟶ 01 / writing</span>
+        <h2>
+          Essays &amp; <em>longer thoughts</em>
+        </h2>
       </div>
-    </Container>
+
+      <ul className="post-list">
+        {articles.map((article) => (
+          <PostRow key={article.slug} article={article} />
+        ))}
+      </ul>
+    </>
   );
 }

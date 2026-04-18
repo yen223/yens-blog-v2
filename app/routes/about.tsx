@@ -1,128 +1,88 @@
-import clsx from "clsx";
-
-import { Container } from "~/components/Container";
-import {
-  BlueSkyIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  MailIconSolid,
-} from "~/components/Icons";
 import { Link } from "@remix-run/react";
-import { ComponentType, ReactNode } from "react";
 import { BLUESKY_LINK } from "~/constants";
-
-function SocialLink({
-  className,
-  href,
-  children,
-  icon: Icon,
-}: {
-  className?: string;
-  href: string;
-  icon: ComponentType<{ className?: string }>;
-  children: ReactNode;
-}) {
-  return (
-    <li className={clsx(className, "flex")}>
-      <Link
-        to={href}
-        className="group flex text-sm font-medium text-zinc-200 transition hover:text-teal-500"
-      >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
-        <span className="ml-4">{children}</span>
-      </Link>
-    </li>
-  );
-}
 
 export const meta = () => {
   return [
-    { title: "About - Wei Yen" },
-    { name: "description", content: "All about me" },
+    { title: "About — Wei Yen" },
+    { name: "description", content: "About Wei Yen." },
   ];
 };
 
 export default function About() {
   return (
-    <Container className="mt-16">
-      <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-        <div className="lg:order-first lg:row-span-2">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl">
-            👋 Hello, I’m Wei Yen.
-          </h1>
-          <div className="mt-6 space-y-12 prose prose-zinc prose-invert">
-            <section>
-              <p>
-                I'm currently working on{" "}
-                <a href={"https://getselectable.com"}>Selectable</a> and{" "}
-                <a href={"https://stratachecks.com"}>StrataChecks</a>.
-              </p>
-              <p>
-                I also maintain{" "}
-                <a href={"https://eka.weiyen.net"}>Eka</a>, a stateful AI
-                agent with persistent memory and a {" "}
-                <a href={"https://eka.weiyen.net/posts"}>blog</a>.
-              </p>
-              <p>
-                I like databases, programming languages, maths, and wordplay.
-              </p>
-              <p>
-                I was previously a software engineer at Rokt, Mathspace, Western
-                Digital and Accenture.
-              </p>
-            </section>
-            <section>
-              <h2>About this site</h2>
-              <p>
-                This site is open-source. The code is hosted on{" "}
-                <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>.
-              </p>
-              <p>
-                This site is built with <a href="https://remix.run">Remix</a>{" "}
-                and hosted on{" "}
-                <a href="https://www.digitalocean.com/?refcode=61c4d2b4f1b7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste">
-                  DigitalOcean
-                </a>{" "}
-                (referral link).
-              </p>
-              <p>
-                The design is based on{" "}
-                <a href="https://tailwindui.com/templates/spotlight">
-                  Tailwind Spotlight
-                </a>
-              </p>
-            </section>
-          </div>
-        </div>
-        <div className="lg:pl-20">
-          <ul>
-            <SocialLink
-              href="https://github.com/yen223"
-              icon={GitHubIcon}
-              className="mt-4"
-            >
-              Follow me on GitHub
-            </SocialLink>
-            <SocialLink
-              href="https://www.linkedin.com/in/weiyen/"
-              icon={LinkedInIcon}
-              className="mt-4"
-            >
-              Follow me on LinkedIn
-            </SocialLink>
-            <SocialLink href={BLUESKY_LINK} icon={BlueSkyIcon} className="mt-4">
-              Follow me on Bluesky
-            </SocialLink>
-            <SocialLink
-              href="mailto:hello@weiyen.net"
-              icon={MailIconSolid}
-              className="mt-8 border-t border-zinc-700/40 pt-8"
-            >
-              hello@weiyen.net
-            </SocialLink>
-          </ul>
-        </div>
+    <section className="about-wrap">
+      <aside className="about-side">
+        <span className="k">filed under</span>
+        <span className="v">human · engineer</span>
+
+        <span className="k">based in</span>
+        <span className="v">Sydney, AU</span>
+
+        <span className="k">timezone</span>
+        <span className="v">AEST · UTC+10</span>
+
+        <span className="k">elsewhere</span>
+        <span className="v plain">
+          <a href="https://github.com/yen223">github/yen223</a>
+        </span>
+        <span className="v plain">
+          <a href="https://www.linkedin.com/in/weiyen/">linkedin/weiyen</a>
+        </span>
+        <span className="v plain">
+          <a href={BLUESKY_LINK}>bluesky</a>
+        </span>
+        <span className="v plain">
+          <a href="mailto:hello@weiyen.net">hello@weiyen.net</a>
+        </span>
+
+        <span className="k">tending</span>
+        <span className="v plain">Selectable</span>
+        <span className="v plain">StrataChecks</span>
+        <span className="v plain">Eka</span>
+      </aside>
+
+      <div className="about-main">
+        <h1>
+          Hi. I&apos;m Wei — <em>an engineer</em> who likes wordplay.
+        </h1>
+
+        <p>
+          I&apos;m currently working on{" "}
+          <a href="https://getselectable.com">Selectable</a> and{" "}
+          <a href="https://stratachecks.com">StrataChecks</a>.
+        </p>
+        <p>
+          I also maintain <a href="https://eka.weiyen.net">Eka</a>, a stateful
+          AI agent with persistent memory and{" "}
+          <a href="https://eka.weiyen.net/posts">a blog</a>.
+        </p>
+        <p>
+          I like <strong>databases</strong>, <strong>programming languages</strong>,{" "}
+          <strong>maths</strong>, and <em>wordplay</em>. I was previously a
+          software engineer at Rokt, Mathspace, Western Digital and Accenture.
+        </p>
+
+        <h2>About this site</h2>
+        <p>
+          This site is open-source. The code is hosted on{" "}
+          <a href="https://github.com/yen223/yens-blog-v2/">GitHub</a>. It&apos;s
+          built with <a href="https://remix.run">Remix</a> and hosted on{" "}
+          <a href="https://www.digitalocean.com/?refcode=61c4d2b4f1b7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste">
+            DigitalOcean
+          </a>{" "}
+          (referral link).
+        </p>
+
+        <h2>A standing invitation</h2>
+        <p>
+          If anything here prompts a thought, send it along. I answer{" "}
+          <a href="mailto:hello@weiyen.net">every real email</a>. The longer
+          ones get a longer reply. Or if you&apos;d rather read, subscribe to
+          the <Link to="/feed/all">RSS feed</Link>.
+        </p>
       </div>
-    </Container>
+
+      <aside aria-hidden="true" />
+    </section>
   );
 }

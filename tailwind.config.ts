@@ -10,7 +10,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-        serif: ['"Crimson Pro"', ...defaultTheme.fontFamily.serif],
+        serif: ['"Source Serif 4"', ...defaultTheme.fontFamily.serif],
         mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
       },
       fontSize: {

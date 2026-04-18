@@ -1,9 +1,7 @@
-import { Container } from "~/components/Container";
-import { Prose } from "~/components/Prose";
-import { getCachedArticle } from "~/lib/articles.server";
 import { z } from "zod";
 import { LoaderFunctionArgs } from "@remix-run/router";
 import { useLoaderData } from "@remix-run/react";
+import { getCachedArticle } from "~/lib/articles.server";
 import { ArticleZ } from "~/lib/types";
 import { formatDate } from "~/lib/formatDate";
 import { BLUESKY_LINK } from "~/constants";
@@ -15,6 +13,14 @@ const LoaderDataZ = z.object({
   formattedDate: z.string(),
 });
 type LoaderData = z.infer<typeof LoaderDataZ>;
+
+function wordCount(s: string): number {
+  return s
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const slug = ParamZ.parse(params).slug;
@@ -28,7 +34,9 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const formattedDate = formatDate(article.date);
   const articleHtml =
     article.html ?? (await parseMarkdown(article.content)).value;
-  return { article, formattedDate, articleHtml };
+  const words = wordCount(article.content);
+  const reading = Math.max(1, Math.round(words / 220));
+  return { article, formattedDate, articleHtml, words, reading };
 }
 
 export function meta({ data }: { data: LoaderData }) {
@@ -56,45 +64,54 @@ export function meta({ data }: { data: LoaderData }) {
 
 export default function Article() {
   const data = useLoaderData<typeof loader>();
-  const { article, formattedDate, articleHtml } = data;
+  const { article, formattedDate, articleHtml, words, reading } = data;
+  const primaryTag = article.tags[0];
+  const otherTags = article.tags.slice(1);
 
   return (
-    <Container className="mt-16">
-      <div className="xl:relative">
-        <div className="max-w-3xl">
-          <article>
-            <header className="flex flex-col mb-16">
-              <h1 className="mt-6 text-4xl font-semibold tracking-normal sm:tracking-normal text-zinc-100 sm:text-4xl font-sans">
-                {article.title}
-              </h1>
-              <time
-                dateTime={article.date}
-                className="order-first flex items-center text-base font-light text-zinc-300"
-              >
-                <span>
-                  Published{" "}
-                  <span className="text-zinc-200 font-semibold">
-                    {formattedDate}
-                  </span>
-                </span>
-              </time>
-              <p className="text-zinc-400 pt-4">
-                {article.description}
-              </p>
-            </header>
-            <Prose className="mt-8 word-break text-pretty font-serif" data-mdx-content>
-              <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
-              <hr />
-              <em>
-                Like this article? Follow me on{" "}
-                <a href={BLUESKY_LINK}>Bluesky</a> or subscribe to the{" "}
-                <a href="/feed/all">RSS feed</a> to get notified about new
-                articles.
-              </em>
-            </Prose>
-          </article>
-        </div>
+    <article className="article-wrap">
+      <div className="article-body">
+        <header className="article-head">
+          <h1 className="article-title">{article.title}</h1>
+          {article.description ? (
+            <p className="article-dek">{article.description}</p>
+          ) : null}
+          <div className="article-meta">
+            <div>
+              <span className="label">published</span>
+              <span className="val">{formattedDate}</span>
+            </div>
+            <div>
+              <span className="label">reading</span>
+              <span className="val">
+                ~{reading} min · {words.toLocaleString()} words
+              </span>
+            </div>
+            <div>
+              <span className="label">filed under</span>
+              <span className="val">{primaryTag || "essay"}</span>
+            </div>
+            <div>
+              <span className="label">tags</span>
+              <span className="val">
+                {otherTags.length ? otherTags.join(" · ") : "—"}
+              </span>
+            </div>
+          </div>
+        </header>
+
+        <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
+
+        <div className="ornament">❋</div>
+
+        <p>
+          <em>
+            Like this article? Follow me on{" "}
+            <a href={BLUESKY_LINK}>Bluesky</a> or subscribe to the{" "}
+            <a href="/feed/all">RSS feed</a> to get notified about new articles.
+          </em>
+        </p>
       </div>
-    </Container>
+    </article>
   );
 }

@@ -5,10 +5,5 @@ export function Prose({
   className,
   ...props
 }: ComponentPropsWithoutRef<"div">) {
-  return (
-    <div
-      className={clsx(className, "prose prose-invert antialiased")}
-      {...props}
-    />
-  );
+  return <div className={clsx(className, "article-body")} {...props} />;
 }
