@@ -13,32 +13,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { h } from "hastscript";
 
-// Obtained from https://lucide.dev/icons/link/
-// Used Claude to convert SVG to hastscript
-const linkSvg = h(
-  "svg",
-  {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    "stroke-width": "2",
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    class: "lucide lucide-link inline",
-  },
-  [
-    h("path", {
-      d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
-    }),
-    h("path", {
-      d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
-    }),
-  ]
-);
-
 export async function parseMarkdown(content: string) {
   return await unified()
     // Take Markdown as input and turn it into MD syntax tree
@@ -68,18 +42,9 @@ export async function parseMarkdown(content: string) {
     })
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
-      behavior: "append",
-      content: h(
-        "",
-        {
-          className:
-            "ml-2 text-zinc-500 no-underline hover:text-cyan-300 w-4 h-4 inline",
-        },
-        linkSvg
-      ),
-      properties: {
-        className: "no-underline hover:underline underline-offset-4",
-      },
+      behavior: "prepend",
+      content: () => [h("span", { className: "heading-anchor-mark" }, "§")],
+      properties: { className: "heading-anchor", ariaLabel: "Link to section" },
     })
     .use(rehypeStringify)
     .process(content);

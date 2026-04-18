@@ -46,7 +46,7 @@ function MobileNavItem({
 
 function MobileNavigation() {
   return (
-    <Popover className="md:hidden">
+    <Popover className="site-nav-mobile">
       <PopoverButton className="mobile-menu-button">Menu</PopoverButton>
       <PopoverBackdrop
         transition
@@ -72,7 +72,7 @@ function MobileNavigation() {
 
 function DesktopNavigation() {
   return (
-    <div className="nav-links hidden md:flex">
+    <div className="nav-links">
       <DesktopLink href="/">Writing</DesktopLink>
       <DesktopLink href="/articles">Articles</DesktopLink>
       <DesktopLink href="/projects">Projects</DesktopLink>
