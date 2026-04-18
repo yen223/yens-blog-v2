@@ -63,7 +63,6 @@ function PostRow({ article }: { article: Article }) {
           </span>
         ))}
       </div>
-      <span className="post-arrow">→</span>
     </li>
   );
 }
@@ -92,7 +91,7 @@ export default function ArticlesIndex() {
   return (
     <>
       <div className="section-head" style={{ borderTop: "none" }}>
-        <span className="kicker">⟶ articles</span>
+        <span className="kicker">articles</span>
         <h2>
           Essays &amp; <em>longer thoughts</em>
         </h2>

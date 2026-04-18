@@ -73,7 +73,6 @@ function PostRow({ article }: { article: Article }) {
           </span>
         ))}
       </div>
-      <span className="post-arrow">→</span>
     </li>
   );
 }
@@ -159,7 +158,7 @@ export default function Home() {
       </section>
 
       <div className="section-head">
-        <span className="kicker">⟶ 01 / writing</span>
+        <span className="kicker">01 / writing</span>
         <h2>
           Essays &amp; <em>longer thoughts</em>
         </h2>
