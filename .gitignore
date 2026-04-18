@@ -8,3 +8,7 @@ node_modules
 .wrangler
 app/articles.json
 .DS_Store
+
+.playwright-mcp/
+/*.png
+/*.jpeg
