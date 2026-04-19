@@ -92,34 +92,6 @@ export default function Home() {
   return (
     <>
       <section className="home-hero">
-        <aside className="home-side-meta">
-          <div className="line">
-            <span className="label">tending</span>
-            <span className="val">
-              <a href="https://getselectable.com">Selectable</a>,{" "}
-              <a href="https://stratachecks.com">StrataChecks</a>,{" "}
-              <a href="https://eka.weiyen.net">Eka</a>
-            </span>
-          </div>
-          <div className="line">
-            <span className="label">based in</span>
-            <span className="val">Sydney, AU</span>
-          </div>
-          <div className="line">
-            <span className="label">elsewhere</span>
-            <span className="val">
-              <a href="https://github.com/yen223">github</a>,{" "}
-              <a href="https://www.linkedin.com/in/weiyen/">linkedin</a>,{" "}
-              <a href={BLUESKY_LINK}>bluesky</a>
-            </span>
-          </div>
-          <div className="line">
-            <span className="label">email</span>
-            <span className="val">
-              <a href="mailto:hello@weiyen.net">hello@weiyen.net</a>
-            </span>
-          </div>
-        </aside>
         <div>
           <h1>
             Hi, I&apos;m <em>Wei Yen</em>

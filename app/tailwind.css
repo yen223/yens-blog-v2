@@ -175,16 +175,12 @@ body > footer {
 
 /* ============ HOME HERO ============ */
 .home-hero {
-  max-width: 1200px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 80px var(--gutter) 60px;
-  display: grid;
-  grid-template-columns: var(--margin) 1fr;
-  gap: 40px;
 }
 @media (max-width: 900px) {
   .home-hero {
-    grid-template-columns: 1fr;
     padding-top: 48px;
   }
 }
@@ -236,37 +232,6 @@ body > footer {
   border-bottom-color: var(--accent);
 }
 
-.home-side-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--taupe);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding-top: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.home-side-meta .line {
-  display: flex;
-  gap: 10px;
-}
-.home-side-meta .label {
-  color: var(--taupe-light);
-  min-width: 60px;
-}
-.home-side-meta .val {
-  color: var(--ink-soft);
-}
-.home-side-meta a {
-  color: var(--ink-soft);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.home-side-meta a:hover {
-  color: var(--accent);
-}
-
 /* ============ SECTION HEADER ============ */
 .section-head {
   max-width: 1200px;
@@ -277,6 +242,13 @@ body > footer {
   gap: 40px;
   align-items: baseline;
   border-top: 1px solid var(--rule);
+}
+/* Tool pages have a narrow content column — stack the kicker over the
+   heading and match the 820px hero/body width so they line up. */
+body:has(.tool-wrap) .section-head {
+  max-width: 820px;
+  grid-template-columns: 1fr;
+  gap: 8px;
 }
 @media (max-width: 900px) {
   .section-head {
