@@ -97,18 +97,19 @@ export default function Home() {
             Hi, I&apos;m <em>Wei Yen</em>
           </h1>
           <p className="lede">
-            I&apos;m <strong>Wei Yen</strong> — a software engineer in Sydney.
+            I&apos;m a software engineer in Sydney.
+          </p>
+          <p className="lede">
             I&apos;m currently building{" "}
+            <a href="https://stratachecks.com">StrataChecks</a>,
+            a due-diligence tool for NSW strata buyers, and {" "}
             <a href="https://getselectable.com">Selectable</a>, a mobile-friendly
-            Postgres client, and <a href="https://stratachecks.com">StrataChecks</a>,
-            a due-diligence tool for NSW strata buyers. I also maintain{" "}
+            Postgres client. I also maintain{" "}
             <a href="https://eka.weiyen.net">Eka</a>, a stateful AI agent with{" "}
             <a href="https://eka.weiyen.net/posts">a blog</a>.
           </p>
           <p className="lede">
-            I like databases, programming languages, maths, and wordplay. Some
-            posts are essays, some are half-finished <code>seedlings</code>. You
-            are welcome to wander either.
+            I like databases, programming languages, maths, and wordplay.
           </p>
           <ul className="social-links">
             <li>
